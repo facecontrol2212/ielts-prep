@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Design tokens.
+ * Palette: deep ink blue (trust, exam seriousness) + a warm amber accent (progress, energy).
+ * Semantic names only — never reference a raw hex in a component.
+ */
+:root {
+  --bg: 248 250 252;
+  --surface: 255 255 255;
+  --surface-2: 241 245 249;
+  --border: 226 232 240;
+  --fg: 15 23 42;
+  --muted: 100 116 139;
+
+  --primary: 29 58 138;
+  --primary-fg: 255 255 255;
+  --primary-soft: 224 231 255;
+
+  --accent: 217 119 6;
+  --accent-fg: 255 255 255;
+
+  --success: 21 128 61;
+  --warning: 180 83 9;
+  --danger: 190 18 60;
+
+  --exam-bar: 15 23 42;
+  --exam-paper: 255 255 255;
+  --exam-answered: 29 58 138;
+  --exam-flagged: 217 119 6;
+  --exam-current: 190 18 60;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-mono: ui-monospace, 'SF Mono', monospace;
+
+  --passage-size: 1.0625rem;
+  --passage-leading: 1.75;
+}
+
+:root[data-theme='dark'] {
+  --bg: 2 6 23;
+  --surface: 15 23 42;
+  --surface-2: 30 41 59;
+  --border: 51 65 85;
+  --fg: 241 245 249;
+  --muted: 148 163 184;
+
+  --primary: 129 140 248;
+  --primary-fg: 15 23 42;
+  --primary-soft: 30 41 59;
+
+  --accent: 251 191 36;
+  --accent-fg: 15 23 42;
+
+  --success: 74 222 128;
+  --warning: 251 191 36;
+  --danger: 251 113 133;
+
+  --exam-bar: 2 6 23;
+  --exam-paper: 15 23 42;
+  --exam-answered: 129 140 248;
+  --exam-flagged: 251 191 36;
+  --exam-current: 251 113 133;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: 2 6 23;
+    --surface: 15 23 42;
+    --surface-2: 30 41 59;
+    --border: 51 65 85;
+    --fg: 241 245 249;
+    --muted: 148 163 184;
+    --primary: 129 140 248;
+    --primary-fg: 15 23 42;
+    --primary-soft: 30 41 59;
+    --accent: 251 191 36;
+    --accent-fg: 15 23 42;
+    --success: 74 222 128;
+    --warning: 251 191 36;
+    --danger: 251 113 133;
+    --exam-bar: 2 6 23;
+    --exam-paper: 15 23 42;
+    --exam-answered: 129 140 248;
+    --exam-flagged: 251 191 36;
+    --exam-current: 251 113 133;
+  }
+}
+
+/* Accessibility: students sit these tests for an hour. */
+:root[data-text='large'] { --passage-size: 1.1875rem; --passage-leading: 1.85; }
+:root[data-text='xlarge'] { --passage-size: 1.375rem; --passage-leading: 1.9; }
+
+@layer base {
+  * { @apply border-border; }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--fg));
+    @apply font-sans antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+    --tw-ring-offset-color: rgb(var(--bg));
+  }
+
+  ::selection { background-color: rgb(var(--primary) / 0.18); }
+}
+
+@layer components {
+  /* Reading passage typography — the single most-read surface in the product. */
+  .passage {
+    @apply font-serif text-passage text-fg;
+  }
+  .passage p { @apply mb-4; }
+  .passage h3 { @apply mb-3 mt-6 font-sans text-base font-semibold uppercase tracking-wide; }
+  .passage .para-label {
+    @apply mr-2 inline-block font-sans text-sm font-bold text-muted;
+  }
+  /* A student highlight, persisted per attempt. */
+  .passage mark.hl {
+    background-color: rgb(var(--accent) / 0.28);
+    @apply rounded-sm px-0.5;
+  }
+}
+
+@media print { .no-print { display: none !important; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
