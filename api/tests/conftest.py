@@ -144,13 +144,18 @@ def reading_test(db) -> Test:
     )
     section.questions.extend(
         [
-            Question(number=1, type=QuestionType.SENTENCE_COMPLETION, prompt="The reef is the ___."),
+            Question(
+                number=1, type=QuestionType.SENTENCE_COMPLETION, prompt="The reef is the ___."
+            ),
             Question(
                 number=2,
                 type=QuestionType.TRUE_FALSE_NOT_GIVEN,
                 prompt="The reef is visible from space.",
-                options=[{"label": "TRUE", "text": "True"}, {"label": "FALSE", "text": "False"},
-                         {"label": "NOT GIVEN", "text": "Not Given"}],
+                options=[
+                    {"label": "TRUE", "text": "True"},
+                    {"label": "FALSE", "text": "False"},
+                    {"label": "NOT GIVEN", "text": "Not Given"},
+                ],
             ),
             Question(
                 number=3,
@@ -158,8 +163,12 @@ def reading_test(db) -> Test:
                 prompt="Where is the reef?",
                 options=[{"label": "A", "text": "Australia"}, {"label": "B", "text": "Brazil"}],
             ),
-            Question(number=4, type=QuestionType.SHORT_ANSWER, prompt="What colour is coral?",
-                     word_limit=1),
+            Question(
+                number=4,
+                type=QuestionType.SHORT_ANSWER,
+                prompt="What colour is coral?",
+                word_limit=1,
+            ),
         ]
     )
     group.questions = list(section.questions)

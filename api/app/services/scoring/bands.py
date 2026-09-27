@@ -43,7 +43,7 @@ class BandTableMissing(LookupError):
     """No conversion table exists for this skill/variant (e.g. Writing)."""
 
 
-def seed_band_tables(db: "Session") -> int:
+def seed_band_tables(db: Session) -> int:
     """Populate ``band_tables`` from the seed data. Idempotent.
 
     A row is keyed by ``(skill, variant, raw_min)``; an existing row is updated
@@ -80,7 +80,7 @@ def seed_band_tables(db: "Session") -> int:
     return changed
 
 
-def band_table_rows(db: "Session", skill: Skill, variant: Variant) -> list[BandRow]:
+def band_table_rows(db: Session, skill: Skill, variant: Variant) -> list[BandRow]:
     """Rows for a skill/variant, highest raw score first.
 
     Reads the database; falls back to the seed data when the table is empty.
@@ -102,7 +102,7 @@ def band_table_rows(db: "Session", skill: Skill, variant: Variant) -> list[BandR
     return sorted(seeded, key=lambda row: row[0], reverse=True)
 
 
-def raw_to_band(db: "Session", skill: Skill, variant: Variant, raw: int) -> float:
+def raw_to_band(db: Session, skill: Skill, variant: Variant, raw: int) -> float:
     """Convert a raw score out of 40 to an IELTS band.
 
     Scores outside 0..40 are clamped: a raw score can never be negative and a

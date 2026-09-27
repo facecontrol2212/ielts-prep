@@ -51,6 +51,9 @@ class Section(UUIDMixin, TimestampMixin, Base):
     # Writing
     prompt_html: Mapped[str | None] = mapped_column(Text, default=None)
     image_url: Mapped[str | None] = mapped_column(String(500), default=None)
+    #: What the Task 1 visual actually shows. Doubles as alt text for screen readers and as
+    #: the only thing the grader can see, since it is not given the image.
+    image_description: Mapped[str | None] = mapped_column(Text, default=None)
     min_words: Mapped[int | None] = mapped_column(Integer, default=None)
 
     start_question: Mapped[int | None] = mapped_column(Integer, default=None)

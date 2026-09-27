@@ -88,7 +88,7 @@ class DashboardStats(BaseModel):
     attempts_total: int
     tests_completed: int
     current_streak_days: int
-    best_band: dict[str, float]      # skill -> best band
-    latest_band: dict[str, float]    # skill -> most recent band
+    best_band: dict[str, float]  # skill -> best band
+    latest_band: dict[str, float]  # skill -> most recent band
     band_history: list[dict[str, Any]]  # [{date, skill, band}]
     weakest_types: list[TypeScore]

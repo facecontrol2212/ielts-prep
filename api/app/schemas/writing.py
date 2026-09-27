@@ -19,7 +19,7 @@ class Correction(BaseModel):
     length: int
     original: str
     suggestion: str
-    issue: str          # grammar | vocabulary | cohesion | spelling | punctuation | register
+    issue: str  # grammar | vocabulary | cohesion | spelling | punctuation | register
     explanation: str
 
 

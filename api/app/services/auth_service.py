@@ -30,9 +30,9 @@ from app.core.security import (
     generate_email_token,
     hash_email_token,
     hash_password,
+    token_predates_password_change,
     verify_password,
 )
-from app.core.security import token_predates_password_change
 from app.models.user import EmailToken, User
 from app.schemas.auth import RegisterRequest, TokenPair
 from app.services.email import RESET_PASSWORD, VERIFY_EMAIL

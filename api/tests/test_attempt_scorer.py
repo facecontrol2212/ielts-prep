@@ -33,7 +33,9 @@ def add_answers(db, attempt: Attempt, test: ExamTest, values: dict[int, Any]) ->
 
 
 def answer_rows(db, attempt: Attempt) -> dict[uuid.UUID, AttemptAnswer]:
-    return {row.question_id: row for row in db.query(AttemptAnswer).filter_by(attempt_id=attempt.id)}
+    return {
+        row.question_id: row for row in db.query(AttemptAnswer).filter_by(attempt_id=attempt.id)
+    }
 
 
 # ------------------------------------------------------------- the happy path
@@ -247,7 +249,9 @@ def test_rescoring_picks_up_a_corrected_answer_key(db, attempt, reading_test):
 # ------------------------------------------------------------- odd test shapes
 
 
-def build_test(db, user, *, skill: Skill, with_key: bool, question_count: int | None = None) -> tuple:
+def build_test(
+    db, user, *, skill: Skill, with_key: bool, question_count: int | None = None
+) -> tuple:
     test = ExamTest(
         slug=f"fixture-{uuid.uuid4().hex[:8]}",
         skill=skill,

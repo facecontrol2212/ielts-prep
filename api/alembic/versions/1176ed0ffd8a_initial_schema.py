@@ -1,8 +1,8 @@
 """initial schema
 
-Revision ID: 59c3a964e08a
+Revision ID: 1176ed0ffd8a
 Revises: 
-Create Date: 2026-09-27 18:50:41.807319
+Create Date: 2026-09-27 18:51:54.957461
 """
 
 from collections.abc import Sequence
@@ -11,7 +11,7 @@ import sqlalchemy as sa
 from alembic import op
 
 
-revision: str = '59c3a964e08a'
+revision: str = '1176ed0ffd8a'
 down_revision: str | None = None
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
@@ -147,6 +147,7 @@ def upgrade() -> None:
     sa.Column('transcript', sa.Text(), nullable=True),
     sa.Column('prompt_html', sa.Text(), nullable=True),
     sa.Column('image_url', sa.String(length=500), nullable=True),
+    sa.Column('image_description', sa.Text(), nullable=True),
     sa.Column('min_words', sa.Integer(), nullable=True),
     sa.Column('start_question', sa.Integer(), nullable=True),
     sa.Column('end_question', sa.Integer(), nullable=True),
@@ -189,6 +190,8 @@ def upgrade() -> None:
     sa.Column('model', sa.String(length=64), nullable=True),
     sa.Column('input_tokens', sa.Integer(), nullable=True),
     sa.Column('output_tokens', sa.Integer(), nullable=True),
+    sa.Column('cache_read_tokens', sa.Integer(), nullable=True),
+    sa.Column('cache_write_tokens', sa.Integer(), nullable=True),
     sa.Column('graded_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('grading_error', sa.Text(), nullable=True),
     sa.Column('id', sa.Uuid(), nullable=False),
@@ -196,7 +199,8 @@ def upgrade() -> None:
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['attempt_id'], ['attempts.id'], name=op.f('fk_writing_submissions_attempt_id_attempts'), ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['section_id'], ['sections.id'], name=op.f('fk_writing_submissions_section_id_sections'), ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_writing_submissions'))
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_writing_submissions')),
+    sa.UniqueConstraint('attempt_id', 'task_number', name='uq_attempt_task')
     )
     op.create_index(op.f('ix_writing_submissions_attempt_id'), 'writing_submissions', ['attempt_id'], unique=False)
     op.create_table('questions',

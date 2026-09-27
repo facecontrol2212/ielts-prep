@@ -69,7 +69,7 @@ _ALIAS_TABLES: dict[QuestionType, dict[str, str]] = {
 # ------------------------------------------------------------------- helpers
 
 
-def resolve_word_limit(question: "Question") -> tuple[int | None, bool]:
+def resolve_word_limit(question: Question) -> tuple[int | None, bool]:
     """Effective ``(word_limit, allow_number)`` for a question.
 
     A question-level limit overrides the group-level one; when the question
@@ -144,7 +144,7 @@ def canonical_label(raw: str, question_type: QuestionType) -> str:
     return label
 
 
-def _accepted_forms(key: "AnswerKey", *, drop_article: bool) -> list[tuple[str, str]]:
+def _accepted_forms(key: AnswerKey, *, drop_article: bool) -> list[tuple[str, str]]:
     """``(normalised, original)`` for every accepted answer, blanks removed."""
     forms: list[tuple[str, str]] = []
     for accepted in key.accepted or []:
@@ -158,7 +158,7 @@ def _accepted_forms(key: "AnswerKey", *, drop_article: bool) -> list[tuple[str, 
 # ------------------------------------------------------------------ matchers
 
 
-def _check_option(question: "Question", key: "AnswerKey", value: Any) -> AnswerCheck:
+def _check_option(question: Question, key: AnswerKey, value: Any) -> AnswerCheck:
     """Single labelled option: multiple choice, matching, TRUE/FALSE/NOT GIVEN."""
     text = as_text(value)
     if text is None:
@@ -173,7 +173,7 @@ def _check_option(question: "Question", key: "AnswerKey", value: Any) -> AnswerC
     return AnswerCheck(False, REASON_WRONG)
 
 
-def _check_option_set(question: "Question", key: "AnswerKey", value: Any) -> AnswerCheck:
+def _check_option_set(question: Question, key: AnswerKey, value: Any) -> AnswerCheck:
     """Multi-answer question: unordered set equality, no partial credit.
 
     One question number is one mark, so a missing *or* an extra selection makes
@@ -192,7 +192,7 @@ def _check_option_set(question: "Question", key: "AnswerKey", value: Any) -> Ans
     return AnswerCheck(False, REASON_WRONG)
 
 
-def _check_text(question: "Question", key: "AnswerKey", value: Any) -> AnswerCheck:
+def _check_text(question: Question, key: AnswerKey, value: Any) -> AnswerCheck:
     """Free-text answer: word limit first, then the normalisation pipeline."""
     text = as_text(value)
     if text is None:
@@ -235,7 +235,7 @@ _MATCHERS = {
 }
 
 
-def check_answer(question: "Question", key: "AnswerKey", value: Any) -> AnswerCheck:
+def check_answer(question: Question, key: AnswerKey, value: Any) -> AnswerCheck:
     """Mark a single answer against its key. See the module docstring for the order."""
     if is_blank(value):
         return AnswerCheck(False, REASON_BLANK)

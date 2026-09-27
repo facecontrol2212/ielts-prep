@@ -40,7 +40,7 @@ def _as_utc(value: datetime) -> datetime:
     return value if value.tzinfo is not None else value.replace(tzinfo=UTC)
 
 
-def _ordered_questions(db: "Session", test: Test) -> list[tuple[Section, Question]]:
+def _ordered_questions(db: Session, test: Test) -> list[tuple[Section, Question]]:
     """Every question of the test, in section then question-number order."""
     sections = db.scalars(
         select(Section)
@@ -62,7 +62,7 @@ def _accepted_answers(question: Question) -> list[str]:
     return [str(item) for item in key.accepted]
 
 
-def score_attempt(db: "Session", attempt: "Attempt") -> AttemptResult:
+def score_attempt(db: Session, attempt: Attempt) -> AttemptResult:
     """Mark every answer, persist the results and return the full result payload."""
     test = db.get(Test, attempt.test_id)
     if test is None:  # pragma: no cover - defensive; FK makes this unreachable
@@ -71,9 +71,7 @@ def score_attempt(db: "Session", attempt: "Attempt") -> AttemptResult:
     pairs = _ordered_questions(db, test)
     answers = {
         row.question_id: row
-        for row in db.scalars(
-            select(AttemptAnswer).where(AttemptAnswer.attempt_id == attempt.id)
-        )
+        for row in db.scalars(select(AttemptAnswer).where(AttemptAnswer.attempt_id == attempt.id))
     }
 
     now = datetime.now(UTC)

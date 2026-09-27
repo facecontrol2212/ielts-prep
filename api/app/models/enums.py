@@ -16,7 +16,7 @@ class Variant(StrEnum):
 class QuestionType(StrEnum):
     """Every question type the scoring engine must handle."""
 
-    MULTIPLE_CHOICE = "multiple_choice"              # one correct option
+    MULTIPLE_CHOICE = "multiple_choice"  # one correct option
     MULTIPLE_CHOICE_MULTI = "multiple_choice_multi"  # choose N of M
     TRUE_FALSE_NOT_GIVEN = "true_false_not_given"
     YES_NO_NOT_GIVEN = "yes_no_not_given"
@@ -68,8 +68,8 @@ class MatchMode(StrEnum):
     """How an answer key is compared against the student's answer."""
 
     NORMALISED = "normalised"  # full normalisation pipeline (default for text)
-    EXACT = "exact"            # byte-equal after trim/case-fold only
-    OPTION = "option"          # single option label
+    EXACT = "exact"  # byte-equal after trim/case-fold only
+    OPTION = "option"  # single option label
     OPTION_SET = "option_set"  # unordered set of option labels
 
 

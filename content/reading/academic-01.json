@@ -1,0 +1,746 @@
+{
+  "kind": "test",
+  "slug": "reading-academic-01",
+  "skill": "reading",
+  "variant": "academic",
+  "title": "Academic Reading Practice Test 1",
+  "description": "Three original passages on spider silk, the spread of papermaking, and cooling cities without air conditioning. 40 questions, 60 minutes.",
+  "difficulty": 3,
+  "duration_seconds": 3600,
+  "transfer_seconds": 0,
+  "question_count": 40,
+  "is_published": true,
+  "source": "original - authored in-house",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Passage 1 - Tougher than steel: the long puzzle of spider silk",
+      "instructions": "You should spend about 20 minutes on Questions 1-13, which are based on Reading Passage 1 below.",
+      "passage_html": "<p>Few materials have been measured so often, or promised so much, as the dragline silk of the orb-weaving spider. Weight for weight, the thread a garden spider trails behind it as it moves is tougher than the steel used in bridge cables. It is also extraordinarily light: a single strand long enough to circle the Earth would weigh less than a bar of soap. For more than a century, engineers have looked at that combination of strength, elasticity and lightness in a single fibre and concluded that whoever learned to manufacture it would have something worth having.</p>\n<p>Toughness is not the same as strength, and the distinction matters. Strength is the load a fibre can carry before it breaks; toughness is the total energy it soaks up on the way. Kevlar, the aramid fibre used in body armour, is stronger than dragline silk by some measures, but it is comparatively brittle: it resists a great deal and then gives way suddenly. Silk stretches. A dragline can extend by about a third of its length before it fails, and every millimetre of that stretch takes energy out of whatever is pulling on it. This is why a web survives a bumblebee arriving at full speed. A stiffer web would simply throw the insect back out again, which is of no use to the spider at all.</p>\n<p>The mechanical trick lies in the way the protein is arranged. Silk is built from long chains of amino acids, and within those chains are short, repetitive blocks rich in the simplest amino acid, alanine. When the thread is drawn out, these blocks line up alongside one another and lock together into tiny, hard crystals, each only a few nanometres across. Between the crystals lies a tangle of disordered chains that behaves rather like rubber. Pull on the fibre and the tangle unwinds first, absorbing energy, while the crystals hold the structure together. Neither part would be much use alone. Together they produce a composite in which a soft matrix is reinforced by hard inclusions, the same principle as concrete and steel, at a scale a million times smaller.</p>\n<p>Just as remarkable is the way the spider makes it. Inside the gland, the silk proteins are stored as a concentrated liquid, at up to half protein by weight, without setting solid. As that liquid is drawn down a narrow, tapering duct, it is squeezed, acidified and stripped of water; the proteins are forced into alignment by the flow itself, and the crystals form. The spider does not so much push a thread out as pull one out, and the speed of pulling changes the result: draw the same liquid faster and you get a stiffer fibre. The whole operation takes place at ordinary temperature and pressure, in water. Making a high-performance synthetic fibre, by comparison, generally demands organic solvents and a great deal of heat.</p>\n<p>Why, then, is there no spider silk industry? The obvious route, farming spiders as silkworms are farmed, fails for behavioural reasons. Orb weavers are territorial and cannibalistic, and will not tolerate crowding. The best-known attempt at a spider silk textile, a cloak produced in Madagascar in the early 2000s, required more than a million wild golden orb weavers, each caught, held briefly and released, and several years of patient labour. The second route is to move the silk genes into another organism, whether bacteria, yeast, goats or even alfalfa, and harvest the protein from that. This works, in the narrow sense that recombinant silk protein can now be produced by the kilogram. The difficulty comes afterwards. The genes are long and highly repetitive, and host cells tend to shorten them; the proteins that emerge are smaller than the natural ones, and the fibres spun from them are correspondingly weaker.</p>\n<p>That points to the real bottleneck, which is not biology but spinning. Turning silk powder back into a thread with the properties of the original means reproducing the spider's duct: the exact sequence of shear, acidity and dehydration, applied in the right order and at the right rate. Several groups have built artificial spinning devices that come close, and the gap has narrowed steadily since the first recombinant fibres were produced in the 1990s. None has yet matched a garden spider working for nothing in a hedge.</p>\n<p>The commercial promise has therefore shifted. Rather than replacing steel cable or ballistic fabric, the first products have been small and expensive: surgical sutures, scaffolds on which living cells are grown, protective coatings, a handful of luxury garments. Silk is biocompatible and breaks down harmlessly inside the body, which matters more in a surgical thread than raw toughness does. It may be that the spider's greatest gift to engineering is not the fibre at all, but the lesson in how it is made: that a material of this quality can be assembled from water at room temperature, if only the process is right.</p>",
+      "start_question": 1,
+      "end_question": 13,
+      "groups": [
+        {
+          "order": 1,
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in Reading Passage 1?\nWrite TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, or NOT GIVEN if there is no information on this.",
+          "questions": [
+            {
+              "number": 1,
+              "prompt": "The energy a fibre absorbs before it breaks is what is meant by its toughness.",
+              "evidence": "toughness is the total energy it soaks up on the way",
+              "answer": {
+                "accepted": [
+                  "TRUE"
+                ],
+                "explanation": "The passage defines toughness as 'the total energy it soaks up on the way', which is exactly what the statement says."
+              }
+            },
+            {
+              "number": 2,
+              "prompt": "Kevlar can be stretched further than dragline silk before it breaks.",
+              "evidence": "Kevlar, the aramid fibre used in body armour, is stronger than dragline silk by some measures, but it is comparatively brittle: it resists a great deal and then gives way suddenly.",
+              "answer": {
+                "accepted": [
+                  "FALSE"
+                ],
+                "explanation": "The passage says Kevlar is brittle and gives way suddenly, while silk stretches by about a third of its length, so the statement is the reverse of the text."
+              }
+            },
+            {
+              "number": 3,
+              "prompt": "Garden spiders rebuild their webs every day.",
+              "evidence": "This is why a web survives a bumblebee arriving at full speed.",
+              "answer": {
+                "accepted": [
+                  "NOT GIVEN"
+                ],
+                "explanation": "The passage describes how a web survives an impact but says nothing at all about how often a web is rebuilt."
+              }
+            },
+            {
+              "number": 4,
+              "prompt": "The hard crystals in a dragline are formed from parts of the protein chain that contain a high proportion of alanine.",
+              "evidence": "within those chains are short, repetitive blocks rich in the simplest amino acid, alanine. When the thread is drawn out, these blocks line up alongside one another and lock together into tiny, hard crystals",
+              "answer": {
+                "accepted": [
+                  "TRUE"
+                ],
+                "explanation": "The passage says the alanine-rich repetitive blocks lock together into tiny hard crystals when the thread is drawn."
+              }
+            },
+            {
+              "number": 5,
+              "prompt": "The speed at which a thread is drawn affects the properties of the finished fibre.",
+              "evidence": "draw the same liquid faster and you get a stiffer fibre",
+              "answer": {
+                "accepted": [
+                  "TRUE"
+                ],
+                "explanation": "The passage states directly that drawing the same liquid faster produces a stiffer fibre."
+              }
+            },
+            {
+              "number": 6,
+              "prompt": "A web made of a stiffer material would be better at catching fast-moving insects.",
+              "evidence": "A stiffer web would simply throw the insect back out again, which is of no use to the spider at all.",
+              "answer": {
+                "accepted": [
+                  "FALSE"
+                ],
+                "explanation": "The passage says a stiffer web would throw the insect back out again, which is of no use to the spider."
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "type": "sentence_completion",
+          "instructions": "Complete the sentences below.\nChoose NO MORE THAN TWO WORDS from the passage for each answer.",
+          "word_limit": 2,
+          "questions": [
+            {
+              "number": 7,
+              "prompt": "Inside the gland the silk protein is held as a __________ which does not set solid.",
+              "evidence": "the silk proteins are stored as a concentrated liquid, at up to half protein by weight, without setting solid",
+              "answer": {
+                "accepted": [
+                  "concentrated liquid",
+                  "liquid"
+                ],
+                "explanation": "The passage says the proteins are 'stored as a concentrated liquid ... without setting solid'."
+              }
+            },
+            {
+              "number": 8,
+              "prompt": "In the duct the solution is squeezed, acidified and stripped of __________.",
+              "evidence": "it is squeezed, acidified and stripped of water",
+              "answer": {
+                "accepted": [
+                  "water"
+                ],
+                "explanation": "The passage lists the three things done to the liquid in the duct, the third being the removal of water."
+              }
+            },
+            {
+              "number": 9,
+              "prompt": "Spiders cannot be kept in large groups because they are territorial and __________.",
+              "evidence": "Orb weavers are territorial and cannibalistic, and will not tolerate crowding.",
+              "answer": {
+                "accepted": [
+                  "cannibalistic"
+                ],
+                "explanation": "The passage gives territoriality and cannibalism as the behavioural reasons spiders will not tolerate crowding."
+              }
+            },
+            {
+              "number": 10,
+              "prompt": "Host cells tend to __________ the silk genes, so the proteins they make are smaller than natural ones.",
+              "evidence": "The genes are long and highly repetitive, and host cells tend to shorten them",
+              "answer": {
+                "accepted": [
+                  "shorten"
+                ],
+                "explanation": "The passage says the genes are repetitive and that host cells tend to shorten them, producing smaller proteins."
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "type": "multiple_choice",
+          "instructions": "Choose the correct letter, A, B, C or D.",
+          "questions": [
+            {
+              "number": 11,
+              "prompt": "According to the writer, the main obstacle to making artificial spider silk is",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "obtaining silk protein in useful quantities."
+                },
+                {
+                  "label": "B",
+                  "text": "recreating the conditions inside the spider's duct."
+                },
+                {
+                  "label": "C",
+                  "text": "finding a host organism that will accept the genes."
+                },
+                {
+                  "label": "D",
+                  "text": "the price of the necessary raw materials."
+                }
+              ],
+              "evidence": "That points to the real bottleneck, which is not biology but spinning.",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "The passage calls spinning, not biology, 'the real bottleneck': protein can already be made by the kilogram."
+              }
+            },
+            {
+              "number": 12,
+              "prompt": "The writer compares silk with concrete and steel in order to explain",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "how much a silk industry would cost to establish."
+                },
+                {
+                  "label": "B",
+                  "text": "why silk breaks down inside the body."
+                },
+                {
+                  "label": "C",
+                  "text": "an arrangement of hard particles within a softer material."
+                },
+                {
+                  "label": "D",
+                  "text": "the way a spider anchors a web to a surface."
+                }
+              ],
+              "evidence": "Together they produce a composite in which a soft matrix is reinforced by hard inclusions, the same principle as concrete and steel",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "The comparison illustrates a composite: hard inclusions set in a soft matrix."
+              }
+            },
+            {
+              "number": 13,
+              "prompt": "In the final paragraph the writer suggests that silk's most valuable contribution may be",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "a substitute for steel cable."
+                },
+                {
+                  "label": "B",
+                  "text": "a lighter form of body armour."
+                },
+                {
+                  "label": "C",
+                  "text": "a new market in luxury clothing."
+                },
+                {
+                  "label": "D",
+                  "text": "what it shows about manufacturing at low temperatures."
+                }
+              ],
+              "evidence": "It may be that the spider's greatest gift to engineering is not the fibre at all, but the lesson in how it is made",
+              "answer": {
+                "accepted": [
+                  "D"
+                ],
+                "explanation": "The last sentence says the greatest gift may be 'not the fibre at all, but the lesson in how it is made'."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Passage 2 - The paper road",
+      "instructions": "You should spend about 20 minutes on Questions 14-26, which are based on Reading Passage 2 below.",
+      "passage_html": "<p><strong>A</strong> The invention of paper is conventionally dated to 105 CE and credited to Cai Lun, an official at the Han court, who is said to have presented the emperor with sheets made from mulberry bark, hemp waste, old rags and worn-out fishing nets. The date is tidy but almost certainly wrong. Fragments of coarse hemp paper have been recovered from Han tombs and frontier garrisons that are two centuries older, used for wrapping and padding rather than for writing. What Cai Lun most plausibly did was to improve and standardise an existing craft and, just as importantly, bring it to the notice of a government that could pay for it. The story has the shape that origin stories usually have: a single name attached to a long and anonymous process of refinement.</p>\n<p><strong>B</strong> For six hundred years the method stayed largely within the Chinese cultural world. Its movement west is traditionally attached to a single event, the battle of Talas in 751, at which an Arab army defeated a Tang force in what is now Kyrgyzstan; among the prisoners, the story goes, were papermakers who were taken to Samarkand and made to teach their craft. Historians treat the anecdote with caution, since it appears in writing only centuries later, but there is no doubt about the outcome. Samarkand had abundant clean water, mills already turning for other purposes, and plentiful flax and hemp, and within a generation it was exporting paper across the region. Its sheets acquired a reputation for whiteness and smoothness that lasted for centuries.</p>\n<p><strong>C</strong> From Samarkand the craft moved to Baghdad, and there it met a state that could absorb almost any quantity of it. The Abbasid administration ran on documents: tax registers, judicial records, army payrolls and correspondence with distant provinces. Papyrus had to be imported, and parchment was slow to make and expensive. Paper made record-keeping cheap enough for the bureaucracy to expand, and a stationers' market grew up near the mosque, selling sheets, ink and copying services. There was an administrative argument for it as well as an economic one: ink sinks into paper, so an erasure leaves a visible mark, whereas a parchment document can be scraped clean and rewritten. For a treasury worried about forged receipts, that was a real advantage. The great translation movement of the ninth century, which turned Greek science into Arabic, would have been far harder on any other surface.</p>\n<p><strong>D</strong> Paper reached the Mediterranean through Egypt and Muslim Spain, where the town of Xativa supplied sheets to Christian Europe from the twelfth century. It was in Italy, however, that the process was rebuilt. The mills of Fabriano, in the Marche, introduced three changes within a few decades of 1270. They replaced hand-pounding with rows of water-powered stamping hammers, which prepared pulp faster and more evenly. They sized their sheets with gelatine boiled from animal hides rather than with rice or wheat starch, producing a harder surface that suited iron-gall ink and resisted damp. And they made their moulds from woven wire, which left a faint pattern in the finished sheet and allowed a maker to bend a wire into a symbol and sign his product. The watermark was a trademark before there were trademarks.</p>\n<p><strong>E</strong> What Europe could not fix was the raw material. Paper was made from worn-out linen and cotton cloth, so the supply of paper was limited by the supply of old clothes. Rag-pickers collected them, dealers graded and sold them, and as demand climbed several states banned their export outright in order to protect their own mills. Substitutes were tried without success: straw, nettles, even wasps' nests, proposed by an eighteenth-century naturalist who had watched the insects at work. The shortage was only broken in the nineteenth century, when grinding and then chemically digesting wood produced pulp in effectively unlimited quantities. Paper became cheap enough for a daily newspaper, and libraries have been paying for it ever since: much of the resulting stock is acidic, and the fibres slowly destroy themselves, so that books from the 1880s are often more fragile than books from the 1580s.</p>\n<p><strong>F</strong> The final consequence was the one that mattered most. A parchment bible required the skins of two or three hundred animals, and a printer who had to buy parchment could not sell cheaply, however fast his press ran. Printing with movable type was invented more than once, but it became an industry only where a cheap, uniform and absorbent surface was already available in bulk, and in Europe that surface arrived roughly a century before Gutenberg did. It is easy to tell the history of the book as the history of the press. The press was the dramatic machine, but it was the slower, dirtier trade of the rag mill that decided what a book would cost, and therefore who would read one.</p>",
+      "start_question": 14,
+      "end_question": 26,
+      "groups": [
+        {
+          "order": 1,
+          "type": "matching_headings",
+          "instructions": "Reading Passage 2 has six paragraphs, A-F.\nChoose the correct heading for each paragraph from the list of headings below.\nWrite the correct number, i-ix.",
+          "options": [
+            {
+              "label": "i",
+              "text": "A shortage that forced a change of raw material"
+            },
+            {
+              "label": "ii",
+              "text": "An invention credited to one man, but older than his date"
+            },
+            {
+              "label": "iii",
+              "text": "The journey west and the first mills beyond China"
+            },
+            {
+              "label": "iv",
+              "text": "Why parchment was retained for sacred texts"
+            },
+            {
+              "label": "v",
+              "text": "Paper and the business of government"
+            },
+            {
+              "label": "vi",
+              "text": "Refinement and mechanisation in Europe"
+            },
+            {
+              "label": "vii",
+              "text": "The surface that printing required"
+            },
+            {
+              "label": "viii",
+              "text": "Efforts to keep the technique secret"
+            },
+            {
+              "label": "ix",
+              "text": "The decline of handmade paper in Asia"
+            }
+          ],
+          "questions": [
+            {
+              "number": 14,
+              "prompt": "Paragraph A",
+              "evidence": "The date is tidy but almost certainly wrong. Fragments of coarse hemp paper have been recovered from Han tombs and frontier garrisons that are two centuries older",
+              "answer": {
+                "accepted": [
+                  "ii"
+                ],
+                "explanation": "The paragraph gives Cai Lun the credit but then shows that paper fragments two centuries older survive, so the traditional date is wrong."
+              }
+            },
+            {
+              "number": 15,
+              "prompt": "Paragraph B",
+              "evidence": "Its movement west is traditionally attached to a single event, the battle of Talas in 751",
+              "answer": {
+                "accepted": [
+                  "iii"
+                ],
+                "explanation": "The paragraph traces the craft's movement west after Talas and the first mills outside China, at Samarkand."
+              }
+            },
+            {
+              "number": 16,
+              "prompt": "Paragraph C",
+              "evidence": "Paper made record-keeping cheap enough for the bureaucracy to expand",
+              "answer": {
+                "accepted": [
+                  "v"
+                ],
+                "explanation": "The paragraph is entirely about the Abbasid administration and the documents it ran on."
+              }
+            },
+            {
+              "number": 17,
+              "prompt": "Paragraph D",
+              "evidence": "The mills of Fabriano, in the Marche, introduced three changes within a few decades of 1270.",
+              "answer": {
+                "accepted": [
+                  "vi"
+                ],
+                "explanation": "The paragraph lists three technical improvements made by the Italian mills: hammers, gelatine sizing and wire moulds."
+              }
+            },
+            {
+              "number": 18,
+              "prompt": "Paragraph E",
+              "evidence": "What Europe could not fix was the raw material.",
+              "answer": {
+                "accepted": [
+                  "i"
+                ],
+                "explanation": "The paragraph is about the rag shortage and the switch to wood pulp that ended it."
+              }
+            },
+            {
+              "number": 19,
+              "prompt": "Paragraph F",
+              "evidence": "it became an industry only where a cheap, uniform and absorbent surface was already available in bulk",
+              "answer": {
+                "accepted": [
+                  "vii"
+                ],
+                "explanation": "The paragraph argues that printing became an industry only once a cheap, uniform, absorbent surface existed."
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "type": "matching_features",
+          "instructions": "Match each statement with the correct place, A-E.\nWrite the correct letter, A-E. You may use any letter once only.",
+          "options": [
+            {
+              "label": "A",
+              "text": "Samarkand"
+            },
+            {
+              "label": "B",
+              "text": "Baghdad"
+            },
+            {
+              "label": "C",
+              "text": "Fabriano"
+            },
+            {
+              "label": "D",
+              "text": "Xativa"
+            },
+            {
+              "label": "E",
+              "text": "Talas"
+            }
+          ],
+          "questions": [
+            {
+              "number": 20,
+              "prompt": "the first European use of water-driven machinery to prepare pulp",
+              "evidence": "They replaced hand-pounding with rows of water-powered stamping hammers, which prepared pulp faster and more evenly.",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "Fabriano replaced hand-pounding with water-powered stamping hammers."
+              }
+            },
+            {
+              "number": 21,
+              "prompt": "a centre that was exporting paper within a generation of acquiring the craft",
+              "evidence": "within a generation it was exporting paper across the region",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "Samarkand had water, mills, flax and hemp, and was exporting paper within a generation."
+              }
+            },
+            {
+              "number": 22,
+              "prompt": "a place where cheap paper allowed the machinery of government to grow",
+              "evidence": "Paper made record-keeping cheap enough for the bureaucracy to expand",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "In Baghdad paper made record-keeping cheap enough for the bureaucracy to expand."
+              }
+            },
+            {
+              "number": 23,
+              "prompt": "a town that supplied paper to Christian Europe from the twelfth century",
+              "evidence": "the town of Xativa supplied sheets to Christian Europe from the twelfth century",
+              "answer": {
+                "accepted": [
+                  "D"
+                ],
+                "explanation": "Xativa, in Muslim Spain, supplied sheets to Christian Europe from the twelfth century."
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "type": "summary_completion",
+          "instructions": "Complete the summary below.\nChoose ONE WORD ONLY from the passage for each answer.",
+          "word_limit": 1,
+          "content_html": "<h4>The end of the rag economy</h4><p>For most of its history, paper in Europe was made from worn-out cloth, so output depended on the supply of old clothes. As demand rose, several states banned the ___24___ of rags in order to protect their own mills, and substitutes such as straw and nettles were tried without success. The shortage ended in the nineteenth century, when ___25___ was ground and chemically digested to make pulp in unlimited quantities. The resulting paper was cheap, but much of it is ___26___, and the books printed on it are now decaying faster than far older ones.</p>",
+          "questions": [
+            {
+              "number": 24,
+              "prompt": "___24___",
+              "evidence": "several states banned their export outright in order to protect their own mills",
+              "answer": {
+                "accepted": [
+                  "export"
+                ],
+                "explanation": "The passage says several states 'banned their export outright in order to protect their own mills'."
+              }
+            },
+            {
+              "number": 25,
+              "prompt": "___25___",
+              "evidence": "when grinding and then chemically digesting wood produced pulp in effectively unlimited quantities",
+              "answer": {
+                "accepted": [
+                  "wood"
+                ],
+                "explanation": "The shortage was broken by grinding and chemically digesting wood to make pulp."
+              }
+            },
+            {
+              "number": 26,
+              "prompt": "___26___",
+              "evidence": "much of the resulting stock is acidic, and the fibres slowly destroy themselves",
+              "answer": {
+                "accepted": [
+                  "acidic"
+                ],
+                "explanation": "The passage says much of the resulting stock is acidic and that the fibres destroy themselves."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Passage 3 - Cooling the city",
+      "instructions": "You should spend about 20 minutes on Questions 27-40, which are based on Reading Passage 3 below.",
+      "passage_html": "<p>On a still summer night, the centre of a large city can be seven degrees warmer than the farmland around it. The effect is called the urban heat island, and it is not caused by one thing. Dark roofs and asphalt absorb sunlight that grass and leaves would have reflected, and release it slowly after dark. Streets lined with tall buildings form canyons that trap radiation, bouncing it from wall to wall instead of letting it escape to the sky. Rain runs off hard surfaces into drains rather than soaking in and evaporating, so the cooling that a damp landscape provides for nothing is simply absent. To all of that must be added the heat that cities make for themselves: engines, industry, bodies and cooling machinery.</p>\n<p>It is the night-time figure, rather than the afternoon peak, that does the damage. The human body recovers from heat during sleep, and it is the failure of temperatures to fall at night that fills hospital wards. Heat deaths are also distributed in a way that has little to do with meteorology. Tree cover in wealthy districts is routinely two or three times what it is in poor ones a few kilometres away, and the households with the least shade are usually the least able to run a cooling system. Any serious account of urban heat is therefore an account of inequality as well as of physics.</p>\n<p>The obvious response, mechanical air conditioning, is also the most self-defeating. A room air conditioner does not destroy heat; it moves it, from inside a building to the street outside, and adds the waste heat of the compressor on the way. Where units are dense, they raise night-time street temperatures measurably. The electricity they consume is mostly generated elsewhere, often by burning something, and demand peaks precisely when the grid is most strained. None of this is an argument for banning air conditioning, which saves lives, but it is a strong argument for not treating it as the whole answer.</p>\n<p>The cheapest alternative is paint. A conventional dark roof can reach eighty degrees in direct sun, while a roof coated with a white, highly reflective finish stays close to air temperature. Programmes in several South Asian cities have painted the roofs of low-income housing with a lime-based wash costing a few dollars a building, and have measured indoor reductions of two to five degrees, which is enough to matter in a single-room dwelling under a metal roof. The limitation is seasonal. In a climate with cold winters, a reflective roof gives away useful solar gain in January to save energy in July, and the annual balance can be close to neutral. Reflective pavements raise a subtler problem: light bounced off the ground does not disappear, and pedestrians standing on a reflective surface can feel hotter, not cooler, even as the air temperature falls.</p>\n<p>Vegetation works differently and more thoroughly. A mature street tree cools in two ways at once: it shades the surface beneath it, and it evaporates water through its leaves, turning solar energy into vapour rather than into heat. The combined effect under a good canopy can be several degrees of air temperature, and a great deal more in terms of what a person actually feels. The catch is water. Trees deliver this service only while they are transpiring, which is to say only while they are supplied, and in a dry summer that supply competes with every other use. Species choice therefore matters more than planting totals: a drought-adapted tree that survives twenty years is worth more than a thirsty one that dies in its third.</p>\n<p>The oldest strategies are architectural, and most of the relevant knowledge predates electricity entirely. Thick walls of earth or brick delay the passage of heat by hours, so that a room reaches its warmest long after the outside air has cooled and can be flushed with night air. The narrow, shaded lanes of the old quarters of Central Asian and North African cities were laid out to keep the sun off the walls; a courtyard with a pool and a tree creates a small pocket of cooler, damper air; a wind tower catches whatever breeze exists at roof level and directs it downwards. These devices were abandoned not because they stopped working but because sealed, glazed, mechanically cooled buildings could be put up anywhere by anyone, in half the time.</p>\n<p>No single measure is sufficient, and the arithmetic of combining them is not simple addition: shade from a tree reduces the benefit of a reflective surface beneath it. What the evidence supports is a layered approach, with reflective roofs where winters are mild, canopy where water allows, ventilation corridors preserved through new development, and mechanical cooling kept as the last line of defence rather than the first. It also supports a change in whose comfort is being optimised. A city that measures its success by the temperature inside its air-conditioned offices will go on building the kind of street that created the problem.</p>",
+      "start_question": 27,
+      "end_question": 40,
+      "groups": [
+        {
+          "order": 1,
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer in Reading Passage 3?\nWrite YES if the statement agrees with the claims of the writer, NO if the statement contradicts the claims of the writer, or NOT GIVEN if it is impossible to say what the writer thinks about this.",
+          "questions": [
+            {
+              "number": 27,
+              "prompt": "The urban heat island has one dominant cause.",
+              "evidence": "The effect is called the urban heat island, and it is not caused by one thing.",
+              "answer": {
+                "accepted": [
+                  "NO"
+                ],
+                "explanation": "The writer states explicitly that the effect 'is not caused by one thing' and then lists several causes."
+              }
+            },
+            {
+              "number": 28,
+              "prompt": "Night-time temperatures matter more for health than afternoon peaks do.",
+              "evidence": "It is the night-time figure, rather than the afternoon peak, that does the damage.",
+              "answer": {
+                "accepted": [
+                  "YES"
+                ],
+                "explanation": "The writer says it is the night-time figure rather than the afternoon peak that does the damage."
+              }
+            },
+            {
+              "number": 29,
+              "prompt": "Air conditioning should be prohibited in dense cities.",
+              "evidence": "None of this is an argument for banning air conditioning, which saves lives",
+              "answer": {
+                "accepted": [
+                  "NO"
+                ],
+                "explanation": "The writer says explicitly that none of the criticism is an argument for banning air conditioning, which saves lives."
+              }
+            },
+            {
+              "number": 30,
+              "prompt": "The amount of shade in a neighbourhood tends to reflect how wealthy it is.",
+              "evidence": "Tree cover in wealthy districts is routinely two or three times what it is in poor ones a few kilometres away",
+              "answer": {
+                "accepted": [
+                  "YES"
+                ],
+                "explanation": "The writer says tree cover in wealthy districts is two or three times that of poor districts nearby."
+              }
+            },
+            {
+              "number": 31,
+              "prompt": "Wind towers are being built again in new Central Asian housing.",
+              "evidence": "a wind tower catches whatever breeze exists at roof level and directs it downwards",
+              "answer": {
+                "accepted": [
+                  "NOT GIVEN"
+                ],
+                "explanation": "The writer describes how a wind tower works but says nothing about whether any are being built today."
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-G.\nWrite the correct letter, A-G.",
+          "options": [
+            {
+              "label": "A",
+              "text": "delay the arrival of indoor heat until the outside air is cooler."
+            },
+            {
+              "label": "B",
+              "text": "moves heat from indoors to the street and adds more of its own."
+            },
+            {
+              "label": "C",
+              "text": "may lose in winter roughly what it saves in summer."
+            },
+            {
+              "label": "D",
+              "text": "as soon as it no longer has the water to transpire."
+            },
+            {
+              "label": "E",
+              "text": "are quicker to put up than sealed, glazed ones."
+            },
+            {
+              "label": "F",
+              "text": "reflects light onto people standing at ground level."
+            },
+            {
+              "label": "G",
+              "text": "reduces the electricity needed at times of peak demand."
+            }
+          ],
+          "questions": [
+            {
+              "number": 32,
+              "prompt": "A room air conditioner",
+              "evidence": "A room air conditioner does not destroy heat; it moves it, from inside a building to the street outside, and adds the waste heat of the compressor on the way.",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "The passage says the unit does not destroy heat but moves it outside and adds the compressor's waste heat."
+              }
+            },
+            {
+              "number": 33,
+              "prompt": "A reflective roof in a cold-winter climate",
+              "evidence": "a reflective roof gives away useful solar gain in January to save energy in July, and the annual balance can be close to neutral",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "The passage says such a roof gives away useful winter solar gain, so the annual balance can be close to neutral."
+              }
+            },
+            {
+              "number": 34,
+              "prompt": "A street tree stops cooling the air",
+              "evidence": "Trees deliver this service only while they are transpiring, which is to say only while they are supplied",
+              "answer": {
+                "accepted": [
+                  "D"
+                ],
+                "explanation": "Trees cool by transpiring and do so only while they are supplied with water."
+              }
+            },
+            {
+              "number": 35,
+              "prompt": "Thick earth or brick walls",
+              "evidence": "Thick walls of earth or brick delay the passage of heat by hours, so that a room reaches its warmest long after the outside air has cooled",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "The passage says thick walls delay the passage of heat by hours, so the room peaks after the outside air has cooled."
+              }
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "type": "short_answer",
+          "instructions": "Answer the questions below.\nChoose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "word_limit": 3,
+          "questions": [
+            {
+              "number": 36,
+              "prompt": "What do streets lined with tall buildings form?",
+              "evidence": "Streets lined with tall buildings form canyons that trap radiation",
+              "answer": {
+                "accepted": [
+                  "canyons",
+                  "canyon"
+                ],
+                "explanation": "The passage says such streets 'form canyons that trap radiation'."
+              }
+            },
+            {
+              "number": 37,
+              "prompt": "What was painted onto the roofs of low-income housing in South Asian cities?",
+              "evidence": "have painted the roofs of low-income housing with a lime-based wash costing a few dollars a building",
+              "answer": {
+                "accepted": [
+                  "a lime-based wash",
+                  "lime-based wash",
+                  "lime-based",
+                  "lime based wash"
+                ],
+                "explanation": "The programmes used 'a lime-based wash costing a few dollars a building'."
+              }
+            },
+            {
+              "number": 38,
+              "prompt": "What does the writer say should be preserved as new development takes place?",
+              "evidence": "ventilation corridors preserved through new development",
+              "answer": {
+                "accepted": [
+                  "ventilation corridors",
+                  "ventilation corridor"
+                ],
+                "explanation": "The layered approach the writer recommends includes 'ventilation corridors preserved through new development'."
+              }
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "type": "multiple_choice",
+          "instructions": "Choose the correct letter, A, B, C or D.",
+          "questions": [
+            {
+              "number": 39,
+              "prompt": "What problem does the writer identify with reflective pavements?",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "They cost more to install than reflective roofs."
+                },
+                {
+                  "label": "B",
+                  "text": "They can make people at street level feel warmer."
+                },
+                {
+                  "label": "C",
+                  "text": "They wear out quickly in hot climates."
+                },
+                {
+                  "label": "D",
+                  "text": "They cannot be used alongside street trees."
+                }
+              ],
+              "evidence": "pedestrians standing on a reflective surface can feel hotter, not cooler, even as the air temperature falls",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "Light bounced off the ground does not disappear, so pedestrians can feel hotter."
+              }
+            },
+            {
+              "number": 40,
+              "prompt": "What does the writer conclude about combining different cooling measures?",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Their benefits do not simply add together."
+                },
+                {
+                  "label": "B",
+                  "text": "No more than two should be used in one place."
+                },
+                {
+                  "label": "C",
+                  "text": "Mechanical cooling should always be installed first."
+                },
+                {
+                  "label": "D",
+                  "text": "The cheapest measures are always the most effective."
+                }
+              ],
+              "evidence": "the arithmetic of combining them is not simple addition: shade from a tree reduces the benefit of a reflective surface beneath it",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "The writer says the arithmetic of combining them is not simple addition, giving shade over a reflective surface as an example."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -61,6 +61,7 @@ class SectionOut(ORMModel):
     audio_url: str | None
     prompt_html: str | None
     image_url: str | None
+    image_description: str | None
     min_words: int | None
     start_question: int | None
     end_question: int | None

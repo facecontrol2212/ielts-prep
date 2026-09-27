@@ -147,8 +147,11 @@ answer_keys      id, question_id, accepted(jsonb: ["colour","color"]), match_mod
 attempts         id, user_id, test_id, status(in_progress|submitted|scored|abandoned),
                  started_at, expires_at, submitted_at, raw_score, band, meta(jsonb)
 attempt_answers  id, attempt_id, question_id, value, is_correct, checked_at
-writing_subs     id, attempt_id, task_number, prompt_id, text, word_count,
-                 ai_bands(jsonb), ai_feedback(jsonb), model, tokens_used, created_at
+writing_subs     id, attempt_id, section_id, task_number, text, word_count,
+                 band_task, band_coherence, band_lexical, band_grammar, band_overall,
+                 feedback(jsonb), model, input_tokens, output_tokens,
+                 cache_read_tokens, cache_write_tokens, graded_at, grading_error
+                 -- unique (attempt_id, task_number)
 speaking_qs      id, part(1|2|3), topic, question, model_answer, useful_phrases(jsonb)
 vocab_items      id, word, definition, uz, ru, example, topic, level     -- v2
 ```

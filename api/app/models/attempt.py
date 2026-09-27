@@ -77,6 +77,7 @@ class AttemptAnswer(UUIDMixin, TimestampMixin, Base):
 
 class WritingSubmission(UUIDMixin, TimestampMixin, Base):
     __tablename__ = "writing_submissions"
+    __table_args__ = (UniqueConstraint("attempt_id", "task_number", name="uq_attempt_task"),)
 
     attempt_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("attempts.id", ondelete="CASCADE"), index=True
@@ -95,8 +96,12 @@ class WritingSubmission(UUIDMixin, TimestampMixin, Base):
     #: {"strengths": [...], "improvements": [...], "corrections": [...], "rewrite": "..."}
     feedback: Mapped[dict[str, Any] | None] = mapped_column(JSON, default=None)
     model: Mapped[str | None] = mapped_column(String(64), default=None)
+    #: Full-price input tokens only. Cache reads bill at 0.1x and cache writes at 1.25x,
+    #: so they are counted separately or the unit economics cannot be reconstructed.
     input_tokens: Mapped[int | None] = mapped_column(Integer, default=None)
     output_tokens: Mapped[int | None] = mapped_column(Integer, default=None)
+    cache_read_tokens: Mapped[int | None] = mapped_column(Integer, default=None)
+    cache_write_tokens: Mapped[int | None] = mapped_column(Integer, default=None)
     graded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), default=None)
     grading_error: Mapped[str | None] = mapped_column(Text, default=None)
 

@@ -153,12 +153,20 @@ class GradingError(RuntimeError):
 
 @dataclass(slots=True)
 class GradingOutcome:
-    """What one grading attempt produced, successful or not."""
+    """What one grading attempt produced, successful or not.
+
+    The four token counters are kept apart because they are billed at three different rates:
+    ``input_tokens`` at full price, ``cache_read_tokens`` at ~0.1x and ``cache_write_tokens`` at
+    ~1.25x. Summing them before they are stored would make the unit economics unrecoverable.
+    """
 
     feedback: WritingFeedback | None = None
     model: str = ""
+    #: Full-price input only — cache reads and writes are *not* folded in here.
     input_tokens: int = 0
     output_tokens: int = 0
+    cache_read_tokens: int = 0
+    cache_write_tokens: int = 0
     error: str | None = None
     cached: bool = False
     calls: int = 0
@@ -166,6 +174,11 @@ class GradingOutcome:
     @property
     def ok(self) -> bool:
         return self.feedback is not None
+
+    @property
+    def total_input_tokens(self) -> int:
+        """Every input token the model read this grading, at whatever price."""
+        return self.input_tokens + self.cache_read_tokens + self.cache_write_tokens
 
 
 # --------------------------------------------------------------------------- cache
@@ -289,11 +302,20 @@ def parse_feedback(raw: str) -> WritingFeedback:
 
 
 def valid_corrections(corrections: list[Correction], text: str) -> list[Correction]:
-    """Keep only corrections whose ``offset``/``length`` really index ``original`` in ``text``.
+    """Anchor each correction to a real span of ``text``, dropping the ones that cannot be.
 
-    A correction the UI cannot anchor is worse than no correction — it highlights the wrong words.
-    If the offsets are wrong but ``original`` occurs exactly once in the text, the span is
-    re-anchored to that unambiguous occurrence; anything else is dropped.
+    **The offsets the model returns are a hint, not the truth.** Language models are unreliable at
+    counting characters, so ``offset``/``length`` are never trusted on their own — the authority is
+    ``original``, the substring the model quoted. Three cases:
+
+    * the offsets do land on ``original`` — keep the correction as it stands;
+    * they do not, but ``original`` occurs exactly once in the text — re-anchor the span to that
+      unambiguous occurrence and keep it;
+    * anything else (``original`` absent, or occurring more than once so the intended span is
+      genuinely unknown) — drop it.
+
+    A correction the UI cannot anchor is worse than no correction, because it highlights the wrong
+    words and the student trusts the highlight.
     """
     kept: list[Correction] = []
     for correction in corrections:
@@ -395,6 +417,8 @@ def evaluate(
                 model=hit.model,
                 input_tokens=hit.input_tokens,
                 output_tokens=hit.output_tokens,
+                cache_read_tokens=hit.cache_read_tokens,
+                cache_write_tokens=hit.cache_write_tokens,
                 cached=True,
                 calls=0,
             )
@@ -405,16 +429,17 @@ def evaluate(
         prompt=prompt,
         text=text,
         word_count=word_count,
-        # `Section.image_url` is a link, not alt text — useless to a text model. When the content
-        # pipeline starts storing a textual description of the chart, pass it here.
-        image_description=None,
+        # `Section.image_url` is a link, useless to a text model; `image_description` is the
+        # authored prose description of the Task 1 chart, map or process, and is what lets the
+        # model judge whether the candidate reported the right features.
+        image_description=(section.image_description if section is not None else None),
     )
     messages: list[dict[str, Any]] = [{"role": "user", "content": user}]
 
     calls = 0
     last_error = ""
     last_response: LLMResponse | None = None
-    input_tokens = output_tokens = 0
+    input_tokens = output_tokens = cache_read_tokens = cache_write_tokens = 0
     model_name = client.model
 
     for attempt in (1, 2):
@@ -430,12 +455,16 @@ def evaluate(
                 model=model_name,
                 input_tokens=input_tokens,
                 output_tokens=output_tokens,
+                cache_read_tokens=cache_read_tokens,
+                cache_write_tokens=cache_write_tokens,
                 error=f"{type(exc).__name__}: {exc}",
                 calls=calls,
             )
         calls += 1
-        input_tokens += last_response.total_input_tokens
+        input_tokens += last_response.input_tokens
         output_tokens += last_response.output_tokens
+        cache_read_tokens += last_response.cache_read_tokens
+        cache_write_tokens += last_response.cache_write_tokens
         model_name = last_response.model or model_name
 
         try:
@@ -456,6 +485,8 @@ def evaluate(
             model=model_name,
             input_tokens=input_tokens,
             output_tokens=output_tokens,
+            cache_read_tokens=cache_read_tokens,
+            cache_write_tokens=cache_write_tokens,
             calls=calls,
         )
         if use_cache:
@@ -466,6 +497,8 @@ def evaluate(
         model=model_name,
         input_tokens=input_tokens,
         output_tokens=output_tokens,
+        cache_read_tokens=cache_read_tokens,
+        cache_write_tokens=cache_write_tokens,
         error=f"grading failed after {calls} attempts: {last_error}",
         calls=calls,
     )
@@ -508,8 +541,11 @@ def grade_submission(
     )
 
     submission.model = outcome.model or None
+    # Stored apart, not summed: full-price input, output, 0.1x cache reads, 1.25x cache writes.
     submission.input_tokens = outcome.input_tokens
     submission.output_tokens = outcome.output_tokens
+    submission.cache_read_tokens = outcome.cache_read_tokens
+    submission.cache_write_tokens = outcome.cache_write_tokens
 
     if outcome.feedback is None:
         submission.grading_error = outcome.error

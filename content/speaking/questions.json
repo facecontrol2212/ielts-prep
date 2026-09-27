@@ -1,0 +1,582 @@
+{
+  "kind": "speaking_bank",
+  "title": "Speaking question bank 1",
+  "questions": [
+    {
+      "part": "part_1",
+      "topic": "Hometown",
+      "question": "Where is your hometown, and what is it like?",
+      "model_answer": "I'm from Tashkent, the capital of Uzbekistan, so it's a fairly big place - around two and a half million people. What I like about it is the mix. You've got these wide, tree-lined boulevards on one side and old neighbourhoods with courtyards and clay walls on the other. I suppose that contrast is what makes it interesting to walk around.",
+      "useful_phrases": [
+        {"phrase": "tree-lined boulevards", "note": "wide city streets with trees along both sides"},
+        {"phrase": "what I like about it is...", "note": "a clean way to introduce your reason without saying 'because'"},
+        {"phrase": "I suppose", "note": "a soft hedge that buys you half a second to think"},
+        {"phrase": "that contrast is what makes it interesting", "note": "cleft sentence - useful for adding emphasis"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Hometown",
+      "question": "Has your hometown changed much since you were a child?",
+      "model_answer": "Massively, to be honest. When I was small, our street was mostly low houses with courtyards, and now half of them have been knocked down and replaced by apartment blocks and a shopping centre. Some of it is genuinely better - the metro reaches us now - but I do miss how quiet it used to be in the evenings.",
+      "useful_phrases": [
+        {"phrase": "knocked down", "note": "demolished - a natural spoken phrasal verb"},
+        {"phrase": "to be honest", "note": "a filler that sounds natural and signals a frank opinion"},
+        {"phrase": "genuinely better", "note": "adverb + adjective collocation that lifts a plain word"},
+        {"phrase": "I do miss...", "note": "'do' before the verb for emphasis in speech"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Hometown",
+      "question": "Would you recommend your hometown to a visitor?",
+      "model_answer": "Definitely, though I'd tell them to give it more than a day. Most tourists rush through on the way to Samarkand, which I understand, but they end up missing the bazaars and the tea houses, and that's where the city actually happens. I'd send anyone to Chorsu market first thing in the morning.",
+      "useful_phrases": [
+        {"phrase": "rush through", "note": "pass somewhere too quickly to see it properly"},
+        {"phrase": "end up + -ing", "note": "describes an unintended result"},
+        {"phrase": "first thing in the morning", "note": "very early, before anything else"},
+        {"phrase": "that's where the city actually happens", "note": "an idiomatic way to say 'that is the real life of the place'"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Hometown",
+      "question": "Do you think you will still be living in your hometown in ten years?",
+      "model_answer": "Probably, yes, although I wouldn't rule out a few years abroad for work. My whole family is here, and that matters a lot to me - Sunday lunch with everyone round one table is hard to give up. So even if I did leave for a while, I'd almost certainly come back.",
+      "useful_phrases": [
+        {"phrase": "I wouldn't rule out", "note": "I consider it possible - good hedging for future questions"},
+        {"phrase": "hard to give up", "note": "difficult to stop doing or lose"},
+        {"phrase": "even if I did...", "note": "hypothetical structure showing grammatical range"},
+        {"phrase": "almost certainly", "note": "strong but not absolute - band 7 precision"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Work and study",
+      "question": "Do you work, or are you a student?",
+      "model_answer": "I'm a student at the moment - I'm in my third year of an economics degree. Alongside that I do a bit of part-time tutoring, mostly maths for school children, and that pays for my own English classes. It's a busy timetable, but I'd rather be busy than sitting around with nothing on.",
+      "useful_phrases": [
+        {"phrase": "alongside that", "note": "linker meaning 'at the same time as this'"},
+        {"phrase": "a bit of part-time tutoring", "note": "softening quantifier - sounds modest and natural"},
+        {"phrase": "I'd rather ... than ...", "note": "preference structure examiners like to hear"},
+        {"phrase": "nothing on", "note": "no plans, nothing scheduled"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Work and study",
+      "question": "What is the most difficult part of your studies?",
+      "model_answer": "Honestly, it's the statistics module. It's not that the maths is impossible; it's that everything is taught through very abstract examples, so you can do the calculation without having the faintest idea what it means. I've found that once I connect it to real data, it clicks - but getting to that point takes ages.",
+      "useful_phrases": [
+        {"phrase": "it's not that ..., it's that ...", "note": "corrects a likely assumption; very natural in speech"},
+        {"phrase": "without the faintest idea", "note": "with no idea at all"},
+        {"phrase": "it clicks", "note": "you suddenly understand it"},
+        {"phrase": "takes ages", "note": "informal for 'takes a very long time'"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Work and study",
+      "question": "Would you like to change your subject or your job in the future?",
+      "model_answer": "Possibly. I don't regret choosing economics, but I've become quite interested in data analysis, which sits next to it rather than inside it. So I'd probably build on what I already have instead of starting again - maybe a master's in something more technical, rather than throwing three years away.",
+      "useful_phrases": [
+        {"phrase": "I don't regret + -ing", "note": "regret is followed by the -ing form for past actions"},
+        {"phrase": "build on what I have", "note": "develop further from your existing base"},
+        {"phrase": "rather than starting again", "note": "contrast linker with an -ing clause"},
+        {"phrase": "throwing three years away", "note": "wasting time or effort already spent"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Work and study",
+      "question": "Do you prefer studying in the morning or in the evening?",
+      "model_answer": "Mornings, without a doubt. My head is clearest before about eleven, so I try to put the hardest reading there and leave the easy admin jobs for later on. In the evening I can read the same page three times and take nothing in, which is a waste of everyone's time, including mine.",
+      "useful_phrases": [
+        {"phrase": "without a doubt", "note": "emphatic way of agreeing with yourself"},
+        {"phrase": "my head is clearest", "note": "natural collocation for mental sharpness"},
+        {"phrase": "take nothing in", "note": "fail to absorb or understand what you read"},
+        {"phrase": "a waste of everyone's time", "note": "light, slightly humorous exaggeration"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Food and cooking",
+      "question": "Do you enjoy cooking?",
+      "model_answer": "I do, though I'd describe myself as enthusiastic rather than skilled. I mostly make simple things - soups, rice dishes, whatever happens to be in the fridge. What I really enjoy is cooking for other people; there's something satisfying about watching friends eat something you made, even if it's nothing fancy.",
+      "useful_phrases": [
+        {"phrase": "enthusiastic rather than skilled", "note": "self-deprecating contrast - sounds fluent and modest"},
+        {"phrase": "whatever happens to be in the fridge", "note": "idiomatic way of saying 'whatever is available'"},
+        {"phrase": "there's something satisfying about...", "note": "a flexible frame for explaining why you like something"},
+        {"phrase": "nothing fancy", "note": "simple, not elaborate"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Food and cooking",
+      "question": "What kind of food is your country famous for?",
+      "model_answer": "Plov, definitely - rice cooked slowly with carrots, onions and lamb in a big cast-iron pot. Every region claims theirs is the authentic one, and people will argue about it quite seriously. Apart from that, we're known for our bread, non, which is baked on the inside wall of a clay oven.",
+      "useful_phrases": [
+        {"phrase": "cooked slowly", "note": "adverb after the verb - simple but accurate"},
+        {"phrase": "claims theirs is the authentic one", "note": "reporting a widely held belief"},
+        {"phrase": "apart from that", "note": "linker for adding a second example"},
+        {"phrase": "we're known for", "note": "standard collocation for national reputation"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Food and cooking",
+      "question": "Do you prefer eating at home or in restaurants?",
+      "model_answer": "At home, most of the time. Restaurant food tends to be heavier and much saltier than what we cook ourselves, and after a couple of days of it I start craving something plain. Having said that, I love eating out now and then - it's less about the food and more about the occasion.",
+      "useful_phrases": [
+        {"phrase": "tends to be", "note": "hedged generalisation, safer than 'is always'"},
+        {"phrase": "start craving", "note": "begin to want something strongly, especially food"},
+        {"phrase": "having said that", "note": "discourse marker introducing a contrast"},
+        {"phrase": "less about X and more about Y", "note": "neat way to reframe your point"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Food and cooking",
+      "question": "Has your diet changed in the last few years?",
+      "model_answer": "A fair bit, yes. I used to eat a lot of bread and fried food without really thinking about it, and now I try to get more vegetables in and cut back on sugar. It isn't a strict diet - I'd never keep that up - just a few small habits that have stuck.",
+      "useful_phrases": [
+        {"phrase": "a fair bit", "note": "a moderate amount; more natural than 'very much'"},
+        {"phrase": "used to + verb", "note": "past habit that has now changed"},
+        {"phrase": "cut back on", "note": "reduce the amount of something"},
+        {"phrase": "habits that have stuck", "note": "habits you have managed to keep"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Technology",
+      "question": "How often do you use a computer or a smartphone?",
+      "model_answer": "Constantly, which I'm not entirely proud of. My phone is probably in my hand five or six hours a day, between messages, reading and, if I'm honest, scrolling. The laptop is more useful - that's where the actual work gets done - but the phone is the one that eats the time.",
+      "useful_phrases": [
+        {"phrase": "which I'm not entirely proud of", "note": "a relative clause adding a wry comment"},
+        {"phrase": "if I'm honest", "note": "spoken hedge before admitting something"},
+        {"phrase": "where the actual work gets done", "note": "emphasises the real function of something"},
+        {"phrase": "eats the time", "note": "idiomatic: consumes far more time than you intend"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Technology",
+      "question": "Which piece of technology would you find hardest to live without?",
+      "model_answer": "Online maps, strangely enough. I've got a terrible sense of direction, so without them I'd be permanently late for everything. The phone in general, obviously - but if you took away just one function rather than the whole device, navigation is the one I'd genuinely struggle to replace.",
+      "useful_phrases": [
+        {"phrase": "strangely enough", "note": "signals that your answer may be unexpected"},
+        {"phrase": "a terrible sense of direction", "note": "fixed collocation for getting lost easily"},
+        {"phrase": "if you took away..., I'd...", "note": "second conditional for a hypothetical"},
+        {"phrase": "struggle to replace", "note": "find it very hard to manage without"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Technology",
+      "question": "Do older people in your country use technology much?",
+      "model_answer": "More than they used to, definitely. My grandmother video-calls her sister almost every day, which would have been unimaginable ten years ago. She's confident with the handful of apps she actually uses and completely lost with anything new, and I think that's fairly typical of her generation.",
+      "useful_phrases": [
+        {"phrase": "more than they used to", "note": "comparison with a past state"},
+        {"phrase": "would have been unimaginable", "note": "past modal - strong grammatical range"},
+        {"phrase": "the handful of apps she uses", "note": "'a handful of' = a small number"},
+        {"phrase": "fairly typical of", "note": "hedged generalisation about a group"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Technology",
+      "question": "Do you think technology has made people less patient?",
+      "model_answer": "Probably, yes. When a page takes four seconds to load I catch myself getting irritated, and that's a ridiculous thing to be irritated by. We've got used to everything being instant, so waiting for anything at all - a reply, a delivery, a bus - feels harder than it really should.",
+      "useful_phrases": [
+        {"phrase": "I catch myself + -ing", "note": "notice yourself doing something automatically"},
+        {"phrase": "we've got used to", "note": "become accustomed to; note the -ing form after 'to'"},
+        {"phrase": "anything at all", "note": "emphatic version of 'anything'"},
+        {"phrase": "harder than it really should", "note": "a comparative that implies mild criticism"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Weather and seasons",
+      "question": "What is the weather usually like where you live?",
+      "model_answer": "Extreme, in both directions. Summers here climb well above forty degrees and the air is dry and dusty, and then winters can stay below freezing for weeks. Spring is the reward for all that - about six lovely weeks in April when everything turns green before the heat arrives.",
+      "useful_phrases": [
+        {"phrase": "in both directions", "note": "compact way of saying 'very hot and very cold'"},
+        {"phrase": "climb well above", "note": "collocation for temperatures rising past a figure"},
+        {"phrase": "stay below freezing", "note": "remain under zero degrees"},
+        {"phrase": "the reward for all that", "note": "links a good thing to the difficulty before it"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Weather and seasons",
+      "question": "Which season do you like best?",
+      "model_answer": "Autumn, easily. The heat finally breaks, the markets are full of melons, grapes and pomegranates, and you can sit outside in the afternoon without melting. It's also when the city looks its best, with all the plane trees along the main roads turning yellow at once.",
+      "useful_phrases": [
+        {"phrase": "the heat finally breaks", "note": "the hot period comes to an end"},
+        {"phrase": "without melting", "note": "humorous exaggeration about heat"},
+        {"phrase": "looks its best", "note": "is at its most attractive"},
+        {"phrase": "all at once", "note": "at the same time, together"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_1",
+      "topic": "Weather and seasons",
+      "question": "Does the weather affect your mood?",
+      "model_answer": "More than I'd like to admit. On grey, heavy days I find it much harder to get started on anything, whereas after a clear morning I'm out of the house early. I don't think it changes what I'm capable of, exactly - it just changes how much effort everything takes.",
+      "useful_phrases": [
+        {"phrase": "more than I'd like to admit", "note": "an honest, natural way to concede a point"},
+        {"phrase": "get started on", "note": "begin a task"},
+        {"phrase": "whereas", "note": "formal contrast linker that works well in speech too"},
+        {"phrase": "..., exactly", "note": "placed after a clause to soften or refine a claim"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_1",
+      "topic": "Weather and seasons",
+      "question": "Do you prefer hot weather or cold weather?",
+      "model_answer": "Cold, if I have to choose. You can always put another layer on, but in forty-degree heat there's nothing you can do except hide indoors until the evening. Cold weather also suits the food we eat in winter - thick soups, endless hot tea - so it feels cosier somehow.",
+      "useful_phrases": [
+        {"phrase": "if I have to choose", "note": "useful when you genuinely like both options"},
+        {"phrase": "put another layer on", "note": "wear more clothes"},
+        {"phrase": "there's nothing you can do except...", "note": "emphasises a lack of options"},
+        {"phrase": "it feels cosier somehow", "note": "'somehow' softens a feeling you cannot fully explain"}
+      ],
+      "band_target": 7.0
+    },
+    {
+      "part": "part_2",
+      "topic": "A useful object you own",
+      "question": "Describe an everyday object you own that you find genuinely useful.",
+      "cue_points": [
+        "what the object is",
+        "where you got it",
+        "how often you use it",
+        "and explain why it is important to you"
+      ],
+      "model_answer": "I'd like to talk about my thermos flask, which sounds like a very boring choice, but it's honestly the object I'd miss most. It's a plain steel one, about half a litre, dark green, with a lid that doubles as a cup. There's nothing clever about it - no app, no temperature display - it just keeps tea hot for around eight hours. I got it as a present from my uncle, who works as a surveyor and spends most of his working life outdoors. He gave it to me when I started university, and I remember thinking at the time that it was a slightly odd gift for a student. He was right, though, and I was wrong. I use it every single day, without exaggeration. I fill it with green tea in the morning, take it to the library, and it lasts me until the late afternoon. On the days when I'm teaching, it's the difference between a decent afternoon and a headache. As for why it matters, partly it's practical. Buying tea from a cafe three times a day would cost me a fortune, and the machines on campus are frankly terrible. But there's more to it than money. Drinking tea is a small ritual at home - you sit down, you pour, you take a minute - and having that flask means I keep a bit of that habit even in the middle of a very rushed day. And of course it reminds me of my uncle, which is no small thing either.",
+      "useful_phrases": [
+        {"phrase": "a lid that doubles as a cup", "note": "'double as' = serve a second purpose"},
+        {"phrase": "without exaggeration", "note": "signals that you mean it literally"},
+        {"phrase": "it's the difference between X and Y", "note": "strong way to show how much something matters"},
+        {"phrase": "cost me a fortune", "note": "be extremely expensive"},
+        {"phrase": "which is no small thing", "note": "understatement meaning 'that is actually important'"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_2",
+      "topic": "A memorable journey",
+      "question": "Describe a journey you took that you still remember clearly.",
+      "cue_points": [
+        "where you were going",
+        "who you travelled with",
+        "what happened on the way",
+        "and explain why you still remember it so well"
+      ],
+      "model_answer": "The journey I want to describe is the overnight train from Tashkent out to Nukus, which I took about four years ago with two friends from my course. We were going to see the Savitsky museum. It has this extraordinary collection of avant-garde paintings that were quietly kept there during the Soviet period, and one of our lecturers had been going on about it for an entire term. It's a long way, right out towards the Aral Sea, so the train takes something like eighteen hours. What I remember most isn't actually the museum - it's the train itself. We'd booked the cheapest carriage, the open one where everybody sleeps in the same long compartment, and within about an hour complete strangers were sharing food. A family across from us had brought enough somsa for twenty people, and an older man spent half the night telling us how the whole region had changed since he was young. At around three in the morning I woke up and the carriage was completely silent, with this flat, moonlit desert sliding past the window, and it honestly didn't look like anywhere I'd ever been. Why does it stick with me? Mainly because it was the first time I'd travelled properly without my family. We planned it ourselves, we got several things wrong, and we more or less ran out of money on the last day. What I took away from it is that the boring part of a trip, the getting-there, can end up being the part you actually keep.",
+      "useful_phrases": [
+        {"phrase": "going on about it", "note": "talking about something repeatedly and enthusiastically"},
+        {"phrase": "sliding past the window", "note": "vivid verb for scenery seen from a moving train"},
+        {"phrase": "why does it stick with me?", "note": "a rhetorical question that signposts your final bullet"},
+        {"phrase": "more or less", "note": "hedge meaning 'approximately' or 'almost'"},
+        {"phrase": "what I took away from it", "note": "the lesson I learned from the experience"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_2",
+      "topic": "An older person you admire",
+      "question": "Describe an older person you know and admire.",
+      "cue_points": [
+        "who the person is",
+        "how you know them",
+        "what kind of person they are",
+        "and explain why you admire them"
+      ],
+      "model_answer": "The person I'd like to talk about is my grandmother on my mother's side. We all call her Buvi, and she's eighty-three now. I've known her all my life, obviously, but I only got to know her properly in my teens, when I spent two summers at her house in a village outside Samarkand while my parents were working. Before that she was mostly the person who fed me too much at family gatherings. Those two summers changed that completely. What's she like? Small, quick, and a great deal sharper than people expect. She reads the newspaper from front to back every morning and has firm opinions about all of it. She's also relentlessly practical - she grows most of what she eats, she mends things rather than replacing them, and she gets visibly impatient with anyone who complains without doing something about it. The main reason I admire her is her resilience, although she'd laugh at the word. She was widowed at forty-six with four children still at home, and she simply carried on. She kept the house, she got all four of them educated, and as far as I can tell she never once presented herself as a victim. My mother says she never saw her cry in front of the children, not once. I also admire the way she treats other people. She'll feed anyone who turns up at the gate, including complete strangers, and she never makes a fuss about it. I'm not naturally that generous, and watching her has made me try harder.",
+      "useful_phrases": [
+        {"phrase": "on my mother's side", "note": "used to say which half of the family someone belongs to"},
+        {"phrase": "relentlessly practical", "note": "adverb + adjective pairing that adds precision"},
+        {"phrase": "as far as I can tell", "note": "hedge for something you believe but cannot prove"},
+        {"phrase": "makes a fuss about it", "note": "draws unnecessary attention to what she has done"},
+        {"phrase": "she simply carried on", "note": "understated way of describing endurance"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_2",
+      "topic": "A skill you taught yourself",
+      "question": "Describe a skill that you learned on your own, without a teacher.",
+      "cue_points": [
+        "what the skill is",
+        "how you went about learning it",
+        "how difficult you found it",
+        "and explain how it has been useful to you"
+      ],
+      "model_answer": "I'd like to describe learning to edit video, which I picked up entirely on my own about three years ago. It started for a very ordinary reason. My cousin was getting married, somebody had filmed the whole thing on three different phones, and all that footage was sitting there doing nothing. I said I'd try to put something together, mostly because nobody else volunteered. The way I learned was pure trial and error, plus a lot of free tutorials. I downloaded a free editing programme, watched maybe ten videos just to understand the layout, and then started cutting. Whenever I got stuck, I'd search for that one specific problem - how to fix uneven sound levels, how to make a transition look clean - rather than trying to learn the whole programme systematically. I think that was the right approach for me, though it does leave gaps in what I know. Was it difficult? The software itself wasn't, after a week or so. The genuinely hard part was judgement, by which I mean knowing what to cut. My first version of the wedding video ran to twenty-five minutes and was, frankly, unwatchable. The final one was six minutes long and far better, and getting from one to the other took much longer than learning any of the buttons. It's turned out to be surprisingly useful. I've made short films for two student societies, I did a paid job for a small cafe last year, and it's given me something concrete to put on my CV that isn't just coursework.",
+      "useful_phrases": [
+        {"phrase": "picked it up on my own", "note": "learned it informally, without instruction"},
+        {"phrase": "trial and error", "note": "learning by trying and making mistakes"},
+        {"phrase": "it does leave gaps", "note": "concedes a weakness in your own approach"},
+        {"phrase": "ran to twenty-five minutes", "note": "'run to' = reach a particular length or amount"},
+        {"phrase": "something concrete", "note": "something real and specific, not vague"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_2",
+      "topic": "A celebration you enjoyed",
+      "question": "Describe a celebration or festival that you particularly enjoyed.",
+      "cue_points": [
+        "what the occasion was",
+        "where and when it took place",
+        "what the people there did",
+        "and explain why you enjoyed it so much"
+      ],
+      "model_answer": "I'd like to talk about Navruz two years ago. Navruz is the spring new year we celebrate on the twenty-first of March, so it's really a festival about winter ending. That particular year we held it at my aunt's house on the edge of the city, because she has a proper courtyard with a big walnut tree and enough room for everybody. There must have been thirty of us, counting the children running about. The main event, as always, was sumalak. It's a sweet paste made from sprouted wheat, and the point of it is that it has to be stirred continuously for something like twelve hours, so the women take it in shifts through the night, singing and talking while they stir. I stayed up for most of it for the first time that year, which felt like a small promotion into the adult half of the family. In the morning everyone eats it together, and honestly the taste is nothing special - it's the staying up that matters. After that came the usual enormous quantity of food, neighbours dropping in all day, and the children collecting money from the older relatives. Why did I enjoy it so much? Partly the timing, I think. It arrives exactly when the cold breaks, so everyone's in a good mood anyway. But mainly it was the feeling of being included. I'd spent years being sent off to bed early, and that was the first Navruz where I was properly part of it rather than a guest at my own family's party.",
+      "useful_phrases": [
+        {"phrase": "take it in shifts", "note": "take turns doing something over a long period"},
+        {"phrase": "dropping in", "note": "visiting informally, without arranging it first"},
+        {"phrase": "it's the staying up that matters", "note": "cleft sentence for emphasis"},
+        {"phrase": "the usual enormous quantity of", "note": "wry exaggeration about family hospitality"},
+        {"phrase": "a small promotion into", "note": "a light metaphor for gaining a new status"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_2",
+      "topic": "A place where you like to read",
+      "question": "Describe a place where you enjoy reading or studying.",
+      "cue_points": [
+        "where the place is",
+        "how often you go there",
+        "what the place is like",
+        "and explain why it suits you so well"
+      ],
+      "model_answer": "The place I want to describe is a small reading room on the top floor of my university library. Not the main hall, which everybody uses, but a side room off the corridor that most people walk straight past without noticing. I go there three or four times a week, usually in the late morning when I've got a gap between lectures. I've been using it for about two years now, and I'd say I know the regulars by sight even though I've never spoken to any of them. It's a long, narrow room with windows down one side that face east, so it gets properly bright early in the day. There are eight desks, each with one of those old green lamps, and the walls are lined with reference books that I don't think anyone has opened this decade. The chairs are uncomfortable, which sounds like a complaint but is actually part of why it works - you simply can't fall asleep in them. What makes it good for reading is mostly the silence. The main hall has a constant low hum, people whispering and chairs scraping, whereas up there, if somebody's phone goes off, the entire room turns round. It's also too small to sit in with friends, so there's no temptation to chat. There's one other thing. Because I only ever use that room for serious reading, walking through the door puts me in the right frame of mind almost automatically. I sit down and I'm already half-working, which I can never manage at home.",
+      "useful_phrases": [
+        {"phrase": "walk straight past", "note": "pass something without noticing it"},
+        {"phrase": "know them by sight", "note": "recognise people without knowing them personally"},
+        {"phrase": "a constant low hum", "note": "collocation for continuous background noise"},
+        {"phrase": "in the right frame of mind", "note": "in the correct mental state for a task"},
+        {"phrase": "there's no temptation to", "note": "nothing makes you want to do the wrong thing"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_2",
+      "topic": "A piece of good advice",
+      "question": "Describe a piece of advice you were given that turned out to be useful.",
+      "cue_points": [
+        "what the advice was",
+        "who gave it to you",
+        "when you were given it",
+        "and explain why it made a difference to you"
+      ],
+      "model_answer": "The advice I'd like to talk about is very short: do the difficult thing first, before you've talked yourself out of it. It came from a teacher of mine, a man who taught us maths in the last two years of school. He wasn't a warm person exactly - quite strict, a little sarcastic - but he took his students seriously, and you always knew exactly where you stood with him. He said it to me when I was about seventeen, in the year before the university entrance exams. I'd gone to him to complain that I was working constantly and getting nowhere. He asked me what I'd actually done that morning. I listed it all out, and it became obvious even as I was saying it: I'd spent two hours copying out neat notes and hadn't touched the one topic I was genuinely failing. He didn't lecture me about it. He just said that line and went back to his marking, which was somehow more effective than a lecture would have been. It made a difference because it put a name to something I'd been doing without noticing. I wasn't lazy. I was busy avoiding, which looks identical from the outside and feels a great deal more virtuous. Since then I've tried to start every study session with the task I least want to do, and it works maybe eighty per cent of the time. I still catch myself reorganising files instead of writing an essay. But now I recognise it, and usually that's enough to stop.",
+      "useful_phrases": [
+        {"phrase": "talk yourself out of something", "note": "persuade yourself not to do it"},
+        {"phrase": "you knew where you stood with him", "note": "he was direct, so his opinion was never unclear"},
+        {"phrase": "getting nowhere", "note": "making no progress despite effort"},
+        {"phrase": "put a name to something", "note": "identify clearly what was happening"},
+        {"phrase": "I catch myself + -ing", "note": "notice yourself doing something habitual"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_2",
+      "topic": "A change in your neighbourhood",
+      "question": "Describe a change that has taken place in the area where you live.",
+      "cue_points": [
+        "what the change was",
+        "when it happened",
+        "how people reacted to it at the time",
+        "and explain whether you think it has been a good thing"
+      ],
+      "model_answer": "The change I want to describe is the pedestrianisation of the street two blocks from our flat. The authorities closed it to cars completely and turned it into a walking street, with benches, trees and proper lighting. It happened about three years ago and the work took most of one summer. For a couple of months it was chaos. The road was dug up, there was dust over everything, and the traffic that used to go down it got pushed onto our street instead, which nobody was pleased about. Reactions were split, and quite strongly so. The shopkeepers were the loudest at first. Several of them were convinced they'd lose all their customers without parking right outside the door, and two of the older ones actually put signs in their windows complaining about it. Families with small children, on the other hand, were delighted, because there was suddenly somewhere to walk in the evening that wasn't essentially a car park. Three years on, I think it has clearly been a good thing, and interestingly most of the shopkeepers have come round. Foot traffic went up rather than down, two cafes put tables outside, and on a warm evening the street is genuinely busy in a way it never used to be. Even my grandmother, who was against it, now walks down there most evenings. If I had one criticism, it's that they only did the one street. The roads around it are busier and noisier than before, so in a sense the problem was moved rather than solved.",
+      "useful_phrases": [
+        {"phrase": "reactions were split", "note": "people were divided in their opinions"},
+        {"phrase": "come round", "note": "change your mind and accept something you opposed"},
+        {"phrase": "foot traffic", "note": "the number of people walking past or into a shop"},
+        {"phrase": "three years on", "note": "three years after the event - compact time linker"},
+        {"phrase": "moved rather than solved", "note": "a neat contrast for a balanced criticism"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A useful object you own",
+      "question": "Why do you think people become so attached to certain everyday objects?",
+      "model_answer": "I suppose it's rarely about the object itself. A cup or a watch is just a cup or a watch; what makes it matter is everything attached to it - who gave it to you, or the period of your life when you used it constantly. There's probably also something to do with sheer familiarity. If you handle something every day for years, it starts to feel like an extension of you rather than a possession. That might explain why people will repair an old, perfectly ordinary thing instead of buying a better new one, which makes no economic sense at all but makes complete emotional sense.",
+      "useful_phrases": [
+        {"phrase": "it's rarely about X itself", "note": "reframes the question before answering it"},
+        {"phrase": "something to do with", "note": "hedged way of suggesting a cause"},
+        {"phrase": "an extension of you", "note": "feels like part of yourself"},
+        {"phrase": "makes no economic sense but complete emotional sense", "note": "parallel contrast that sounds sophisticated"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A useful object you own",
+      "question": "Do you think people today own too many possessions?",
+      "model_answer": "On the whole yes, at least in wealthier countries, and increasingly here as well. Goods have simply become cheap relative to income, so buying something is easier than deciding whether you need it. I'd be careful about turning that into a moral complaint, though. For a generation that grew up with very little, owning plenty is a real achievement rather than a sin. What does concern me is how disposable everything has become. When a jacket costs less than a restaurant meal, nobody bothers mending it, and I think that quietly changes our relationship with objects - we stop expecting them to last, so manufacturers stop making them last.",
+      "useful_phrases": [
+        {"phrase": "on the whole", "note": "generally speaking, with exceptions"},
+        {"phrase": "relative to income", "note": "compared with how much people earn"},
+        {"phrase": "I'd be careful about", "note": "polite way of resisting an easy conclusion"},
+        {"phrase": "what does concern me is...", "note": "emphatic 'do' plus a cleft structure"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A memorable journey",
+      "question": "Why do some people prefer travelling by train to flying?",
+      "model_answer": "Several reasons, I'd say. The obvious one is comfort - you can get up and walk around, there's no security queue eating an hour of your life, and you usually arrive in the middle of the city rather than forty kilometres outside it. But I think the deeper reason is that a train lets you see the distance. Flying compresses everything: you're in one place, then you're in another, and the country in between effectively doesn't exist. On a train the landscape changes gradually, and passengers tend to talk to one another, which almost never happens on a plane. Admittedly, if you're crossing a whole continent, that romance wears off fairly quickly.",
+      "useful_phrases": [
+        {"phrase": "the obvious one is...", "note": "orders your reasons clearly for the listener"},
+        {"phrase": "eating an hour of your life", "note": "informal exaggeration about wasted time"},
+        {"phrase": "compresses everything", "note": "makes a large experience feel very short"},
+        {"phrase": "wears off", "note": "gradually disappears, of a feeling or effect"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A memorable journey",
+      "question": "Does tourism always benefit the places that people visit?",
+      "model_answer": "Not always, no, though it's more complicated than the usual argument allows. Clearly it brings money and jobs, and in some regions it's the only reason historic buildings get restored at all. But once a town becomes dependent on visitors, prices rise for everybody who lives there, and what tourists want starts to shape what's produced, so you end up with imitation crafts made for suitcases rather than for use. I'd argue the deciding factor is who controls it. If local people own the guesthouses and the restaurants, the benefits tend to stay in the town; if outside companies own them, the town gets the crowds and somebody else gets the profit.",
+      "useful_phrases": [
+        {"phrase": "more complicated than the usual argument allows", "note": "signals a nuanced, band-7 style answer"},
+        {"phrase": "become dependent on", "note": "rely on something too heavily"},
+        {"phrase": "the deciding factor is", "note": "names the thing that really determines the outcome"},
+        {"phrase": "tend to stay", "note": "hedged generalisation instead of an absolute claim"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "An older person you admire",
+      "question": "What can younger people learn from older generations?",
+      "model_answer": "Perspective, mainly. Older people have watched things that felt like the end of the world turn out to be temporary, and that's very hard to learn from a book. There's also a lot of practical knowledge quietly disappearing - how to cook properly from raw ingredients, how to repair things, how to manage on very little money. Having said that, I'd resist the idea that the learning only goes in one direction. My grandmother has taught me a great deal, but I taught her to use a video call, and she'd be the first to say that mattered to her more than almost anything else in the last ten years.",
+      "useful_phrases": [
+        {"phrase": "turn out to be temporary", "note": "eventually prove not to be permanent"},
+        {"phrase": "quietly disappearing", "note": "being lost gradually and without attention"},
+        {"phrase": "I'd resist the idea that", "note": "a measured way of disagreeing"},
+        {"phrase": "she'd be the first to say", "note": "she would readily admit it herself"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "An older person you admire",
+      "question": "Are older people respected as much as they used to be?",
+      "model_answer": "Less than before, I suspect, although it varies enormously from one society to another. In Uzbekistan the tradition of deferring to elders is still very strong - you stand up when an older person comes into the room, you don't contradict them directly - and I can't see that disappearing any time soon. In a lot of Western countries, from what I've read, the shift has gone further. Part of the reason may be economic. When knowledge changes this quickly, the old assumption that experience automatically equals authority doesn't quite hold. Whether that counts as progress or as loss is arguable, and probably it's a bit of both.",
+      "useful_phrases": [
+        {"phrase": "I suspect", "note": "hedge showing you are offering an impression, not a fact"},
+        {"phrase": "defer to", "note": "accept someone else's authority or judgement"},
+        {"phrase": "I can't see that disappearing", "note": "informal way to predict continuity"},
+        {"phrase": "it's arguable", "note": "reasonable people could take either view"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A skill you taught yourself",
+      "question": "Is it better to learn a new skill alone or with a teacher?",
+      "model_answer": "It depends heavily on the skill, I'd say. For anything where bad habits are hard to undo - a musical instrument, or swimming technique - a teacher is almost essential, simply because you can't see your own mistakes. For software, or anything with a large online community behind it, teaching yourself is often faster, and you learn exactly what you need rather than working through somebody's syllabus. The real advantage of a teacher, though, might be motivation rather than information. Most people who start alone give up, and usually not because the material was too hard, but because nobody noticed when they stopped.",
+      "useful_phrases": [
+        {"phrase": "it depends heavily on", "note": "conditional answer - a hallmark of a strong Part 3"},
+        {"phrase": "hard to undo", "note": "difficult to correct once established"},
+        {"phrase": "work through a syllabus", "note": "follow a fixed course of study step by step"},
+        {"phrase": "usually not because X, but because Y", "note": "corrective structure that adds precision"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A skill you taught yourself",
+      "question": "How has the internet changed the way people learn new skills?",
+      "model_answer": "Enormously, and mostly for the better. Twenty years ago, if you wanted to learn something unusual you needed access to a person or to an expensive course; now you need a connection and some persistence. That has genuinely levelled things out, particularly for students outside the big cities. The drawback is that it has made learning feel easier than it actually is. You can watch somebody do something well for three hours and come away convinced you could do it yourself, which is an illusion that only breaks the moment you try. The internet has solved the access problem; it hasn't solved the practice problem.",
+      "useful_phrases": [
+        {"phrase": "levelled things out", "note": "made opportunities more equal"},
+        {"phrase": "the drawback is", "note": "clear signpost for a disadvantage"},
+        {"phrase": "come away convinced", "note": "leave a situation believing something"},
+        {"phrase": "it has solved X; it hasn't solved Y", "note": "balanced parallel ending for a strong final line"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A celebration you enjoyed",
+      "question": "Why do traditional festivals still matter in modern societies?",
+      "model_answer": "I think they do a job that nothing else quite does. They put a lot of people in the same place at the same time doing the same thing, which is increasingly rare now that everybody's schedule is different. They also mark time: without festivals, one year would simply run into the next. And they carry knowledge quietly - children pick up recipes, songs and manners at these events without anyone calling it teaching. Cynics argue that festivals have become commercial, and there's some truth in that. But even a commercialised festival still gets three generations of a family into one room, and that isn't nothing.",
+      "useful_phrases": [
+        {"phrase": "a job that nothing else quite does", "note": "claims a unique function without overstating it"},
+        {"phrase": "run into the next", "note": "blend together with no clear boundary"},
+        {"phrase": "there's some truth in that", "note": "concedes part of an opposing view"},
+        {"phrase": "that isn't nothing", "note": "understatement meaning 'that is actually valuable'"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A place where you like to read",
+      "question": "Do public libraries still have a role now that so much is available online?",
+      "model_answer": "Yes, though probably a different role from the one they were originally built for. Their first purpose was storing books that ordinary people couldn't afford, and that's a lot less pressing today. What they provide instead is space - quiet, heated, free space where you can work without having to buy anything, which for a student sharing a crowded flat is genuinely valuable. They also offer help that a search engine can't, namely somebody who can tell you whether a source is reliable. If libraries did close, I suspect we'd discover fairly quickly that what we'd lost was a public place, not just a collection of books.",
+      "useful_phrases": [
+        {"phrase": "a lot less pressing", "note": "much less urgent than before"},
+        {"phrase": "what they provide instead is...", "note": "cleft structure introducing the real answer"},
+        {"phrase": "namely", "note": "formal linker introducing a specific example"},
+        {"phrase": "I suspect we'd discover", "note": "speculation using the second conditional"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A piece of good advice",
+      "question": "Why are people often reluctant to accept advice, even when it is good?",
+      "model_answer": "Pride comes into it, obviously, but I don't think that's the whole story. Advice usually arrives with an implied criticism - if you're telling me what to do, you're also telling me I got it wrong - and nobody particularly enjoys hearing that. There's also the fact that good advice tends to be inconvenient. You already know you ought to start studying earlier or spend less, and hearing it said out loud removes your excuse. I'd add that a fair amount of advice is genuinely bad, based on somebody else's circumstances rather than yours, so a degree of resistance is actually quite sensible.",
+      "useful_phrases": [
+        {"phrase": "comes into it", "note": "is one of the factors involved"},
+        {"phrase": "that's not the whole story", "note": "signals you are about to add depth"},
+        {"phrase": "an implied criticism", "note": "criticism that is suggested rather than stated"},
+        {"phrase": "a degree of", "note": "some amount of - useful hedging noun phrase"}
+      ],
+      "band_target": 7.5
+    },
+    {
+      "part": "part_3",
+      "topic": "A change in your neighbourhood",
+      "question": "How should city authorities decide which changes to make to a neighbourhood?",
+      "model_answer": "They should start by asking the people who actually live there, which sounds obvious but very often doesn't happen. Decisions get taken centrally and announced afterwards, and that's where most of the resentment comes from. Beyond consultation, I'd want them to think in decades rather than in election cycles, because planting trees or extending a metro line only pays off over a very long period. That said, there has to be some willingness to proceed despite opposition. If you only ever do what's popular, nothing difficult ever gets built. The trick, I suppose, is explaining the reasoning well enough that people can disagree without feeling ignored.",
+      "useful_phrases": [
+        {"phrase": "taken centrally", "note": "decided by a central authority rather than locally"},
+        {"phrase": "think in decades rather than election cycles", "note": "contrast between long-term and short-term planning"},
+        {"phrase": "pays off", "note": "produces a benefit after a delay"},
+        {"phrase": "the trick is...", "note": "informal way to name the key to solving a problem"}
+      ],
+      "band_target": 7.5
+    }
+  ]
+}

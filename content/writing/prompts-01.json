@@ -1,0 +1,102 @@
+{
+  "kind": "writing_prompts",
+  "title": "Academic Writing prompt set 1",
+  "variant": "academic",
+  "prompts": [
+    {
+      "slug": "writing-t1-commuting-three-cities",
+      "task_number": 1,
+      "title": "How people travel to work in three cities",
+      "topic": "Transport",
+      "prompt_html": "<p>The bar chart below shows the percentage of working adults using four different methods of travel to get to work in three cities in 2022.</p><p>Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</p><p>Write at least 150 words.</p>",
+      "visual_description": "A grouped vertical bar chart. The vertical axis is labelled 'Percentage of commuters' and runs from 0 to 70 in steps of 10. The horizontal axis shows four travel methods: private car, bus or tram, bicycle, and walking. For each method there are three bars, one for each of the cities Meridon, Calbridge and Oster Bay. All figures refer to the year 2022, and each city's four figures add up to 100 per cent. Private car: Meridon 52, Calbridge 24, Oster Bay 61. Bus or tram: Meridon 28, Calbridge 41, Oster Bay 19. Bicycle: Meridon 8, Calbridge 23, Oster Bay 5. Walking: Meridon 12, Calbridge 12, Oster Bay 15. The main features are that the private car is the leading method in Meridon and especially in Oster Bay, where almost two thirds of commuters drive, whereas in Calbridge public transport is the most common choice and cycling is nearly three times as popular as in Meridon. Walking is the only method with similar figures across all three cities, ranging narrowly from 12 to 15 per cent.",
+      "min_words": 150,
+      "difficulty": 2
+    },
+    {
+      "slug": "writing-t1-museum-visitor-numbers",
+      "task_number": 1,
+      "title": "Visitor numbers at three museums",
+      "topic": "Tourism",
+      "prompt_html": "<p>The line graph below shows the number of visitors to three museums in one European city between 2012 and 2022.</p><p>Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</p><p>Write at least 150 words.</p>",
+      "visual_description": "A line graph with three lines. The vertical axis is labelled 'Visitors per year (thousands)' and runs from 0 to 250 in steps of 50. The horizontal axis shows six data points at two-year intervals: 2012, 2014, 2016, 2018, 2020 and 2022. The first line, the City History Museum, records 120, 135, 150, 165, 60 and 145 thousand visitors respectively. The second line, the Maritime Gallery, records 210, 195, 170, 150, 45 and 105 thousand. The third line, the Science Park, records 60, 85, 130, 190, 70 and 230 thousand. The Maritime Gallery therefore begins as the most visited of the three but declines steadily throughout the period, while the Science Park begins as the least visited and ends as the most visited, overtaking the City History Museum in 2016 and the Maritime Gallery in 2018. All three lines fall sharply in 2020 and then recover to different degrees by 2022: the Science Park exceeds its earlier peak, the City History Museum returns to close to its 2016 level, and the Maritime Gallery remains only half as popular as it was in 2012.",
+      "min_words": 150,
+      "difficulty": 3
+    },
+    {
+      "slug": "writing-t1-household-spending-table",
+      "task_number": 1,
+      "title": "Household spending in four countries",
+      "topic": "Economics",
+      "prompt_html": "<p>The table below gives information about how average households in four countries divided their monthly spending in 2021.</p><p>Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</p><p>Write at least 150 words.</p>",
+      "visual_description": "A table with four rows, one for each country, and six columns. The first column names the country; the next five give the percentage of average monthly household spending devoted to housing, food, transport, healthcare and all other items; and a final column gives average monthly household income in US dollars. Each country's five percentages add up to 100. Norlandia: housing 28, food 16, transport 14, healthcare 9, other 33, income 4,200 dollars. Kestria: housing 22, food 31, transport 11, healthcare 6, other 30, income 1,500 dollars. Ardenne: housing 33, food 13, transport 17, healthcare 12, other 25, income 5,100 dollars. Tamar: housing 19, food 38, transport 9, healthcare 5, other 29, income 900 dollars. The clearest pattern is that the share spent on food falls as income rises, from 38 per cent in the lowest-earning country, Tamar, to only 13 per cent in the highest-earning, Ardenne, while the shares spent on housing, transport and healthcare all move in the opposite direction. Ardenne devotes the largest proportion of its spending to housing and more than twice as much to healthcare as Tamar does.",
+      "min_words": 150,
+      "difficulty": 4
+    },
+    {
+      "slug": "writing-t1-electricity-sources-pies",
+      "task_number": 1,
+      "title": "Sources of electricity in 2005 and 2025",
+      "topic": "Energy",
+      "prompt_html": "<p>The two pie charts below show how electricity was generated in one country in 2005 and in 2025.</p><p>Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</p><p>Write at least 150 words.</p>",
+      "visual_description": "Two pie charts of equal size, side by side, each divided into five segments and each totalling 100 per cent. The left chart is labelled 2005 and the right chart 2025. Both charts use the same five categories: coal, natural gas, nuclear, hydroelectric, and wind and solar combined. In 2005 the shares were coal 46 per cent, natural gas 24 per cent, nuclear 18 per cent, hydroelectric 8 per cent, and wind and solar 4 per cent. In 2025 they were coal 17 per cent, natural gas 27 per cent, nuclear 14 per cent, hydroelectric 9 per cent, and wind and solar 33 per cent. A note printed beneath the charts gives the total electricity generated in each year: 180 billion kilowatt-hours in 2005 and 260 billion kilowatt-hours in 2025. The dominant change is the collapse of coal from by far the largest source to the third largest, and the rise of wind and solar from the smallest segment to the largest. Natural gas grew modestly in share, while nuclear and hydroelectric changed little in percentage terms.",
+      "min_words": 150,
+      "difficulty": 3
+    },
+    {
+      "slug": "writing-t1-paper-recycling-process",
+      "task_number": 1,
+      "title": "The paper recycling process",
+      "topic": "Recycling",
+      "prompt_html": "<p>The diagram below shows the stages by which waste paper is collected and turned into new paper.</p><p>Summarise the information by selecting and reporting the main features.</p><p>Write at least 150 words.</p>",
+      "visual_description": "A process diagram with six numbered stages joined by arrows in a single line, with one arrow leaving the process as waste. Stage 1, collection: households and offices place used paper in green bins, and a lorry takes the loose paper to a recycling plant. Stage 2, sorting: the paper travels along a moving belt where workers and magnetic separators remove staples, plastic wrapping and card, which leave the process as rejected material. Stage 3, pulping: the sorted paper drops into a large tank where it is mixed with hot water and detergent and stirred by a rotating blade until it becomes a thick grey pulp. Stage 4, screening and de-inking: the pulp is pushed through a fine mesh screen to trap any remaining fragments, and air is then bubbled through it so that the ink rises to the surface as foam and is skimmed off. Stage 5, refining and bleaching: the cleaned pulp passes into a second tank where it is beaten to separate the fibres and, if white paper is required, bleach is added. Stage 6, rolling and drying: the pulp is sprayed onto a wide moving screen, pressed between heated rollers to squeeze out the water, and wound onto large reels of finished paper, which are delivered back to printers and offices.",
+      "min_words": 150,
+      "difficulty": 4
+    },
+    {
+      "slug": "writing-t2-choosing-school-subjects",
+      "task_number": 2,
+      "title": "Letting students choose all their subjects",
+      "topic": "Education",
+      "prompt_html": "<p>Some people believe that secondary school students should be free to choose every subject they study, instead of following a curriculum in which certain subjects are compulsory for everyone.</p><p>To what extent do you agree or disagree?</p><p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p><p>Write at least 250 words.</p>",
+      "min_words": 250,
+      "difficulty": 3
+    },
+    {
+      "slug": "writing-t2-car-free-city-centres",
+      "task_number": 2,
+      "title": "Banning cars from city centres",
+      "topic": "Urban life",
+      "prompt_html": "<p>Some people argue that private cars should be banned from city centres altogether in order to reduce pollution and make streets safer. Others believe that investing in better public transport is sufficient, and that such bans damage local businesses.</p><p>Discuss both these views and give your own opinion.</p><p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p><p>Write at least 250 words.</p>",
+      "min_words": 250,
+      "difficulty": 3
+    },
+    {
+      "slug": "writing-t2-permanent-remote-work",
+      "task_number": 2,
+      "title": "Working from home permanently",
+      "topic": "Work",
+      "prompt_html": "<p>A growing number of companies now allow their employees to work from home permanently, with no requirement ever to attend an office.</p><p>Do the advantages of this development outweigh the disadvantages?</p><p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p><p>Write at least 250 words.</p>",
+      "min_words": 250,
+      "difficulty": 2
+    },
+    {
+      "slug": "writing-t2-inactive-city-lifestyles",
+      "task_number": 2,
+      "title": "Inactive lifestyles in cities",
+      "topic": "Health",
+      "prompt_html": "<p>In many countries, people living in cities are far less physically active in their daily lives than previous generations were.</p><p>What problems does this cause, and what measures could be taken to address them?</p><p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p><p>Write at least 250 words.</p>",
+      "min_words": 250,
+      "difficulty": 3
+    },
+    {
+      "slug": "writing-t2-disappearing-languages",
+      "task_number": 2,
+      "title": "Languages that are disappearing",
+      "topic": "Culture",
+      "prompt_html": "<p>Every year, a number of minority languages stop being spoken as their last remaining speakers die.</p><p>Why is this happening, and should governments spend public money on keeping such languages alive?</p><p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p><p>Write at least 250 words.</p>",
+      "min_words": 250,
+      "difficulty": 4
+    }
+  ]
+}

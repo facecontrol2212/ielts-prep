@@ -205,7 +205,10 @@ def test_parses_canned_json_and_rounds(task2_section: Section, cache: InMemoryGr
     assert client.call_count == 1
 
 
-def test_usage_is_reported(task2_section: Section, cache: InMemoryGradeCache) -> None:
+def test_usage_is_reported_by_price_band(
+    task2_section: Section, cache: InMemoryGradeCache
+) -> None:
+    """Full-price input, cache reads and cache writes are billed differently — keep them apart."""
     client = FakeClaude(
         [
             LLMResponse(
@@ -214,14 +217,70 @@ def test_usage_is_reported(task2_section: Section, cache: InMemoryGradeCache) ->
                 input_tokens=100,
                 output_tokens=700,
                 cache_read_tokens=1100,
+                cache_write_tokens=50,
             )
         ]
     )
     outcome = evaluate(task2_section, 2, words(300), client=client, cache=cache)
     assert outcome.model == "claude-sonnet-5"
-    assert outcome.input_tokens == 1200  # uncached + cache reads
+    assert outcome.input_tokens == 100  # full price only — nothing folded in
+    assert outcome.cache_read_tokens == 1100
+    assert outcome.cache_write_tokens == 50
     assert outcome.output_tokens == 700
+    assert outcome.total_input_tokens == 1250
     assert outcome.calls == 1
+
+
+def test_usage_accumulates_across_the_retry(
+    task2_section: Section, cache: InMemoryGradeCache
+) -> None:
+    broken = LLMResponse(
+        text="not json",
+        model="claude-sonnet-5",
+        input_tokens=100,
+        output_tokens=40,
+        cache_read_tokens=3300,
+        cache_write_tokens=0,
+    )
+    fixed = LLMResponse(
+        text=canned_json(),
+        model="claude-sonnet-5",
+        input_tokens=180,
+        output_tokens=700,
+        cache_read_tokens=3300,
+        cache_write_tokens=0,
+    )
+    client = FakeClaude([broken, fixed])
+    outcome = evaluate(task2_section, 2, words(300), client=client, cache=cache)
+
+    assert client.call_count == 2
+    assert outcome.ok
+    assert outcome.input_tokens == 280
+    assert outcome.output_tokens == 740
+    assert outcome.cache_read_tokens == 6600
+    assert outcome.cache_write_tokens == 0
+
+
+def test_cached_outcome_reports_every_counter(
+    task2_section: Section, cache: InMemoryGradeCache
+) -> None:
+    response = LLMResponse(
+        text=canned_json(),
+        model="claude-sonnet-5",
+        input_tokens=480,
+        output_tokens=700,
+        cache_read_tokens=0,
+        cache_write_tokens=3300,
+    )
+    client = FakeClaude([response])
+    text = words(300)
+    evaluate(task2_section, 2, text, client=client, cache=cache)
+    hit = evaluate(task2_section, 2, text, client=client, cache=cache)
+
+    assert hit.cached is True
+    assert client.call_count == 1
+    assert (hit.input_tokens, hit.output_tokens) == (480, 700)
+    assert (hit.cache_read_tokens, hit.cache_write_tokens) == (0, 3300)
 
 
 def test_band_63_rounds_to_65(task2_section: Section, cache: InMemoryGradeCache) -> None:
@@ -557,6 +616,55 @@ def test_html_is_stripped_from_the_prompt(cache: InMemoryGradeCache) -> None:
     user_message = client.calls[0]["messages"][0]["content"]
     assert "<b>" not in user_message
     assert "The chart shows X." in user_message
+
+
+def test_task1_prompt_carries_the_chart_description(cache: InMemoryGradeCache) -> None:
+    """Without this, Task 1 grading is blind to the visual the candidate was describing."""
+    section = Section(
+        order=1,
+        title="Task 1",
+        prompt_html="<p>The chart below shows electricity production by source.</p>",
+        image_url="https://cdn.example.com/chart-01.png",
+        image_description=(
+            "A line graph with four series — coal, gas, nuclear and renewables — plotted from "
+            "1990 to 2020. Coal falls from 55% to 18%; renewables rise from 3% to 31%."
+        ),
+    )
+    client = FakeClaude([canned_json()])
+    evaluate(section, 1, words(200), client=client, cache=cache)
+
+    user_message = client.calls[0]["messages"][0]["content"]
+    assert "DESCRIPTION OF THE ACCOMPANYING VISUAL" in user_message
+    assert "renewables rise from 3% to 31%" in user_message
+    # the URL is useless to a text model and must not be pushed at it as if it were content
+    assert "https://cdn.example.com/chart-01.png" not in user_message
+
+
+def test_prompt_omits_the_visual_block_when_there_is_no_description(
+    task1_section: Section, cache: InMemoryGradeCache
+) -> None:
+    client = FakeClaude([canned_json()])
+    evaluate(task1_section, 1, words(200), client=client, cache=cache)
+    assert "ACCOMPANYING VISUAL" not in client.calls[0]["messages"][0]["content"]
+
+
+def test_chart_description_changes_the_cache_key_via_the_prompt(
+    cache: InMemoryGradeCache,
+) -> None:
+    """Two different charts with the same wording are different gradings, not a cache hit."""
+    described = Section(
+        order=1,
+        title="Task 1",
+        prompt_html="<p>The chart below shows X.</p>",
+        image_description="Coal falls sharply.",
+    )
+    plain = Section(order=1, title="Task 1", prompt_html="<p>The chart below shows X.</p>")
+    client = FakeClaude([canned_json()])
+    text = words(200)
+
+    evaluate(described, 1, text, client=client, cache=cache)
+    evaluate(plain, 1, text, client=client, cache=cache)
+    assert client.call_count == 2
 
 
 def test_json_schema_matches_the_pydantic_model() -> None:

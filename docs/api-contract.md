@@ -77,6 +77,14 @@ first auto-submit and score it (`auto_submitted=True`), then answer from the sco
 
 Grading is rate-limited per user per day (`settings.writing_submissions_per_day`); 429 when exceeded.
 
+Additional statuses: a draft PUT on an attempt past `submitted` is 409 (drafts are accepted while
+the attempt is `in_progress` or `submitted`); a grade POST with no saved drafts is 409. Grading
+never returns 500 — a model or transport failure is stored in `grading_error` and returned with 200,
+because the student's essay must survive a bad grading run.
+
+Token accounting is split across `input_tokens` (full price), `cache_read_tokens` (0.1x) and
+`cache_write_tokens` (1.25x). Folding them together makes the unit economics unrecoverable.
+
 ## score (public, no auth)
 
 | Method | Path | Body | Returns |
