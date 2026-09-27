@@ -430,13 +430,16 @@ def test_group_allow_number_applies_when_the_question_sets_no_limit():
         # a hyphenated compound is one word
         (1, False, "air-conditioning", True, None),
         (1, False, "air conditioning", False, REASON_OVER_WORD_LIMIT),
-        # AND/OR A NUMBER
+        # AND/OR A NUMBER: at most `limit` words AND at most ONE number
         (2, True, "20 December", True, None),
-        (2, True, "20 December 1999", True, None),
-        # numerals are free, so this is two words, not four
-        (2, True, "on 20 December 1999", True, None),
-        (2, True, "on the 20 December 1999", False, REASON_OVER_WORD_LIMIT),
+        (1, True, "20 December", True, None),
         (1, True, "20,000 tonnes", True, None),
+        # a second numeral busts the limit even though the words still fit
+        (2, True, "20 December 1999", False, REASON_OVER_WORD_LIMIT),
+        (2, True, "on 20 December 1999", False, REASON_OVER_WORD_LIMIT),
+        (2, True, "on the 20 December 1999", False, REASON_OVER_WORD_LIMIT),
+        # and the words are still capped with a number in play
+        (1, True, "20 large tonnes", False, REASON_OVER_WORD_LIMIT),
     ],
 )
 def test_word_limit_rule(limit, allow_number, value, correct, reason):
@@ -453,8 +456,39 @@ def test_word_limit_rule(limit, allow_number, value, correct, reason):
         "on 20 december 1999",
         "on the 20 december 1999",
         "20,000 tonnes",
+        "20 large tonnes",
     ]
     question = make_question(word_limit=limit, allow_number=allow_number)
+    check = check_answer(question, make_key(accepted), value)
+    assert check.is_correct is correct
+    assert check.reason == reason
+
+
+@pytest.mark.parametrize(
+    ("value", "correct", "reason"),
+    [
+        # "NO MORE THAN TWO WORDS AND/OR A NUMBER" = two words and ONE number
+        ("in 1999", True, None),  # one word + one numeral
+        ("open in 1999", True, None),  # two words + one numeral
+        ("20 December", True, None),
+        ("20 December 1999", False, REASON_OVER_WORD_LIMIT),  # two numerals
+        ("1999 2000", False, REASON_OVER_WORD_LIMIT),  # two numerals, no words
+        ("until 20 December", True, None),
+        ("opened again in 1999", False, REASON_OVER_WORD_LIMIT),  # three words
+    ],
+)
+def test_one_number_allowance_is_exactly_one(value, correct, reason):
+    """A numeral is free, but only one of them: this is what the real test marks."""
+    accepted = [
+        "in 1999",
+        "open in 1999",
+        "20 december",
+        "20 december 1999",
+        "1999 2000",
+        "until 20 december",
+        "opened again in 1999",
+    ]
+    question = make_question(word_limit=2, allow_number=True)
     check = check_answer(question, make_key(accepted), value)
     assert check.is_correct is correct
     assert check.reason == reason

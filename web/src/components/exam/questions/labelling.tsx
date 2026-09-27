@@ -85,7 +85,7 @@ function LabelRow({
             questionId={question.id}
             number={question.number}
             wordLimit={question.word_limit ?? group.word_limit}
-            allowNumber={question.allow_number ?? group.allow_number}
+            allowNumber={Boolean(question.allow_number) || group.allow_number}
           />
         )}
       </div>

@@ -78,11 +78,12 @@ ACADEMIC_READING_TABLE: tuple[BandRow, ...] = (
 )
 
 #: General Training reading is marked harder: the same band needs more answers.
+#: Transcribed from docs/band-tables.md, which is the record of record for these rows.
 GENERAL_READING_TABLE: tuple[BandRow, ...] = (
     (40, 40, 9.0),
     (39, 39, 8.5),
-    (38, 38, 8.0),
-    (36, 37, 7.5),
+    (37, 38, 8.0),
+    (36, 36, 7.5),
     (34, 35, 7.0),
     (32, 33, 6.5),
     (30, 31, 6.0),

@@ -39,7 +39,7 @@ export function focusQuestion(number: number): void {
   if (typeof document === 'undefined') return
   const el = document.querySelector<HTMLElement>(`[${focusAttr}="${number}"]`)
   if (el) {
-    el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    el.scrollIntoView?.({ block: 'center', behavior: 'smooth' })
     el.focus({ preventScroll: true })
     return
   }
@@ -47,7 +47,7 @@ export function focusQuestion(number: number): void {
   // at least bring the block onto the screen.
   document
     .querySelector<HTMLElement>(`[data-question="${number}"]`)
-    ?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    ?.scrollIntoView?.({ block: 'center', behavior: 'smooth' })
 }
 
 /** True when the keystroke belongs to whatever the student is typing in. */

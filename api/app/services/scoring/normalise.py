@@ -25,10 +25,12 @@ __all__ = [
     "ARTICLES",
     "canonicalise_numbers",
     "collapse_whitespace",
+    "count_number_tokens",
     "count_words",
     "count_words_for_limit",
     "drop_leading_article",
     "edit_distance",
+    "exceeds_word_limit",
     "is_near_miss",
     "is_number_token",
     "normalise",
@@ -343,9 +345,9 @@ def count_words(text: str) -> int:
 def count_words_for_limit(text: str, *, allow_number: bool = False) -> int:
     """Words counted against an instruction's word limit.
 
-    When the instruction reads "... AND/OR A NUMBER" (``allow_number``), a
-    numeral is free: "NO MORE THAN TWO WORDS AND/OR A NUMBER" accepts
-    ``20 December 1999``-style answers without the digits eating the budget.
+    When the instruction reads "... AND/OR A NUMBER" (``allow_number``) the
+    numerals are counted separately, by :func:`count_number_tokens`, and do not
+    appear in this total. Otherwise every token counts as a word.
     """
     cleaned = collapse_whitespace(unify_punctuation(text))
     count = 0
@@ -357,6 +359,29 @@ def count_words_for_limit(text: str, *, allow_number: bool = False) -> int:
             continue
         count += 1
     return count
+
+
+def count_number_tokens(text: str) -> int:
+    """How many numerals the answer contains (``20 December 1999`` -> 2)."""
+    cleaned = collapse_whitespace(unify_punctuation(text))
+    return sum(1 for token in cleaned.split(" ") if is_number_token(strip_outer_punctuation(token)))
+
+
+def exceeds_word_limit(text: str, limit: int, *, allow_number: bool = False) -> bool:
+    """Does the answer break the instruction's limit?
+
+    "NO MORE THAN TWO WORDS" means at most two words, full stop.
+
+    "NO MORE THAN TWO WORDS **AND/OR A NUMBER**" means at most two words *and
+    at most one number*. The allowance is one numeral, not an unlimited supply:
+    ``20 December 1999`` is over a two-word limit even though the only word in
+    it is "December", and a candidate who writes it loses the mark in the real
+    test. We enforce that here so nobody learns a looser rule than the exam's.
+    """
+    words = count_words_for_limit(text, allow_number=allow_number)
+    if not allow_number:
+        return words > limit
+    return words > limit or count_number_tokens(text) > 1
 
 
 # ---------------------------------------------------------------- comparison

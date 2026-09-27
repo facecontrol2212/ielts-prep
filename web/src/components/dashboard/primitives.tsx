@@ -1,9 +1,54 @@
 'use client'
 
+import Link from 'next/link'
 import { AlertCircle, RotateCw } from 'lucide-react'
 
 import { Button, Card, Skeleton } from '@/components/ui'
 import { cn } from '@/lib/utils'
+
+/**
+ * A link that looks like a button. The Button primitive renders a real `<button>` and has
+ * no `asChild`, and a `<button>` wrapping an `<a>` is invalid markup — so navigation gets
+ * its own component rather than a nested control.
+ */
+const LINK_BUTTON_VARIANTS = {
+  primary: 'bg-primary text-primary-fg hover:bg-primary/90 shadow-sm',
+  outline: 'border border-border bg-surface text-fg hover:bg-surface-2',
+  ghost: 'text-fg hover:bg-surface-2',
+} as const
+
+const LINK_BUTTON_SIZES = {
+  sm: 'h-8 px-3 text-sm',
+  md: 'h-10 px-4 text-sm',
+} as const
+
+export function LinkButton({
+  href,
+  variant = 'primary',
+  size = 'md',
+  className,
+  children,
+  ...props
+}: Omit<React.ComponentProps<typeof Link>, 'href'> & {
+  href: string
+  variant?: keyof typeof LINK_BUTTON_VARIANTS
+  size?: keyof typeof LINK_BUTTON_SIZES
+}) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors',
+        LINK_BUTTON_VARIANTS[variant],
+        LINK_BUTTON_SIZES[size],
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Link>
+  )
+}
 
 /**
  * Small pieces shared by the dashboard, the catalogue, the attempt history and the
@@ -177,19 +222,21 @@ export function FilterRow({ children, label }: { children: React.ReactNode; labe
 export function FilterChip({
   active,
   children,
+  className,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & { active: boolean }) {
   return (
     <button
       type="button"
       aria-pressed={active}
+      {...props}
       className={cn(
         'inline-flex h-8 items-center rounded-full border px-3 text-sm font-medium transition-colors',
         active
           ? 'border-primary bg-primary text-primary-fg'
           : 'border-border bg-surface text-muted hover:bg-surface-2 hover:text-fg',
+        className,
       )}
-      {...props}
     >
       {children}
     </button>

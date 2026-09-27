@@ -23,7 +23,6 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.models.enums import (
     OPTION_ANSWER_TYPES,
-    TEXT_ANSWER_TYPES,
     MatchMode,
     QuestionType,
     Skill,
@@ -355,10 +354,9 @@ class GroupDoc(AuthoringModel):
         allow_number = q.resolved_allow_number(self)
         for a in accepted:
             words, numbers = count_words(a)
-            if allow_number:
-                over = words > limit or numbers > 1
-            else:
-                over = (words + numbers) > limit
+            # "TWO WORDS AND/OR A NUMBER" = up to two words plus one number; with no
+            # number allowed, a numeral simply counts against the word budget.
+            over = (words > limit or numbers > 1) if allow_number else (words + numbers) > limit
             if over:
                 problems.append(
                     f"Q{q.number}: accepted answer '{a}' is {words} word(s) and "
@@ -383,6 +381,9 @@ class SectionDoc(AuthoringModel):
     # writing
     prompt_html: str | None = None
     image_url: str | None = None
+    #: what the chart/diagram actually shows, in words. The AI grader never sees the image,
+    #: and a screen reader has nothing else to read out.
+    image_description: str | None = None
     min_words: int | None = Field(default=None, ge=1)
 
     start_question: int | None = Field(default=None, ge=1)
@@ -425,6 +426,9 @@ class SectionDoc(AuthoringModel):
 
 class TestDocument(AuthoringModel):
     """One importable mock test."""
+
+    #: not a pytest test case, despite the name
+    __test__ = False
 
     kind: Literal["test"] = "test"
     slug: str = Field(min_length=3, max_length=120)
@@ -529,6 +533,11 @@ class TestDocument(AuthoringModel):
                         f"section {s.order} ('{s.title}'): a writing task has no questions — "
                         f"remove the 'groups' key"
                     )
+                if s.image_url and not (s.image_description or "").strip():
+                    problems.append(
+                        f"section {s.order} ('{s.title}'): a writing task with an image needs "
+                        f"an image_description — the AI grader never sees the picture"
+                    )
 
     # -- soft checks -------------------------------------------------------
 
@@ -619,9 +628,7 @@ class SpeakingBankDocument(AuthoringModel):
             if key in seen:
                 problems.append(f"duplicate question: '{q.question[:60]}'")
             seen.add(key)
-        part2_topics = {
-            q.topic.casefold() for q in self.questions if q.part is SpeakingPart.PART_2
-        }
+        part2_topics = {q.topic.casefold() for q in self.questions if q.part is SpeakingPart.PART_2}
         if part2_topics:
             for q in self.questions:
                 if q.part is SpeakingPart.PART_3 and q.topic.casefold() not in part2_topics:
@@ -655,11 +662,19 @@ class WritingPromptDoc(AuthoringModel):
         problems: list[str] = []
         if not _SLUG.match(self.slug):
             problems.append(f"slug '{self.slug}' must be lowercase-with-hyphens")
-        if self.task_number == 1 and not self.visual_description:
-            problems.append(
-                f"'{self.slug}': an Academic Task 1 prompt needs a visual_description — "
-                f"there is no image in v1 and the AI grader reads this text"
-            )
+        if self.task_number == 1:
+            words, _ = count_words(self.visual_description or "")
+            if not self.visual_description:
+                problems.append(
+                    f"'{self.slug}': an Academic Task 1 prompt needs a visual_description — "
+                    f"there is no image in v1 and the AI grader reads this text"
+                )
+            elif words < 30:
+                problems.append(
+                    f"'{self.slug}': visual_description is only {words} words — it must describe "
+                    f"the chart completely enough to answer from (axes, units, every category, "
+                    f"the figures, the period)"
+                )
         if self.task_number == 2 and self.visual_description:
             problems.append(f"'{self.slug}': Task 2 has no visual, drop visual_description")
         expected_words = 150 if self.task_number == 1 else 250
@@ -680,11 +695,13 @@ class WritingPromptDoc(AuthoringModel):
     def effective_duration(self) -> int:
         return self.duration_seconds or (1200 if self.task_number == 1 else 2400)
 
-    def to_test_document(self, variant: Variant = Variant.ACADEMIC) -> TestDocument:
+    def to_test_document(
+        self, variant: Variant = Variant.ACADEMIC, is_published: bool | None = None
+    ) -> TestDocument:
         """A writing prompt imports as a one-section, zero-question test."""
         body = self.prompt_html
         if self.visual_description:
-            body += f"\n<div class=\"visual\"><p>{self.visual_description}</p></div>"
+            body += f'\n<div class="visual"><p>{self.visual_description}</p></div>'
         return TestDocument(
             kind="test",
             slug=self.slug,
@@ -695,6 +712,7 @@ class WritingPromptDoc(AuthoringModel):
             difficulty=self.difficulty,
             duration_seconds=self.effective_duration,
             question_count=0,
+            is_published=is_published,
             sections=[
                 SectionDoc(
                     order=1,
@@ -706,6 +724,7 @@ class WritingPromptDoc(AuthoringModel):
                     ),
                     prompt_html=body,
                     image_url=self.image_url,
+                    image_description=self.visual_description,
                     min_words=self.effective_min_words,
                 )
             ],
@@ -716,6 +735,8 @@ class WritingPromptSetDocument(AuthoringModel):
     kind: Literal["writing_prompts"]
     title: str = "Writing prompts"
     variant: Variant = Variant.ACADEMIC
+    #: applied to every prompt in the set; omit to leave existing rows alone
+    is_published: bool | None = None
     prompts: list[WritingPromptDoc] = Field(min_length=1)
 
     @model_validator(mode="after")
@@ -808,6 +829,8 @@ class ImportSummaryOut(BaseModel):
     questions: int = 0
     answer_keys: int = 0
     items: int = 0
+    created: int = 0
+    updated: int = 0
     warnings: list[str] = Field(default_factory=list)
 
 

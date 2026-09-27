@@ -8,7 +8,8 @@ Marking order, which matters:
 
 1. blank                -> wrong, ``reason="blank"``
 2. over the word limit  -> wrong, ``reason="over_word_limit"`` *even if the
-   right words are in there*. This is real IELTS behaviour.
+   right words are in there*. This is real IELTS behaviour. "AND/OR A NUMBER"
+   buys exactly one numeral, not an unlimited supply.
 3. matched              -> correct
 4. one typo away        -> wrong, ``reason="spelling"`` (never a mark, but the
    review screen can say "spelling cost you the mark")
@@ -21,7 +22,7 @@ from typing import TYPE_CHECKING, Any
 
 from app.models.enums import MatchMode, QuestionType
 from app.services.scoring import AnswerCheck
-from app.services.scoring.normalise import count_words_for_limit, is_near_miss, normalise
+from app.services.scoring.normalise import exceeds_word_limit, is_near_miss, normalise
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
     from app.models.test import AnswerKey, Question
@@ -199,10 +200,8 @@ def _check_text(question: Question, key: AnswerKey, value: Any) -> AnswerCheck:
         return AnswerCheck(False, REASON_WRONG)
 
     word_limit, allow_number = resolve_word_limit(question)
-    if word_limit is not None:
-        used = count_words_for_limit(text, allow_number=allow_number)
-        if used > word_limit:
-            return AnswerCheck(False, REASON_OVER_WORD_LIMIT)
+    if word_limit is not None and exceeds_word_limit(text, word_limit, allow_number=allow_number):
+        return AnswerCheck(False, REASON_OVER_WORD_LIMIT)
 
     exact_only = key.match_mode == MatchMode.EXACT
     if exact_only:

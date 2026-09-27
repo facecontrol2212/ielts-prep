@@ -2,7 +2,11 @@
 
 Contract:
 
-* **One transaction.** A document either lands completely or not at all.
+* **One transaction.** Rows are built and flushed, and the session is committed once at the
+  very end, so a document either lands completely or not at all. Nothing is committed before
+  the last row is in place. The importer never calls ``rollback`` itself — the caller owns
+  the session and rolls it back on failure (the CLI, the admin router and
+  :func:`import_directory` all do).
 * **Idempotent by slug.** Re-importing the same ``slug`` updates the test *in place*:
   the ``tests`` row keeps its id (so links, attempts and bookmarks survive) while its
   sections, groups, questions and answer keys are deleted and recreated. Question ids
@@ -69,6 +73,8 @@ class ImportSummary:
     questions: int = 0
     answer_keys: int = 0
     items: int = 0
+    created: int = 0
+    updated: int = 0
     warnings: list[str] = field(default_factory=list)
 
     def describe(self) -> str:
@@ -78,7 +84,10 @@ class ImportSummary:
                 f"{self.sections} section(s), {self.groups} group(s), "
                 f"{self.questions} question(s), {self.answer_keys} key(s)"
             )
-        return f"{self.action:<8} {self.slug}  {self.items} item(s)"
+        return (
+            f"{self.action:<8} {self.slug}  {self.items} item(s) "
+            f"({self.created} new, {self.updated} updated)"
+        )
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -92,6 +101,8 @@ class ImportSummary:
             "questions": self.questions,
             "answer_keys": self.answer_keys,
             "items": self.items,
+            "created": self.created,
+            "updated": self.updated,
             "warnings": self.warnings,
         }
 
@@ -124,33 +135,29 @@ def import_test(db: Session, document: TestDocument, *, force: bool = False) -> 
         warnings=list(document.evidence_problems()),
     )
 
-    try:
-        if existing is None:
-            test = Test(slug=document.slug)
-            db.add(test)
-        else:
-            test = existing
-            summary.action = "updated"
-            _guard_and_clear(db, test, force=force, summary=summary)
+    if existing is None:
+        test = Test(slug=document.slug)
+        db.add(test)
+    else:
+        test = existing
+        summary.action = "updated"
+        _guard_and_clear(db, test, force=force, summary=summary)
 
-        _apply_test_fields(test, document, is_new=existing is None)
-        db.flush()
+    _apply_test_fields(test, document, is_new=existing is None)
+    db.flush()
 
-        for section_doc in sorted(document.sections, key=lambda s: s.order):
-            _build_section(db, test, section_doc, summary)
+    for section_doc in sorted(document.sections, key=lambda s: s.order):
+        _build_section(db, test, section_doc, summary)
 
-        db.flush()
-        db.commit()
-    except Exception:
-        db.rollback()
-        raise
+    db.flush()
+    db.commit()
 
     summary.test_id = test.id
     return summary
 
 
-def _guard_and_clear(db: Session, test: Test, *, force: bool, summary: ImportSummary) -> None:
-    """Refuse to clobber scored work, then delete the test's children."""
+def _refuse_if_protected(db: Session, test: Test, *, force: bool) -> None:
+    """Raise before anything is written if this test carries scored student work."""
     protected = _protected_attempts(db, test.id)
     if protected and not force:
         raise ImportRefused(
@@ -159,10 +166,13 @@ def _guard_and_clear(db: Session, test: Test, *, force: bool, summary: ImportSum
             f"Pass force=True (CLI: --force) if you really mean to."
         )
 
+
+def _guard_and_clear(db: Session, test: Test, *, force: bool, summary: ImportSummary) -> None:
+    """Refuse to clobber scored work, then delete the test's children."""
+    _refuse_if_protected(db, test, force=force)
+
     old_question_ids = list(
-        db.scalars(
-            select(Question.id).join(Section).where(Section.test_id == test.id)
-        ).all()
+        db.scalars(select(Question.id).join(Section).where(Section.test_id == test.id)).all()
     )
     if old_question_ids:
         orphans = (
@@ -174,9 +184,7 @@ def _guard_and_clear(db: Session, test: Test, *, force: bool, summary: ImportSum
             or 0
         )
         if orphans:
-            db.execute(
-                delete(AttemptAnswer).where(AttemptAnswer.question_id.in_(old_question_ids))
-            )
+            db.execute(delete(AttemptAnswer).where(AttemptAnswer.question_id.in_(old_question_ids)))
             summary.warnings.append(
                 f"deleted {orphans} saved answer(s) that pointed at the replaced questions"
             )
@@ -203,9 +211,7 @@ def _apply_test_fields(test: Test, document: TestDocument, *, is_new: bool) -> N
         test.is_published = False
 
 
-def _build_section(
-    db: Session, test: Test, doc: SectionDoc, summary: ImportSummary
-) -> Section:
+def _build_section(db: Session, test: Test, doc: SectionDoc, summary: ImportSummary) -> Section:
     numbers = [q.number for q in doc.questions]
     section = Section(
         test_id=test.id,
@@ -217,6 +223,7 @@ def _build_section(
         transcript=doc.transcript,
         prompt_html=doc.prompt_html,
         image_url=doc.image_url,
+        image_description=doc.image_description,
         min_words=doc.min_words,
         start_question=doc.start_question or (min(numbers) if numbers else None),
         end_question=doc.end_question or (max(numbers) if numbers else None),
@@ -310,44 +317,42 @@ def import_speaking_bank(
     ``prune=True`` also deletes bank rows that the file no longer contains.
     """
     summary = ImportSummary(kind="speaking_bank", slug="speaking-bank", action="updated")
-    try:
-        existing = {q.question.strip().casefold(): q for q in db.scalars(select(SpeakingQuestion))}
-        seen: set[str] = set()
-        created = 0
-        updated = 0
+    created = 0
+    updated = 0
+    existing = {q.question.strip().casefold(): q for q in db.scalars(select(SpeakingQuestion))}
+    seen: set[str] = set()
 
-        for doc in document.questions:
-            key = doc.question.strip().casefold()
-            seen.add(key)
-            row = existing.get(key)
-            if row is None:
-                row = SpeakingQuestion(question=doc.question)
-                db.add(row)
-                created += 1
-            else:
-                updated += 1
-            row.part = doc.part
-            row.topic = doc.topic
-            row.cue_points = list(doc.cue_points) if doc.cue_points else None
-            row.model_answer = doc.model_answer
-            row.useful_phrases = [p.model_dump() for p in doc.useful_phrases] or None
-            row.band_target = doc.band_target
+    for doc in document.questions:
+        key = doc.question.strip().casefold()
+        seen.add(key)
+        row = existing.get(key)
+        if row is None:
+            row = SpeakingQuestion(question=doc.question)
+            db.add(row)
+            created += 1
+        else:
+            updated += 1
+        row.part = doc.part
+        row.topic = doc.topic
+        row.cue_points = list(doc.cue_points) if doc.cue_points else None
+        row.model_answer = doc.model_answer
+        row.useful_phrases = [p.model_dump() for p in doc.useful_phrases] or None
+        row.band_target = doc.band_target
 
-        if prune:
-            stale = [row for key, row in existing.items() if key not in seen]
-            for row in stale:
-                db.delete(row)
-            if stale:
-                summary.warnings.append(f"pruned {len(stale)} question(s) no longer in the file")
+    if prune:
+        stale = [row for key, row in existing.items() if key not in seen]
+        for row in stale:
+            db.delete(row)
+        if stale:
+            summary.warnings.append(f"pruned {len(stale)} question(s) no longer in the file")
 
-        db.commit()
-    except Exception:
-        db.rollback()
-        raise
+    db.flush()
+    db.commit()
 
     summary.items = len(document.questions)
+    summary.created = created
+    summary.updated = updated
     summary.action = "created" if not updated else "updated"
-    summary.warnings.append(f"{created} new, {updated} updated")
     return summary
 
 
@@ -357,11 +362,20 @@ def import_speaking_bank(
 def import_writing_prompts(
     db: Session, document: WritingPromptSetDocument, *, force: bool = False
 ) -> list[ImportSummary]:
-    """Each prompt becomes a one-section, zero-question writing test."""
-    return [
-        import_test(db, prompt.to_test_document(document.variant), force=force)
-        for prompt in document.prompts
+    """Each prompt becomes a one-section, zero-question writing test.
+
+    The refusal check runs over the whole set first, so a protected prompt halfway down
+    the file cannot leave the first half imported and the rest not.
+    """
+    documents = [
+        p.to_test_document(document.variant, document.is_published) for p in document.prompts
     ]
+    if not force:
+        for test_document in documents:
+            existing = db.scalar(select(Test).where(Test.slug == test_document.slug))
+            if existing is not None:
+                _refuse_if_protected(db, existing, force=False)
+    return [import_test(db, d, force=force) for d in documents]
 
 
 # ------------------------------------------------------------------------ dispatch
@@ -405,5 +419,6 @@ def import_directory(
         try:
             summaries.extend(import_file(db, path, force=force))
         except Exception as exc:  # noqa: BLE001 - reported, not swallowed
+            db.rollback()
             failures.append((path, exc))
     return summaries, failures

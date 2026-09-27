@@ -1,8 +1,8 @@
 """initial schema
 
-Revision ID: 1176ed0ffd8a
+Revision ID: 06964563d470
 Revises: 
-Create Date: 2026-09-27 18:51:54.957461
+Create Date: 2026-09-27 19:07:21.480858
 """
 
 from collections.abc import Sequence
@@ -11,7 +11,7 @@ import sqlalchemy as sa
 from alembic import op
 
 
-revision: str = '1176ed0ffd8a'
+revision: str = '06964563d470'
 down_revision: str | None = None
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
@@ -137,6 +137,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id', name=op.f('pk_attempts'))
     )
     op.create_index(op.f('ix_attempts_user_id'), 'attempts', ['user_id'], unique=False)
+    op.create_index('uq_attempt_live', 'attempts', ['user_id', 'test_id'], unique=True, postgresql_where=sa.text("status = 'in_progress'"), sqlite_where=sa.text("status = 'in_progress'"))
     op.create_table('sections',
     sa.Column('test_id', sa.Uuid(), nullable=False),
     sa.Column('order', sa.Integer(), nullable=False),
@@ -267,6 +268,7 @@ def downgrade() -> None:
     op.drop_table('writing_submissions')
     op.drop_table('question_groups')
     op.drop_table('sections')
+    op.drop_index('uq_attempt_live', table_name='attempts', postgresql_where=sa.text("status = 'in_progress'"), sqlite_where=sa.text("status = 'in_progress'"))
     op.drop_index(op.f('ix_attempts_user_id'), table_name='attempts')
     op.drop_table('attempts')
     op.drop_index(op.f('ix_vocab_items_word'), table_name='vocab_items')

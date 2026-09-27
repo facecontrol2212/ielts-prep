@@ -6,6 +6,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import pytest
+from sqlalchemy.exc import IntegrityError
 
 from app.core.config import settings
 from app.core.security import create_token, hash_password
@@ -21,6 +22,10 @@ from app.services.ai.writing_grader import InMemoryGradeCache
 
 TASK1_PROMPT = "<p>The chart below shows electricity production by source.</p>"
 TASK2_PROMPT = "<p>Some people believe that X. Discuss both views and give your opinion.</p>"
+CHART_DESCRIPTION = (
+    "A bar chart comparing electricity production by source in 1990 and 2020. Coal falls from "
+    "55% to 18% while renewables rise from 3% to 31%; gas and nuclear are broadly flat."
+)
 
 
 def feedback_json(**overrides: Any) -> str:
@@ -62,6 +67,8 @@ class FakeClaude:
             model=self.model,
             input_tokens=1500,
             output_tokens=800,
+            cache_read_tokens=3300,
+            cache_write_tokens=120,
         )
 
     @property
@@ -98,7 +105,16 @@ def writing_test(db) -> ExamTest:
         question_count=2,
         is_published=True,
     )
-    test.sections.append(Section(order=1, title="Task 1", prompt_html=TASK1_PROMPT, min_words=150))
+    test.sections.append(
+        Section(
+            order=1,
+            title="Task 1",
+            prompt_html=TASK1_PROMPT,
+            min_words=150,
+            image_url="https://cdn.example.com/chart-01.png",
+            image_description=CHART_DESCRIPTION,
+        )
+    )
     test.sections.append(Section(order=2, title="Task 2", prompt_html=TASK2_PROMPT, min_words=250))
     db.add(test)
     db.commit()
@@ -176,6 +192,32 @@ def test_draft_is_an_idempotent_upsert(client, db, writing_attempt, writing_test
     assert first.status_code == second.status_code == 200
     assert first.json()["id"] == second.json()["id"]
     assert second.json()["word_count"] == 2
+    assert db.query(WritingSubmission).count() == 1
+
+
+def test_one_row_per_attempt_and_task_is_enforced_by_the_database(
+    client, db, writing_attempt, writing_test, auth_headers
+):
+    """The upsert is the happy path; `uq_attempt_task` is the guard against a racing second PUT."""
+    response = client.put(
+        f"/api/writing/attempts/{writing_attempt.id}/draft",
+        json=draft_body(writing_test.sections[0], 1, "one two three"),
+        headers=auth_headers,
+    )
+    assert response.status_code == 200
+
+    # in a savepoint, so the failed insert does not poison the surrounding test transaction
+    with pytest.raises(IntegrityError), db.begin_nested():
+        db.add(
+            WritingSubmission(
+                attempt_id=writing_attempt.id,
+                section_id=writing_test.sections[0].id,
+                task_number=1,
+                text="a racing duplicate",
+            )
+        )
+        db.flush()
+
     assert db.query(WritingSubmission).count() == 1
 
 
@@ -262,9 +304,32 @@ def test_grade_scores_every_task_and_records_tokens(
     rows = db.query(WritingSubmission).order_by(WritingSubmission.task_number).all()
     for row in rows:
         assert row.model == "claude-sonnet-5"
+        # all four counters land in their own columns — three different prices, never summed
         assert row.input_tokens == 1500
         assert row.output_tokens == 800
+        assert row.cache_read_tokens == 3300
+        assert row.cache_write_tokens == 120
     assert isolated_ai.call_count == 2
+
+
+def test_grading_task1_sends_the_chart_description(
+    client, writing_attempt, writing_test, auth_headers, isolated_ai
+):
+    """End to end: the authored description of the visual reaches the examiner prompt."""
+    save_both_tasks(client, writing_attempt, writing_test, auth_headers)
+    assert (
+        client.post(
+            f"/api/writing/attempts/{writing_attempt.id}/grade", headers=auth_headers
+        ).status_code
+        == 200
+    )
+
+    task1_message = isolated_ai.calls[0]["messages"][0]["content"]
+    task2_message = isolated_ai.calls[1]["messages"][0]["content"]
+    assert "renewables rise from 3% to 31%" in task1_message
+    assert "https://cdn.example.com/chart-01.png" not in task1_message
+    # Task 2 has no visual, so no empty visual block is sent
+    assert "ACCOMPANYING VISUAL" not in task2_message
 
 
 def test_grade_applies_the_under_length_penalty_end_to_end(

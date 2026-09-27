@@ -100,9 +100,11 @@ def cmd_import(args: argparse.Namespace) -> int:
         try:
             summaries = import_document(db, document, force=args.force)
         except ImportRefused as exc:
+            db.rollback()
             _print_failure(path, exc)
             return 1
         except Exception as exc:  # noqa: BLE001 - surfaced to the operator
+            db.rollback()
             _print_failure(path, exc)
             return 1
         _print_summaries(summaries)
@@ -123,6 +125,7 @@ def cmd_import_dir(args: argparse.Namespace) -> int:
                 document = load_document(path)
                 summaries = import_document(db, document, force=args.force)
             except Exception as exc:  # noqa: BLE001 - collected and reported below
+                db.rollback()
                 failures.append((path, exc))
                 continue
             print(f"{OK}{path}")
@@ -153,6 +156,7 @@ def cmd_seed_speaking(args: argparse.Namespace) -> int:
         try:
             summary = import_speaking_bank(db, document, prune=args.prune)
         except Exception as exc:  # noqa: BLE001 - surfaced to the operator
+            db.rollback()
             _print_failure(args.path, exc)
             return 1
         _print_summaries([summary])
@@ -175,6 +179,7 @@ def cmd_seed_bands(_args: argparse.Namespace) -> int:
         try:
             result = seed_band_tables(db)
         except Exception as exc:  # noqa: BLE001 - surfaced to the operator
+            db.rollback()
             print(f"{FAIL}seed_band_tables failed: {type(exc).__name__}: {exc}")
             return 1
         db.commit()

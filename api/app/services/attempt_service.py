@@ -10,6 +10,7 @@ in tests) at ``app.services.scoring.score_attempt``.
 """
 
 import uuid
+from collections import defaultdict
 from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import select
@@ -28,12 +29,16 @@ from app.schemas.attempt import (
     AttemptSession,
     AttemptStart,
 )
-from app.schemas.test import TestDetail
+from app.schemas.test import QuestionGroupOut, QuestionOut, TestDetail
 from app.services import scoring
 
 #: Clock-skew tolerance: an autosave that left the browser just before the deadline
 #: is still accepted this many seconds after ``expires_at``.
 SAVE_GRACE_SECONDS = 30
+
+#: Namespace for the ids of groups synthesised for ungrouped questions. Stable across
+#: requests (uuid5), so a resumed sitting keeps the same group ids it started with.
+_SYNTHETIC_GROUP_NS = uuid.UUID("6f9619ff-8b86-d011-b42d-00c04fc964ff")
 
 #: Statuses from which no further mutation is allowed.
 FINAL_STATUSES = frozenset(
@@ -315,9 +320,21 @@ def save_answers(db: Session, attempt: Attempt, batch: AnswerBatch) -> int:
 
 
 def attempt_out(attempt: Attempt) -> AttemptOut:
-    out = AttemptOut.model_validate(attempt)
-    out.seconds_remaining = seconds_remaining(attempt)
-    return out
+    """The only place an ``Attempt`` becomes an ``AttemptOut``.
+
+    Built field by field rather than by ``model_validate``: ``seconds_remaining`` has
+    no ORM attribute behind it and is deliberately required, so constructing it
+    explicitly is what stops a silent, permanently-zero clock reaching the runner.
+    """
+    return AttemptOut(
+        id=attempt.id,
+        test_id=attempt.test_id,
+        status=AttemptStatus(attempt.status),
+        started_at=_aware(attempt.started_at),
+        expires_at=_aware(attempt.expires_at),
+        submitted_at=attempt.submitted_at,
+        seconds_remaining=seconds_remaining(attempt),
+    )
 
 
 def build_session(db: Session, attempt: Attempt) -> AttemptSession:
@@ -328,8 +345,67 @@ def build_session(db: Session, attempt: Attempt) -> AttemptSession:
     ``tests/test_attempts_api.py::test_session_payload_never_contains_the_answer_key``.
     """
     test = load_test_detail(db, attempt.test_id)
+    detail = TestDetail.model_validate(test)
+    _attach_ungrouped_questions(db, detail)
     return AttemptSession(
         attempt=attempt_out(attempt),
-        test=TestDetail.model_validate(test),
+        test=detail,
         answers=list_answers(db, attempt),
     )
+
+
+def _attach_ungrouped_questions(db: Session, detail: TestDetail) -> None:
+    """Fold questions with no ``group_id`` into synthetic groups.
+
+    The exam runner renders sections -> groups -> questions, so a question left out
+    of a group would simply never appear on screen and would then be marked wrong at
+    submission. Grouping every question is the content importer's job, but a silent
+    hole that loses a student marks is not an acceptable failure mode for bad content,
+    so the payload heals it here. Consecutive questions of the same type share a
+    synthetic group, which is how a real paper reads.
+    """
+    section_ids = [s.id for s in detail.sections]
+    if not section_ids:
+        return
+
+    orphans = (
+        db.execute(
+            select(Question)
+            .where(Question.section_id.in_(section_ids), Question.group_id.is_(None))
+            .order_by(Question.section_id, Question.number)
+        )
+        .scalars()
+        .all()
+    )
+    if not orphans:
+        return
+
+    by_section: dict[uuid.UUID, list[Question]] = defaultdict(list)
+    for question in orphans:
+        by_section[question.section_id].append(question)
+
+    for section in detail.sections:
+        questions = by_section.get(section.id)
+        if not questions:
+            continue
+        order = max((g.order for g in section.groups), default=0)
+        current: QuestionGroupOut | None = None
+        for question in questions:
+            if current is not None and current.type == question.type:
+                current.questions.append(QuestionOut.model_validate(question))
+                continue
+            order += 1
+            current = QuestionGroupOut(
+                id=uuid.uuid5(_SYNTHETIC_GROUP_NS, f"{section.id}:{question.number}"),
+                order=order,
+                type=question.type,
+                instructions=section.instructions or "",
+                word_limit=question.word_limit,
+                allow_number=question.allow_number,
+                options=None,
+                select_count=None,
+                content_html=None,
+                image_url=None,
+                questions=[QuestionOut.model_validate(question)],
+            )
+            section.groups.append(current)

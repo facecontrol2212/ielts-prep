@@ -185,7 +185,11 @@ class GradingOutcome:
 
 
 class GradeCache(Protocol):
-    """Keyed by sha256(model, task_number, prompt, text) — see :func:`cache_key`."""
+    """Keyed by sha256(model, task_number, prompt, text) — see :func:`cache_key`.
+
+    "prompt" is the whole task as the candidate saw it: the section prompt *and* the description
+    of any Task 1 visual, so that fixing either one re-grades rather than serving a stale band.
+    """
 
     def get(self, key: str) -> GradingOutcome | None: ...
 
@@ -401,6 +405,7 @@ def evaluate(
     word_count = count_words(text)
     minimum = min_words_for(section, task_number)
     prompt = strip_html(section.prompt_html if section is not None else None)
+    visual = (section.image_description if section is not None else None) or ""
 
     if word_count == 0:
         return GradingOutcome(
@@ -408,7 +413,14 @@ def evaluate(
             model=client.model,
         )
 
-    key = cache_key(model=client.model, task_number=task_number, prompt=prompt, text=text)
+    # The chart description is part of what the candidate was asked to describe, so it belongs in
+    # the "prompt" half of the key: correcting a wrong description must invalidate the old grade.
+    key = cache_key(
+        model=client.model,
+        task_number=task_number,
+        prompt=f"{prompt}\x1e{visual}",
+        text=text,
+    )
     if use_cache:
         hit = cache.get(key)
         if hit is not None and hit.ok:
@@ -432,7 +444,7 @@ def evaluate(
         # `Section.image_url` is a link, useless to a text model; `image_description` is the
         # authored prose description of the Task 1 chart, map or process, and is what lets the
         # model judge whether the candidate reported the right features.
-        image_description=(section.image_description if section is not None else None),
+        image_description=visual or None,
     )
     messages: list[dict[str, Any]] = [{"role": "user", "content": user}]
 

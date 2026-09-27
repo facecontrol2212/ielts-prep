@@ -26,6 +26,13 @@ class AnswerBatch(BaseModel):
     answers: list[AnswerIn] = Field(default_factory=list)
 
 
+class AnswerSaveResult(BaseModel):
+    """Autosave acknowledgement. `seconds_remaining` re-anchors the client's clock."""
+
+    saved: int
+    seconds_remaining: int
+
+
 class AttemptOut(ORMModel):
     id: uuid.UUID
     test_id: uuid.UUID
@@ -33,8 +40,10 @@ class AttemptOut(ORMModel):
     started_at: datetime
     expires_at: datetime
     submitted_at: datetime | None
-    #: server-computed; the client displays this and never computes its own
-    seconds_remaining: int = 0
+    #: Server-computed and REQUIRED: there is no ORM attribute behind it, so a default
+    #: would let `AttemptOut.model_validate(attempt)` ship a silent, permanently-zero
+    #: clock. Callers must pass it explicitly (see attempt_service.attempt_out).
+    seconds_remaining: int
 
 
 class AttemptSession(BaseModel):

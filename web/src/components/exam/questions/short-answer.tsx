@@ -14,7 +14,7 @@ export function ShortAnswer({ group }: { group: QuestionGroup }) {
             questionId={question.id}
             number={question.number}
             wordLimit={question.word_limit ?? group.word_limit}
-            allowNumber={question.allow_number ?? group.allow_number}
+            allowNumber={Boolean(question.allow_number) || group.allow_number}
           />
         </QuestionShell>
       ))}

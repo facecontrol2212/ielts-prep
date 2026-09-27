@@ -34,7 +34,11 @@ def import_content(
     try:
         summaries = import_document(db, payload.document, force=payload.force)
     except ImportRefused as exc:
+        # the refusal is raised before a single row is touched, so there is nothing to undo
         raise Conflict(str(exc)) from exc
+    except Exception:
+        db.rollback()
+        raise
     return [ImportSummaryOut(**s.as_dict()) for s in summaries]
 
 

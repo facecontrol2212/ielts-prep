@@ -36,7 +36,8 @@ export function overallBand(bands: number[]): number | null {
 /** 3600 -> "60 min", 5400 -> "1 h 30 min". The catalogue promises a time commitment. */
 export function formatDuration(seconds: number): string {
   const totalMinutes = Math.round(seconds / 60)
-  if (totalMinutes < 60) return `${totalMinutes} min`
+  // A 60-minute paper is "60 min" to a candidate, never "1 h".
+  if (totalMinutes <= 60) return `${totalMinutes} min`
   const hours = Math.floor(totalMinutes / 60)
   const minutes = totalMinutes % 60
   return minutes === 0 ? `${hours} h` : `${hours} h ${minutes} min`

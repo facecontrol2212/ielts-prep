@@ -198,10 +198,6 @@ const en = {
     serverOffline: 'Calculated in your browser — the scoring service is not reachable right now.',
     serverMismatch:
       'Our scoring service returned a different number. Trust the service, and please tell us: this is a bug.',
-    targetTitle: 'Getting to your target',
-    targetBody: (target: string, gap: string) =>
-      `You are ${gap} of a band away from ${target}. Half a band in one skill is usually the cheapest way to move the average.`,
-    targetReached: 'Nice — that average already rounds to your target or better.',
     rulesTitle: 'The rounding rule, in full',
     rules: [
       'Add the four skill bands and divide by four.',
@@ -487,10 +483,6 @@ const uz: Copy = {
     serverOffline: 'Brauzeringizda hisoblandi — ball xizmati hozir mavjud emas.',
     serverMismatch:
       'Ball xizmatimiz boshqa natija qaytardi. Xizmatga ishoning va bizga xabar bering: bu xatolik.',
-    targetTitle: 'Maqsadingizga yetish',
-    targetBody: (target: string, gap: string) =>
-      `${target} ballgacha ${gap} ball qoldi. Odatda o‘rtachani ko‘tarishning eng oson yo‘li — bitta ko‘nikmani yarim ballga ko‘tarish.`,
-    targetReached: 'Zo‘r — bu o‘rtacha allaqachon maqsadingizga yoki undan yuqoriga yaxlitlanadi.',
     rulesTitle: 'Yaxlitlash qoidasi to‘liq',
     rules: [
       'To‘rtta ballni qo‘shing va to‘rtga bo‘ling.',

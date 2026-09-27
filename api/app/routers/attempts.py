@@ -8,22 +8,19 @@ attempt with an ownership check, settles any expiry, and then delegates.
 import uuid
 
 from fastapi import APIRouter, status
-from pydantic import BaseModel
 
 from app.api.deps import CurrentUser, DbSession
-from app.schemas.attempt import AnswerBatch, AttemptResult, AttemptSession, AttemptStart
+from app.schemas.attempt import (
+    AnswerBatch,
+    AnswerSaveResult,
+    AttemptResult,
+    AttemptSession,
+    AttemptStart,
+)
 from app.schemas.common import Message
 from app.services import attempt_service as svc
 
 router = APIRouter()
-
-
-class AnswerSaveResult(BaseModel):
-    """Autosave acknowledgement. Belongs in app/schemas/attempt.py (Agent C cannot
-    edit that file); see the report."""
-
-    saved: int
-    seconds_remaining: int
 
 
 @router.post("", response_model=AttemptSession, status_code=status.HTTP_201_CREATED)

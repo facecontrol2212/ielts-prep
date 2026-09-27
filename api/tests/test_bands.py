@@ -53,6 +53,25 @@ PLAN_ACADEMIC_READING = [
 ]
 
 
+#: docs/band-tables.md is the record for General Training, which plan.md §7 does not list.
+DOC_GENERAL_READING = [
+    (40, 40, 9.0),
+    (39, 39, 8.5),
+    (37, 38, 8.0),
+    (36, 36, 7.5),
+    (34, 35, 7.0),
+    (32, 33, 6.5),
+    (30, 31, 6.0),
+    (27, 29, 5.5),
+    (23, 26, 5.0),
+    (19, 22, 4.5),
+    (15, 18, 4.0),
+    (12, 14, 3.5),
+    (9, 11, 3.0),
+    (6, 8, 2.5),
+]
+
+
 @pytest.mark.parametrize(("raw_min", "raw_max", "band"), PLAN_LISTENING)
 def test_listening_table_matches_the_plan(raw_min, raw_max, band):
     assert band_from_rows(LISTENING_TABLE, raw_min) == band
@@ -63,6 +82,12 @@ def test_listening_table_matches_the_plan(raw_min, raw_max, band):
 def test_academic_reading_table_matches_the_plan(raw_min, raw_max, band):
     assert band_from_rows(ACADEMIC_READING_TABLE, raw_min) == band
     assert band_from_rows(ACADEMIC_READING_TABLE, raw_max) == band
+
+
+@pytest.mark.parametrize(("raw_min", "raw_max", "band"), DOC_GENERAL_READING)
+def test_general_reading_table_matches_the_docs(raw_min, raw_max, band):
+    assert band_from_rows(GENERAL_READING_TABLE, raw_min) == band
+    assert band_from_rows(GENERAL_READING_TABLE, raw_max) == band
 
 
 ALL_TABLES = [

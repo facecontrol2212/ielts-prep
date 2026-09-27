@@ -752,3 +752,76 @@ def test_real_scoring_engine_end_to_end(client, db, user, auth_headers, reading_
     assert again.status_code == 200, again.text
     assert again.json()["raw_score"] == 4
     assert client.post(f"{ATTEMPTS}/{aid}/submit", headers=auth_headers).status_code == 409
+
+
+# ------------------------------------------------------------------ ungrouped questions
+
+
+def test_ungrouped_questions_are_still_delivered_to_the_runner(client, db, user, auth_headers):
+    """A question with no group must never silently vanish from the exam.
+
+    The runner renders sections -> groups -> questions. Nothing enforces that every
+    question belongs to a group, so the payload synthesises one rather than dropping
+    the question and marking the student wrong for never seeing it.
+    """
+    test = ExamTest(
+        slug="orphan-questions",
+        skill=Skill.READING,
+        variant=Variant.ACADEMIC,
+        title="Orphans",
+        duration_seconds=600,
+        question_count=3,
+        is_published=True,
+    )
+    section = Section(order=1, title="Passage 1", instructions="Answer the questions.")
+    test.sections.append(section)
+    section.questions.extend(
+        [
+            Question(number=1, type=QuestionType.SHORT_ANSWER, prompt="One?"),
+            Question(number=2, type=QuestionType.SHORT_ANSWER, prompt="Two?"),
+            Question(number=3, type=QuestionType.TRUE_FALSE_NOT_GIVEN, prompt="Three?"),
+        ]
+    )
+    db.add(test)
+    db.flush()
+    for q in section.questions:
+        db.add(AnswerKey(question_id=q.id, accepted=["x"]))
+    db.commit()
+    assert all(q.group_id is None for q in section.questions)
+
+    session = start(client, auth_headers, test)
+    groups = session["test"]["sections"][0]["groups"]
+    numbers = [q["number"] for g in groups for q in g["questions"]]
+
+    assert numbers == [1, 2, 3], "every question must reach the runner"
+    # Consecutive orphans of the same type share a group; a new type starts a new one.
+    assert [g["type"] for g in groups] == ["short_answer", "true_false_not_given"]
+    assert [len(g["questions"]) for g in groups] == [2, 1]
+    assert [g["order"] for g in groups] == [1, 2]
+
+
+def test_synthetic_group_ids_are_stable_across_resumes(client, db, user, auth_headers):
+    """A resumed sitting must not reshuffle group ids under the runner's feet."""
+    test = ExamTest(
+        slug="orphan-stable",
+        skill=Skill.READING,
+        title="Orphans",
+        duration_seconds=600,
+        question_count=1,
+        is_published=True,
+    )
+    section = Section(order=1, title="Passage 1")
+    test.sections.append(section)
+    section.questions.append(Question(number=1, type=QuestionType.SHORT_ANSWER, prompt="One?"))
+    db.add(test)
+    db.flush()
+    db.add(AnswerKey(question_id=section.questions[0].id, accepted=["x"]))
+    db.commit()
+
+    first = start(client, auth_headers, test)
+    resumed = client.get(f"{ATTEMPTS}/{first['attempt']['id']}", headers=auth_headers).json()
+
+    assert (
+        first["test"]["sections"][0]["groups"][0]["id"]
+        == resumed["test"]["sections"][0]["groups"][0]["id"]
+    )

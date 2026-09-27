@@ -50,8 +50,13 @@ Question ids change on every re-import. That is deliberate: it keeps the importe
 correct, at the cost of making "edit a live test mid-exam" unsupported. With `--force`, saved
 `attempt_answers` pointing at the replaced questions are deleted and the summary says how many.
 
-Everything a single file does happens in **one transaction** — a document either lands
-completely or not at all.
+Everything a single file does happens in **one transaction**: rows are built and flushed, and
+the session is committed once, at the very end. Nothing is committed before the last answer key
+is in place, so a document either lands completely or not at all. The importer never calls
+`rollback` itself — the caller owns the session and rolls it back on failure (the CLI, the admin
+endpoint and `import_directory` all do). A refusal over scored attempts is raised *before* a
+single row is touched, including for a writing prompt set, where the whole set is checked before
+the first prompt is written.
 
 ---
 
@@ -102,6 +107,7 @@ comment.
 | `transcript` | string | **required for listening** — the answer-review screen is built on it |
 | `prompt_html` | HTML | **required for writing** |
 | `image_url` | string | optional chart/map image |
+| `image_description` | string | **required whenever `image_url` is set on a writing section.** What the chart actually shows, in words. The AI grader never sees the picture and a screen reader has nothing else to read out |
 | `min_words` | int | writing only (150 / 250) |
 | `start_question`, `end_question` | int | optional; derived from the questions if omitted, and checked against them if given |
 | `groups` | list | question groups; empty for writing |
@@ -204,7 +210,8 @@ identically. **Every message names the offending question number.**
 **Other**
 19. `slug` is lowercase-with-hyphens.
 20. Speaking: Part 2 needs ≥ 3 `cue_points` and a model answer of ≥ 100 words; Parts 1 and 3 must not have cue points; every Part 3 topic must also exist as a Part 2 topic; no duplicate question text.
-21. Writing prompts: Task 1 requires a `visual_description`, Task 2 must not have one; `min_words` is 150 for Task 1 and 250 for Task 2; prompt slugs are unique within the file.
+21. Writing prompts: Task 1 requires a `visual_description` of at least 30 words, Task 2 must not have one; `min_words` is 150 for Task 1 and 250 for Task 2; prompt slugs are unique within the file.
+22. A writing section that sets `image_url` must also set `image_description`.
 
 ### Soft check: evidence quotes
 
@@ -267,12 +274,18 @@ updates the row in place. `--prune` deletes bank rows the file no longer contain
 }
 ```
 
+The set may also carry `"is_published": true`, which is applied to every prompt in it.
+
 Each prompt imports as its own `tests` row (`skill=writing`, `question_count=0`) with a single
 section carrying `prompt_html` and `min_words`. Task 1 defaults to 20 minutes, Task 2 to 40.
 
-Because v1 has no chart images, `visual_description` is what the student and the AI grader
-both read. Write it as a complete, unambiguous description of the figures — a student must be
-able to write a real Task 1 answer from it alone.
+Because v1 has no chart images, `visual_description` is what the student and the AI grader both
+read. It is written into the section twice: appended to `prompt_html` so the student always sees
+it, and stored on its own in **`Section.image_description`**, which is the field the AI writing
+grader and screen readers consume. Write it as a complete, unambiguous description of the
+figures — chart type, axes and units, every category and series, the actual values, the period.
+A student must be able to write a real Task 1 answer from it alone. Validation requires at least
+30 words for a Task 1 prompt; the shipped ones run to 180-220.
 
 ---
 
@@ -345,3 +358,17 @@ A four-question reading section with three question types:
 | `content/speaking/questions.json` | 40 questions: 20 Part 1, 8 Part 2 cue cards, 12 Part 3 |
 
 All of it is original material authored for this project.
+
+## 9. What an import prints
+
+```
+  ok   ../content/reading/academic-01.json
+         created  reading-academic-01  [reading]  3 section(s), 10 group(s), 40 question(s), 40 key(s)
+  ok   ../content/speaking/questions.json
+         created  speaking-bank  40 item(s) (40 new, 0 updated)
+```
+
+A ` warn ` line is an evidence quote that could not be found verbatim in the passage or
+transcript, or a note that saved student answers were deleted by a `--force` re-import. A
+` FAIL ` line is followed by one indented line per validation problem, each naming the question
+number.

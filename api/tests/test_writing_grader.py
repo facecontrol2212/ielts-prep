@@ -205,9 +205,7 @@ def test_parses_canned_json_and_rounds(task2_section: Section, cache: InMemoryGr
     assert client.call_count == 1
 
 
-def test_usage_is_reported_by_price_band(
-    task2_section: Section, cache: InMemoryGradeCache
-) -> None:
+def test_usage_is_reported_by_price_band(task2_section: Section, cache: InMemoryGradeCache) -> None:
     """Full-price input, cache reads and cache writes are billed differently — keep them apart."""
     client = FakeClaude(
         [

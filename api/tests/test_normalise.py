@@ -9,10 +9,12 @@ from app.services.scoring.normalise import (
     MIN_NEAR_MISS_LENGTH,
     canonicalise_numbers,
     collapse_whitespace,
+    count_number_tokens,
     count_words,
     count_words_for_limit,
     drop_leading_article,
     edit_distance,
+    exceeds_word_limit,
     is_near_miss,
     is_number_token,
     normalise,
@@ -265,7 +267,7 @@ def test_count_words(raw, expected):
     [
         ("two words", False, 2),
         ("20 December", False, 2),
-        ("20 December", True, 1),  # the numeral is free
+        ("20 December", True, 1),  # the numeral is counted separately
         ("20,000 tonnes", True, 1),
         ("1990s music", True, 1),
         ("21st century", True, 1),
@@ -277,6 +279,47 @@ def test_count_words(raw, expected):
 )
 def test_count_words_for_limit(raw, allow_number, expected):
     assert count_words_for_limit(raw, allow_number=allow_number) == expected
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("", 0),
+        ("no numbers here", 0),
+        ("20 December", 1),
+        ("20 December 1999", 2),
+        ("1999 2000", 2),
+        ("20,000 tonnes", 1),
+        ("twenty five", 0),  # written out, so they are words not numerals
+        ("- 25", 1),
+    ],
+)
+def test_count_number_tokens(raw, expected):
+    assert count_number_tokens(raw) == expected
+
+
+@pytest.mark.parametrize(
+    ("raw", "limit", "allow_number", "expected"),
+    [
+        # NO MORE THAN TWO WORDS
+        ("coral reef", 2, False, False),
+        ("the coral reef", 2, False, True),
+        ("20 December", 2, False, False),  # the numeral is a word here
+        ("20 December 1999", 2, False, True),
+        ("air-conditioning unit", 2, False, False),
+        # NO MORE THAN TWO WORDS AND/OR A NUMBER: two words and ONE number
+        ("open in 1999", 2, True, False),
+        ("opened again in 1999", 2, True, True),  # three words
+        ("20 December", 2, True, False),
+        ("20 December 1999", 2, True, True),  # two numerals
+        ("1999 2000", 2, True, True),
+        ("20,000", 1, True, False),
+        ("20,000 30,000", 1, True, True),
+        ("", 1, True, False),
+    ],
+)
+def test_exceeds_word_limit(raw, limit, allow_number, expected):
+    assert exceeds_word_limit(raw, limit, allow_number=allow_number) is expected
 
 
 @pytest.mark.parametrize(

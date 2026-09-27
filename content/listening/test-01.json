@@ -1,0 +1,829 @@
+{
+  "kind": "test",
+  "slug": "listening-test-01",
+  "skill": "listening",
+  "variant": "academic",
+  "title": "Listening Practice Test 1",
+  "description": "A full four-section IELTS Listening test: joining a community sports centre, a ranger's talk at a new wetland park, a tutorial on a coastal dune field study, and a lecture on concert hall acoustics.",
+  "difficulty": 3,
+  "duration_seconds": 1800,
+  "transfer_seconds": 120,
+  "question_count": 40,
+  "is_published": true,
+  "source": "original - authored in-house",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Section 1 - Joining Kestrel Lane Community Sports Centre",
+      "instructions": "Questions 1-10. Listen to the conversation and answer Questions 1 to 10.",
+      "audio_url": "/media/listening/test-01/section-1.mp3",
+      "start_question": 1,
+      "end_question": 10,
+      "transcript": "Section 1. You will hear a telephone conversation between a man who wants to join a community sports centre and a member of the reception staff. First, you have some time to look at Questions 1 to 6.\nWOMAN: Good morning, Kestrel Lane Community Sports Centre, Dilys speaking. How can I help?\nMAN: Oh, good morning. I have just moved into the area and I would like to join, if that is something you can do over the phone.\nWOMAN: It certainly is. I will take your details now and you can collect your card whenever you are next passing. Can I start with the kind of membership you want? There are three. Full membership is fifty-two pounds a month and lets you use the building at any time we are open. Off-peak is thirty-one pounds, but you can only come in before four in the afternoon on weekdays. And there is a family rate for two adults and up to three children.\nMAN: I work shifts, so my free time is mostly mornings. Off-peak would suit me, I think. Yes, put me down for off-peak.\nWOMAN: Off-peak it is. And your name?\nMAN: It is Gareth Ferris.\nWOMAN: Is that Farris, with an A?\nMAN: No, with an E. F-E-R-R-I-S.\nWOMAN: F-E-R-R-I-S. Thank you. And your address?\nMAN: It is eight Pennyfield Lane. That is P-E-N-N-Y-F-I-E-L-D, all one word.\nWOMAN: Eight Pennyfield Lane. Is that the new estate behind the library?\nMAN: That is the one. We moved in three weeks ago.\nWOMAN: Lovely. And the postcode?\nMAN: DH9 2RT.\nWOMAN: DH9 2RT. Got it. Now, when would you like the membership to start? We can begin today, or on the first of any month, or on a date of your own choosing.\nMAN: Could it start on the twenty-sixth of September? That is when my old gym membership runs out. Actually, no, I am away that week. Make it the third of October, please.\nWOMAN: The third of October. That is fine. It simply means your first payment goes out in October. And may I ask how you heard about us? It helps us with our funding report.\nMAN: I saw your advertisement in the parish magazine, actually. My neighbour had mentioned the swimming as well, and there is a poster in the library, but it was the parish magazine that made me ring.\nWOMAN: I will put parish magazine. That is the form finished.\nBefore you hear the rest of the conversation, you have some time to look at Questions 7 to 10.\nMAN: Can I ask about the classes? There were a few listed in the advertisement but the print was tiny.\nWOMAN: Of course. Four of them are included in off-peak membership: lane swimming, circuit training, beginners' badminton and walking football.\nMAN: Lane swimming first, then.\nWOMAN: Lane swimming is on Mondays. It used to start at half past six in the morning, but from this month it starts at seven, so seven a.m. on a Monday.\nMAN: Seven in the morning. Is the pool crowded at that hour?\nWOMAN: We divide it into three lanes by speed, so nobody gets swum over.\nMAN: Good. And circuit training?\nWOMAN: Circuit training was on Wednesdays last term, but the drama group has the hall now, so it has moved to Thursday, at half past seven in the evening. The instructor is called Marek and he is very patient with beginners.\nMAN: Thursday evening. Noted. And the badminton?\nWOMAN: Beginners' badminton is on Saturday mornings at ten. That one is not covered by off-peak membership, I am afraid. It is four pounds fifty a session, paid at the desk. We lend you a racket, so there is nothing to buy.\nMAN: Four pounds fifty is reasonable. And walking football?\nWOMAN: Friday afternoons at two. The pitch is behind the building, and the main doors are locked during school hours, so the group meets at the side gate, not the main entrance, which confuses somebody every single week.\nMAN: The side gate, Friday at two. That sounds like my sort of thing.\nWOMAN: Then I will expect to see you. Your card will be waiting at reception from Monday.",
+      "groups": [
+        {
+          "order": 1,
+          "type": "form_completion",
+          "instructions": "Questions 1-6. Complete the membership form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+          "word_limit": 2,
+          "allow_number": true,
+          "content_html": "<h3>Kestrel Lane Community Sports Centre: membership form</h3><ul><li>Type of membership: <strong>___1___</strong></li><li>Surname: <strong>___2___</strong></li><li>Address: 8 <strong>___3___</strong> Lane</li><li>Postcode: <strong>___4___</strong></li><li>Membership to begin on: <strong>___5___</strong></li><li>Heard about the centre from: an advertisement in the <strong>___6___</strong></li></ul>",
+          "questions": [
+            {
+              "number": 1,
+              "prompt": "Type of membership: ___1___",
+              "audio_timestamp": 42,
+              "evidence": "Off-peak would suit me, I think. Yes, put me down for off-peak.",
+              "answer": {
+                "accepted": [
+                  "off-peak",
+                  "off peak",
+                  "off-peak membership"
+                ],
+                "explanation": "The man rejects full and family membership because he is free in the mornings and asks to be put down for off-peak."
+              }
+            },
+            {
+              "number": 2,
+              "prompt": "Surname: ___2___",
+              "audio_timestamp": 64,
+              "evidence": "No, with an E. F-E-R-R-I-S.",
+              "answer": {
+                "accepted": [
+                  "Ferris"
+                ],
+                "explanation": "The caller corrects the receptionist's guess of 'Farris' and spells the name out as F-E-R-R-I-S."
+              }
+            },
+            {
+              "number": 3,
+              "prompt": "Address: 8 ___3___ Lane",
+              "audio_timestamp": 80,
+              "evidence": "It is eight Pennyfield Lane. That is P-E-N-N-Y-F-I-E-L-D, all one word.",
+              "answer": {
+                "accepted": [
+                  "Pennyfield"
+                ],
+                "explanation": "He gives the address and spells the street name, confirming it is written as a single word."
+              }
+            },
+            {
+              "number": 4,
+              "prompt": "Postcode: ___4___",
+              "audio_timestamp": 98,
+              "evidence": "DH9 2RT. Got it.",
+              "answer": {
+                "accepted": [
+                  "DH9 2RT",
+                  "DH92RT"
+                ],
+                "explanation": "The receptionist repeats the postcode back to the caller exactly as he gives it."
+              }
+            },
+            {
+              "number": 5,
+              "prompt": "Membership to begin on: ___5___",
+              "audio_timestamp": 120,
+              "evidence": "Actually, no, I am away that week. Make it the third of October, please.",
+              "answer": {
+                "accepted": [
+                  "3 October",
+                  "3rd October",
+                  "October 3",
+                  "3 Oct"
+                ],
+                "explanation": "He first suggests 26 September but immediately corrects himself and settles on 3 October, which the receptionist confirms."
+              }
+            },
+            {
+              "number": 6,
+              "prompt": "Heard about the centre from: an advertisement in the ___6___",
+              "audio_timestamp": 145,
+              "evidence": "I saw your advertisement in the parish magazine, actually.",
+              "answer": {
+                "accepted": [
+                  "parish magazine"
+                ],
+                "explanation": "A neighbour and a library poster are mentioned as extra detail, but the advertisement that made him ring was in the parish magazine."
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "type": "table_completion",
+          "instructions": "Questions 7-10. Complete the table below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+          "word_limit": 2,
+          "allow_number": true,
+          "content_html": "<h3>Classes at Kestrel Lane</h3><table><thead><tr><th>Class</th><th>Day</th><th>Starts</th><th>Notes</th></tr></thead><tbody><tr><td>Lane swimming</td><td>Monday</td><td><strong>___7___</strong></td><td>pool divided into three lanes by speed</td></tr><tr><td>Circuit training</td><td><strong>___8___</strong></td><td>7.30pm</td><td>instructor: Marek</td></tr><tr><td>Beginners' badminton</td><td>Saturday</td><td>10.00am</td><td>not included in off-peak; costs <strong>___9___</strong> a session</td></tr><tr><td>Walking football</td><td>Friday</td><td>2.00pm</td><td>group meets at the <strong>___10___</strong></td></tr></tbody></table>",
+          "questions": [
+            {
+              "number": 7,
+              "prompt": "Lane swimming (Monday) now starts at ___7___",
+              "audio_timestamp": 188,
+              "evidence": "It used to start at half past six in the morning, but from this month it starts at seven, so seven a.m. on a Monday.",
+              "answer": {
+                "accepted": [
+                  "7.00am",
+                  "7am",
+                  "7.00 am",
+                  "7 am",
+                  "7.00",
+                  "seven am"
+                ],
+                "explanation": "The old 6.30am start is a distractor: from this month the class begins at 7am."
+              }
+            },
+            {
+              "number": 8,
+              "prompt": "Circuit training is now held on ___8___",
+              "audio_timestamp": 210,
+              "evidence": "so it has moved to Thursday, at half past seven in the evening",
+              "answer": {
+                "accepted": [
+                  "Thursday",
+                  "Thursdays",
+                  "Thurs",
+                  "Thur"
+                ],
+                "explanation": "The class was on Wednesdays last term but has moved to Thursday because the drama group now uses the hall."
+              }
+            },
+            {
+              "number": 9,
+              "prompt": "Beginners' badminton costs ___9___ a session",
+              "audio_timestamp": 236,
+              "evidence": "It is four pounds fifty a session, paid at the desk.",
+              "answer": {
+                "accepted": [
+                  "£4.50",
+                  "4.50",
+                  "4.50 pounds"
+                ],
+                "explanation": "Badminton is the one class not covered by off-peak membership; the receptionist gives the price as four pounds fifty per session."
+              }
+            },
+            {
+              "number": 10,
+              "prompt": "Walking football: the group meets at the ___10___",
+              "audio_timestamp": 264,
+              "evidence": "the group meets at the side gate, not the main entrance",
+              "answer": {
+                "accepted": [
+                  "side gate"
+                ],
+                "explanation": "The main entrance is explicitly ruled out because the main doors are locked during school hours."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Section 2 - A ranger's talk at Kettle Marsh Wetland Park",
+      "instructions": "Questions 11-20. Listen to the talk and answer Questions 11 to 20.",
+      "audio_url": "/media/listening/test-01/section-2.mp3",
+      "start_question": 11,
+      "end_question": 20,
+      "transcript": "Section 2. You will hear a ranger giving a short introductory talk to a group of visitors at a new wetland park. First, you have some time to look at Questions 11 to 15.\nRANGER: Morning, everyone, and welcome to Kettle Marsh. My name is Orla and I am one of the two rangers here. Before I let you loose with your maps, let me point out the five places people ask about most, because the signs are not all up yet.\nStart from where we are standing, at the car park in the south-west corner of the park. As you leave the car park, the tea kiosk is the little green hut immediately to the north of the parking area, on the western side of the boardwalk. It is open until four, and yes, the scones are made in the village.\nWalk north along the boardwalk and you will reach the corner where it stops running north and turns east towards the East Gate. The sculpture trail begins at that corner, and there is a wooden post with a heron carved on it, so you cannot really miss it.\nCarry on east and Reed Lake opens out on your left. The bird hide has been built on the far side of Reed Lake, right on the northern shore, so that the afternoon sun is behind you rather than in your eyes. It is a ten-minute walk round the water, and it is worth every minute.\nThe small pond in the south-eastern corner is Otter Pool, and I should say straight away that in eleven years here I have seen exactly one otter. Pond dipping happens at Otter Pool, from the platform on its western bank, and the nets and the trays live in the wooden box beside it.\nAnd finally, our education hut is just inside the East Gate. That is where the school groups go, and it is also where you will find the toilets, so it is worth knowing.\nBefore you hear the rest of the talk, you have some time to look at Questions 16 to 20.\nRight, a few practical things. The park itself is open from dawn until dusk every day of the year, including Christmas Day. The car park, though, is locked at six, even in midsummer, so if you are here for a late evening walk, please park on Tolbury Road instead and walk in through the East Gate.\nPeople always ask what the hardest part of building the park was. They usually guess the money, and the money was hard: it took us three years and four separate grants. And a handful of people over at Cawsey Fields did write to the council about the extra traffic. But what held us up in the end was the weather. Two wet winters running meant the machines could not get onto the site at all, and we lost nine months.\nA word about the rules, because I would rather say this now than shout it across the marsh later. Dogs are very welcome, which surprises people on a nature reserve, but they must be on a lead everywhere in the park, including in the car park. You may walk wherever you like apart from the fenced area behind the bird hide, and you are welcome to bring a picnic. Please do not feed the ducks with bread, though there is no rule about it, just a plea from me.\nThe reed beds along the southern edge look ornamental, and the bitterns certainly like them. But that is not why they are there. Every drop of rainwater from the new housing estate at Cawsey Fields runs through those reeds before it reaches the lake, and the reeds strip out the oil and the grit. The banks are held in place by willow rather than by reeds, and the nesting cover was planted separately, over on the island.\nOne last thing. In your leaflet there is a green survey card. We have to prove to our funders that people really do come here and where they travel from. So before you leave, please fill it in and post it in the wooden box by the gate. If you would like to join the volunteer team, the details are on the back of the card, but the card itself is the thing I am asking you for today. Enjoy the marsh, and do come and find me if you see anything unusual.",
+      "groups": [
+        {
+          "order": 1,
+          "type": "map_labelling",
+          "instructions": "Questions 11-15. Label the map of Kettle Marsh Wetland Park. Write the correct letter, A-H, next to Questions 11-15.",
+          "content_html": "<h3>Map of Kettle Marsh Wetland Park (described in words)</h3><p>The park is roughly square. The visitors' car park and the main entrance are in the <strong>south-west corner</strong>. A raised wooden boardwalk leaves the car park, runs <strong>north</strong> for a short distance, then turns sharply <strong>east</strong> and crosses the park to the <strong>East Gate</strong> in the middle of the eastern edge. <strong>Reed Lake</strong> fills the north-eastern part of the park, to the north of the eastern stretch of the boardwalk. <strong>Otter Pool</strong>, a small pond, lies in the south-eastern corner, to the south of the boardwalk. Reed beds run along the southern edge of the park.</p><p>Eight positions are marked on the map:</p><ul><li><strong>A</strong> - immediately north of the car park, on the west side of the boardwalk</li><li><strong>B</strong> - on the west shore of Reed Lake</li><li><strong>C</strong> - on the north shore of Reed Lake</li><li><strong>D</strong> - between the boardwalk and the south shore of Reed Lake</li><li><strong>E</strong> - at the corner where the boardwalk turns east</li><li><strong>F</strong> - south of the boardwalk, halfway along its eastern stretch</li><li><strong>G</strong> - on the west bank of Otter Pool</li><li><strong>H</strong> - just inside the East Gate</li></ul>",
+          "options": [
+            {
+              "label": "A",
+              "text": "immediately north of the car park, on the west side of the boardwalk"
+            },
+            {
+              "label": "B",
+              "text": "on the west shore of Reed Lake"
+            },
+            {
+              "label": "C",
+              "text": "on the north shore of Reed Lake"
+            },
+            {
+              "label": "D",
+              "text": "between the boardwalk and the south shore of Reed Lake"
+            },
+            {
+              "label": "E",
+              "text": "at the corner where the boardwalk turns east"
+            },
+            {
+              "label": "F",
+              "text": "south of the boardwalk, halfway along its eastern stretch"
+            },
+            {
+              "label": "G",
+              "text": "on the west bank of Otter Pool"
+            },
+            {
+              "label": "H",
+              "text": "just inside the East Gate"
+            }
+          ],
+          "questions": [
+            {
+              "number": 11,
+              "prompt": "Tea kiosk",
+              "audio_timestamp": 40,
+              "evidence": "As you leave the car park, the tea kiosk is the little green hut immediately to the north of the parking area, on the western side of the boardwalk.",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "The kiosk is north of the car park and west of the boardwalk, which is position A."
+              }
+            },
+            {
+              "number": 12,
+              "prompt": "Start of the sculpture trail",
+              "audio_timestamp": 66,
+              "evidence": "The sculpture trail begins at that corner, and there is a wooden post with a heron carved on it, so you cannot really miss it.",
+              "answer": {
+                "accepted": [
+                  "E"
+                ],
+                "explanation": "'That corner' is the point just described, where the boardwalk stops running north and turns east: position E."
+              }
+            },
+            {
+              "number": 13,
+              "prompt": "Bird hide",
+              "audio_timestamp": 90,
+              "evidence": "The bird hide has been built on the far side of Reed Lake, right on the northern shore, so that the afternoon sun is behind you rather than in your eyes.",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "The hide is on the northern shore of Reed Lake, which is position C, not the western shore (B)."
+              }
+            },
+            {
+              "number": 14,
+              "prompt": "Pond-dipping platform",
+              "audio_timestamp": 116,
+              "evidence": "Pond dipping happens at Otter Pool, from the platform on its western bank, and the nets and the trays live in the wooden box beside it.",
+              "answer": {
+                "accepted": [
+                  "G"
+                ],
+                "explanation": "The platform is on the western bank of Otter Pool in the south-east, which is position G."
+              }
+            },
+            {
+              "number": 15,
+              "prompt": "Education hut",
+              "audio_timestamp": 138,
+              "evidence": "And finally, our education hut is just inside the East Gate.",
+              "answer": {
+                "accepted": [
+                  "H"
+                ],
+                "explanation": "The hut stands just inside the East Gate, which is position H."
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "type": "multiple_choice",
+          "instructions": "Questions 16-20. Choose the correct letter, A, B or C.",
+          "questions": [
+            {
+              "number": 16,
+              "prompt": "What does the ranger say about opening times?",
+              "audio_timestamp": 172,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "The park is closed on public holidays."
+                },
+                {
+                  "label": "B",
+                  "text": "Visitors may not enter the park after six o'clock."
+                },
+                {
+                  "label": "C",
+                  "text": "The car park shuts before the park does."
+                }
+              ],
+              "evidence": "The car park, though, is locked at six, even in midsummer, so if you are here for a late evening walk, please park on Tolbury Road instead and walk in through the East Gate.",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "The park is open dawn to dusk every day, but the car park is locked at six, so it closes first."
+              }
+            },
+            {
+              "number": 17,
+              "prompt": "What caused the longest delay to the building of the park?",
+              "audio_timestamp": 200,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "the difficulty of raising the money"
+                },
+                {
+                  "label": "B",
+                  "text": "two very wet winters"
+                },
+                {
+                  "label": "C",
+                  "text": "complaints from local residents"
+                }
+              ],
+              "evidence": "But what held us up in the end was the weather. Two wet winters running meant the machines could not get onto the site at all, and we lost nine months.",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "Money and residents' letters are raised as expected guesses; the nine-month delay was caused by two wet winters."
+              }
+            },
+            {
+              "number": 18,
+              "prompt": "What rule must all visitors follow?",
+              "audio_timestamp": 228,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Dogs must be kept on a lead throughout the park."
+                },
+                {
+                  "label": "B",
+                  "text": "Visitors must stay on the boardwalk."
+                },
+                {
+                  "label": "C",
+                  "text": "Visitors must not bring food into the park."
+                }
+              ],
+              "evidence": "Dogs are very welcome, which surprises people on a nature reserve, but they must be on a lead everywhere in the park, including in the car park.",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "Leads are compulsory everywhere; picnics are allowed and visitors may leave the boardwalk except behind the bird hide."
+              }
+            },
+            {
+              "number": 19,
+              "prompt": "Why were the reed beds planted?",
+              "audio_timestamp": 256,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "to give birds somewhere to nest"
+                },
+                {
+                  "label": "B",
+                  "text": "to hold the banks in place"
+                },
+                {
+                  "label": "C",
+                  "text": "to clean water coming from a housing estate"
+                }
+              ],
+              "evidence": "Every drop of rainwater from the new housing estate at Cawsey Fields runs through those reeds before it reaches the lake, and the reeds strip out the oil and the grit.",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "The ranger says the banks are held by willow and the nesting cover was planted elsewhere; the reeds filter run-off from Cawsey Fields."
+              }
+            },
+            {
+              "number": 20,
+              "prompt": "What does the ranger ask the visitors to do today?",
+              "audio_timestamp": 288,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "sign up as volunteers"
+                },
+                {
+                  "label": "B",
+                  "text": "return a completed survey card"
+                },
+                {
+                  "label": "C",
+                  "text": "make a donation before leaving"
+                }
+              ],
+              "evidence": "So before you leave, please fill it in and post it in the wooden box by the gate.",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "Volunteering is mentioned only as information on the back of the card; the card itself is what she asks for today."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Section 3 - A tutorial on a dune field study at Saltcote Point",
+      "instructions": "Questions 21-30. Listen to the discussion and answer Questions 21 to 30.",
+      "audio_url": "/media/listening/test-01/section-3.mp3",
+      "start_question": 21,
+      "end_question": 30,
+      "transcript": "Section 3. You will hear two geography students, Naomi and Ravi, discussing their field-study report with their tutor, Dr Crossman. First, you have some time to look at Questions 21 to 25.\nTUTOR: Come in, both of you. I have read the draft twice now, so let us start with the fieldwork itself. Why Saltcote Point? There are four dune systems within an hour of here.\nNAOMI: Partly the bus, to be honest. You can get there and back in a day without a car.\nRAVI: That is true, but the real reason was that Hollings surveyed the same three dunes ten years ago and published all of her raw figures, so we could compare our numbers with hers instead of just describing what we saw.\nTUTOR: Good. That is the answer I was hoping for. And the first morning did not go smoothly, I gather.\nNAOMI: No. We had checked the tide tables, so we had a clear five hours, and the weather was actually kind to us, but the battery in the laser level died before we had finished the first transect. We had to abandon the heights and redo the whole thing on the Sunday.\nTUTOR: Which you did, and you say so in the report, which is the right thing to do. Now, the results. Naomi, what surprised you?\nNAOMI: Well, the tallest dune had the fewest species, but Ravi had told me to expect that, and Hollings found exactly the same. What I honestly did not expect was the pH. From the front of the beach to the back it moved by barely a tenth of a unit. I had assumed the shell sand at the front would make the seaward dunes far more alkaline.\nTUTOR: It is a common assumption. Now, be critical about your own method for a moment. Where is it weak?\nRAVI: I would say the wind. We only had the one anemometer between us.\nNAOMI: We logged the wind speed every hour, though, so that is covered. The real problem is the spacing. We put our quadrats every two metres, and on a slope as gentle as that one, that is really the same patch of ground measured three times over. We should have spaced them by height, not by distance.\nTUTOR: That is exactly it, and I would like that paragraph in the report rather than in this room. Right, one thing to add. Your figures are all quoted to two decimal places, as though they had come off a satellite. What is missing is any statement of how accurate each measurement is. Put the error on every figure you quote.\nRAVI: Even the species counts?\nTUTOR: Especially the species counts.\nBefore you hear the rest of the discussion, you have some time to look at Questions 26 to 30.\nTUTOR: Now let me take the report section by section. The introduction first. It reads well, but you have cited Hollings in nine of your fourteen sentences. One study cannot carry the whole background of a report; find me three more.\nRAVI: There is a paper by Idowu on the same stretch of coast.\nTUTOR: Then use it. The method section next. The content is all there, and I could repeat your survey from it, which is the test that matters. The problem is that you have written it as a set of instructions in the present tense: place the quadrat, count the shoots. Rewrite the whole thing as an account of what you actually did, in the past tense.\nNAOMI: All of it?\nTUTOR: All of it. Now, the results. I will be honest, this is the best piece of work either of you has handed me this year. The tables are clean, the graphs are properly labelled, and nothing is repeated in words that the figures have already said. Leave it exactly as it is.\nNAOMI: That is a relief.\nTUTOR: The discussion is where the trouble is. Half of paragraph three is not discussion at all; it is an account of how you laid out the transects, which belongs in the method. Move it there and the argument suddenly appears.\nRAVI: And the conclusion?\nTUTOR: Everything in it is correct, and everything in it has already been said. Three pages of conclusion for a twelve-page report is far too much. Cut it to a single paragraph and it will be stronger.\nNAOMI: When do you need the final version?\nTUTOR: The Friday after reading week, and put it in the box outside my office, not in my pigeonhole.",
+      "groups": [
+        {
+          "order": 1,
+          "type": "multiple_choice",
+          "instructions": "Questions 21-25. Choose the correct letter, A, B or C.",
+          "questions": [
+            {
+              "number": 21,
+              "prompt": "What was the students' main reason for choosing Saltcote Point?",
+              "audio_timestamp": 44,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "It can be reached easily by public transport."
+                },
+                {
+                  "label": "B",
+                  "text": "Earlier survey data from the site was available."
+                },
+                {
+                  "label": "C",
+                  "text": "The dunes there are the largest in the region."
+                }
+              ],
+              "evidence": "That is true, but the real reason was that Hollings surveyed the same three dunes ten years ago and published all of her raw figures, so we could compare our numbers with hers instead of just describing what we saw.",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "Naomi mentions the bus, but Ravi corrects her: the real reason was Hollings's published raw figures from ten years earlier."
+              }
+            },
+            {
+              "number": 22,
+              "prompt": "What went wrong on the first morning of fieldwork?",
+              "audio_timestamp": 74,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "A piece of equipment stopped working."
+                },
+                {
+                  "label": "B",
+                  "text": "They had misread the tide times."
+                },
+                {
+                  "label": "C",
+                  "text": "Bad weather prevented them from working."
+                }
+              ],
+              "evidence": "but the battery in the laser level died before we had finished the first transect",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "The tides and the weather were both fine; it was the laser level's battery that failed."
+              }
+            },
+            {
+              "number": 23,
+              "prompt": "What surprised Naomi about the results?",
+              "audio_timestamp": 104,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "The highest dune had the fewest species."
+                },
+                {
+                  "label": "B",
+                  "text": "The grass had recovered from trampling."
+                },
+                {
+                  "label": "C",
+                  "text": "The acidity of the soil barely changed."
+                }
+              ],
+              "evidence": "What I honestly did not expect was the pH. From the front of the beach to the back it moved by barely a tenth of a unit.",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "The species result was expected, as Ravi had predicted it; the near-constant pH was the surprise."
+              }
+            },
+            {
+              "number": 24,
+              "prompt": "What weakness in their method does Naomi identify?",
+              "audio_timestamp": 142,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "The quadrats were placed too close together."
+                },
+                {
+                  "label": "B",
+                  "text": "Only one anemometer was available."
+                },
+                {
+                  "label": "C",
+                  "text": "The survey was done at the wrong time of year."
+                }
+              ],
+              "evidence": "The real problem is the spacing. We put our quadrats every two metres, and on a slope as gentle as that one, that is really the same patch of ground measured three times over.",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "Ravi blames the single anemometer, but Naomi dismisses that and names the two-metre quadrat spacing as the real problem."
+              }
+            },
+            {
+              "number": 25,
+              "prompt": "What does Dr Crossman insist the students add to their figures?",
+              "audio_timestamp": 170,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "a larger map of the site"
+                },
+                {
+                  "label": "B",
+                  "text": "photographs of every quadrat"
+                },
+                {
+                  "label": "C",
+                  "text": "a statement of measurement accuracy"
+                }
+              ],
+              "evidence": "What is missing is any statement of how accurate each measurement is. Put the error on every figure you quote.",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "She objects to figures quoted to two decimal places with no error attached and requires an accuracy statement for every one."
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "type": "matching_features",
+          "instructions": "Questions 26-30. What comment does Dr Crossman make about each section of the report? Choose your answers from the box and write the correct letter, A-F, next to Questions 26-30. NB You may use each letter once only.",
+          "options": [
+            {
+              "label": "A",
+              "text": "It is longer than it needs to be."
+            },
+            {
+              "label": "B",
+              "text": "It contains material that belongs in another section."
+            },
+            {
+              "label": "C",
+              "text": "It is the strongest part of the report."
+            },
+            {
+              "label": "D",
+              "text": "It needs more detail about the equipment used."
+            },
+            {
+              "label": "E",
+              "text": "It depends too heavily on a single source."
+            },
+            {
+              "label": "F",
+              "text": "It should be rewritten in the past tense."
+            }
+          ],
+          "questions": [
+            {
+              "number": 26,
+              "prompt": "Introduction",
+              "audio_timestamp": 208,
+              "evidence": "It reads well, but you have cited Hollings in nine of your fourteen sentences. One study cannot carry the whole background of a report; find me three more.",
+              "answer": {
+                "accepted": [
+                  "E"
+                ],
+                "explanation": "Nine of fourteen sentences cite Hollings, so the introduction leans on one source and needs three more."
+              }
+            },
+            {
+              "number": 27,
+              "prompt": "Method section",
+              "audio_timestamp": 232,
+              "evidence": "Rewrite the whole thing as an account of what you actually did, in the past tense.",
+              "answer": {
+                "accepted": [
+                  "F"
+                ],
+                "explanation": "The content is complete, but it is written as present-tense instructions and must be recast in the past tense."
+              }
+            },
+            {
+              "number": 28,
+              "prompt": "Results",
+              "audio_timestamp": 260,
+              "evidence": "I will be honest, this is the best piece of work either of you has handed me this year.",
+              "answer": {
+                "accepted": [
+                  "C"
+                ],
+                "explanation": "She praises the tables and graphs and tells them to leave the section exactly as it is."
+              }
+            },
+            {
+              "number": 29,
+              "prompt": "Discussion",
+              "audio_timestamp": 286,
+              "evidence": "Half of paragraph three is not discussion at all; it is an account of how you laid out the transects, which belongs in the method.",
+              "answer": {
+                "accepted": [
+                  "B"
+                ],
+                "explanation": "Part of the discussion is method material and should be moved to the method section."
+              }
+            },
+            {
+              "number": 30,
+              "prompt": "Conclusion",
+              "audio_timestamp": 310,
+              "evidence": "Three pages of conclusion for a twelve-page report is far too much. Cut it to a single paragraph and it will be stronger.",
+              "answer": {
+                "accepted": [
+                  "A"
+                ],
+                "explanation": "The conclusion is accurate but repetitive and three times too long, so it must be cut to one paragraph."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Section 4 - Lecture: why concert halls sound the way they do",
+      "instructions": "Questions 31-40. Listen to the lecture and answer Questions 31 to 40.",
+      "audio_url": "/media/listening/test-01/section-4.mp3",
+      "start_question": 31,
+      "end_question": 40,
+      "transcript": "Section 4. You will hear part of a lecture on the acoustics of concert halls. First, you have some time to look at Questions 31 to 40.\nLECTURER: Good afternoon. Last week we dealt with how sound behaves outdoors, where it simply leaves and never comes back. This week we shut it in a box with two thousand people in it, and everything becomes far more interesting.\nLet us start with the one number that everybody in this field argues about: reverberation time. The definition itself is straightforward. You make a loud noise in an empty hall, you stop, and you measure how long the sound takes to fall to a millionth of the energy it started with. Expressed in decibels, that is a drop of sixty decibels, which is why you will see it written as RT60 in every textbook and on every meter you use this term.\nSo what should that number be? It depends entirely on what you intend to play in the room. Speech needs a dry room, below a second, or the consonants of one word land on top of the vowels of the next. Organ music wants four seconds and a stone roof. For a symphony orchestra, the halls that musicians and critics keep voting for cluster very tightly around an average of one point nine seconds, and I want you to remember one point nine, because that is the target you will be designing to in the coursework.\nBut reverberation time is not the whole story, and the halls of the nineteen sixties prove it. Many of them had a perfectly respectable RT60 and still sounded dead. The reason is that our hearing does not treat all reflections alike. A reflection that reaches you from the side within the first eighty milliseconds is not heard as an echo at all; the brain fuses it with the direct sound and reads it as width, as the sense that the orchestra is wrapped around you. After eighty milliseconds, the same reflection is just mud. So the useful question is not how long the sound lasts, but how much of it arrives from the side inside that first eighty milliseconds.\nThat is why the narrow rectangular hall, the shoebox, keeps winning. If the side walls are only twenty metres apart, every seat in the room gets a strong early reflection from a wall. Widen the room into a fan, as the nineteen sixties did in order to sell more seats, and the side walls are simply too far away to help; the first thing to arrive after the direct sound is the ceiling, and a reflection from above adds nothing at all to that sense of width.\nMaterials next, and here students usually guess wrong. A wall reflects low notes properly only if it is heavy. Thin timber panelling, which looks warm and expensive, flexes at low frequencies and swallows the bass, which is why one or two very beautiful halls sound so thin. The surface you want behind the orchestra is heavy plaster on brick, and if you have ever wondered why a Victorian hall has that weight of sound, that is your answer.\nThen there is the audience, which is the largest absorbent surface in the room. A hall that sounds glorious when it is full can sound like a different building at the morning rehearsal, and conductors complain about that with good reason. The fix is in the seats: modern halls use perforated upholstery, so that an empty seat absorbs almost exactly as much sound as a seated listener does. The hall then behaves in the same way whether it is full or half empty.\nFinally, scattering. A flat wall returns sound the way a mirror returns light, and mirrors give you harsh, separate echoes. The ornament of the old halls, the statues in their niches, the deep balcony fronts, the coffered ceilings, was decorative in intention and acoustically priceless in effect: it breaks one strong reflection into hundreds of weak ones.\nLet me finish with a building you can go and visit. Ferngate Hall in Northwold opened in nineteen seventy-four, fan-shaped, two thousand two hundred seats, and it was disliked from the first night onwards. It was eventually rebuilt inside its own outer shell, in two thousand and three, at a cost of twelve million pounds. What finally forced that rebuilding was the orchestra: the players could not hear each other on the platform, and an orchestra that cannot hear itself cannot play together. So a canopy was hung above the platform to throw early reflections straight back at the players and the front stalls. The side walls were brought inwards and loaded with plaster. And along the rear wall the engineers fitted moveable banners, which can be lowered to take half a second off the reverberation time whenever the hall is used for amplified music.\nDid it work? Mostly. And the reason it is only mostly is that all of this was still done by intuition and by scale models. The next real advance will come from computer modelling, from being able to hear a hall accurately before a single brick of it is laid, and that is exactly where we are going next week.",
+      "groups": [
+        {
+          "order": 1,
+          "type": "note_completion",
+          "instructions": "Questions 31-36. Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+          "word_limit": 2,
+          "allow_number": true,
+          "content_html": "<h3>Concert hall acoustics</h3><p><strong>Measuring the sound</strong></p><ul><li>Reverberation time (RT60) = the time a sound takes to fall by <strong>___31___</strong> decibels</li><li>Target for orchestral music: an average of <strong>___32___</strong> seconds</li><li>Useful reflections from the side arrive within the first <strong>___33___</strong> milliseconds</li></ul><p><strong>Building the hall</strong></p><ul><li>Best surface behind the orchestra: heavy <strong>___34___</strong> on brick</li><li>Seats are fitted with <strong>___35___</strong> upholstery so a full and an empty hall behave alike</li></ul><p><strong>Case study: Ferngate Hall, Northwold</strong></p><ul><li>Opened 1974, fan-shaped, 2,200 seats</li><li>Rebuilt in 2003 at a cost of &pound;<strong>___36___</strong> million</li></ul>",
+          "questions": [
+            {
+              "number": 31,
+              "prompt": "Reverberation time (RT60) = the time a sound takes to fall by ___31___ decibels",
+              "audio_timestamp": 58,
+              "evidence": "Expressed in decibels, that is a drop of sixty decibels, which is why you will see it written as RT60 in every textbook and on every meter you use this term.",
+              "answer": {
+                "accepted": [
+                  "60",
+                  "sixty"
+                ],
+                "explanation": "A fall to a millionth of the original energy is a drop of sixty decibels, which gives the name RT60."
+              }
+            },
+            {
+              "number": 32,
+              "prompt": "Target for orchestral music: an average of ___32___ seconds",
+              "audio_timestamp": 96,
+              "evidence": "the halls that musicians and critics keep voting for cluster very tightly around an average of one point nine seconds",
+              "answer": {
+                "accepted": [
+                  "1.9",
+                  "1.9 seconds"
+                ],
+                "explanation": "One second is for speech and four seconds for organ music; the orchestral target the lecturer repeats is 1.9 seconds."
+              }
+            },
+            {
+              "number": 33,
+              "prompt": "Useful reflections from the side arrive within the first ___33___ milliseconds",
+              "audio_timestamp": 132,
+              "evidence": "A reflection that reaches you from the side within the first eighty milliseconds is not heard as an echo at all",
+              "answer": {
+                "accepted": [
+                  "80",
+                  "eighty"
+                ],
+                "explanation": "Side reflections arriving inside eighty milliseconds are fused with the direct sound; later ones become mud."
+              }
+            },
+            {
+              "number": 34,
+              "prompt": "Best surface behind the orchestra: heavy ___34___ on brick",
+              "audio_timestamp": 168,
+              "evidence": "The surface you want behind the orchestra is heavy plaster on brick",
+              "answer": {
+                "accepted": [
+                  "plaster"
+                ],
+                "explanation": "Thin timber panelling absorbs the bass, so the lecturer recommends heavy plaster on brick instead."
+              }
+            },
+            {
+              "number": 35,
+              "prompt": "Seats are fitted with ___35___ upholstery so a full and an empty hall behave alike",
+              "audio_timestamp": 198,
+              "evidence": "modern halls use perforated upholstery, so that an empty seat absorbs almost exactly as much sound as a seated listener does",
+              "answer": {
+                "accepted": [
+                  "perforated"
+                ],
+                "explanation": "Perforated upholstery makes an empty seat absorb as much sound as a person, so the hall sounds the same when empty."
+              }
+            },
+            {
+              "number": 36,
+              "prompt": "Ferngate Hall was rebuilt in 2003 at a cost of £___36___ million",
+              "audio_timestamp": 240,
+              "evidence": "It was eventually rebuilt inside its own outer shell, in two thousand and three, at a cost of twelve million pounds.",
+              "answer": {
+                "accepted": [
+                  "12",
+                  "twelve",
+                  "12 million"
+                ],
+                "explanation": "The 2003 rebuilding inside the original shell cost twelve million pounds."
+              }
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "type": "sentence_completion",
+          "instructions": "Questions 37-40. Complete the sentences below. Write ONE WORD ONLY for each answer.",
+          "word_limit": 1,
+          "questions": [
+            {
+              "number": 37,
+              "prompt": "The rebuilding was finally forced by the players' inability to ___37___ one another on the platform.",
+              "audio_timestamp": 254,
+              "evidence": "the players could not hear each other on the platform, and an orchestra that cannot hear itself cannot play together",
+              "answer": {
+                "accepted": [
+                  "hear"
+                ],
+                "explanation": "The decisive complaint was that the musicians could not hear each other while playing."
+              }
+            },
+            {
+              "number": 38,
+              "prompt": "A ___38___ was hung over the platform to send early reflections back to the players.",
+              "audio_timestamp": 268,
+              "evidence": "So a canopy was hung above the platform to throw early reflections straight back at the players and the front stalls.",
+              "answer": {
+                "accepted": [
+                  "canopy"
+                ],
+                "explanation": "A canopy above the platform returns early reflections to the players and the front stalls."
+              }
+            },
+            {
+              "number": 39,
+              "prompt": "Moveable ___39___ on the rear wall can shorten the reverberation time for amplified music.",
+              "audio_timestamp": 288,
+              "evidence": "And along the rear wall the engineers fitted moveable banners, which can be lowered to take half a second off the reverberation time whenever the hall is used for amplified music.",
+              "answer": {
+                "accepted": [
+                  "banners"
+                ],
+                "explanation": "Banners on the rear wall are lowered to remove half a second of reverberation for amplified concerts."
+              }
+            },
+            {
+              "number": 40,
+              "prompt": "The lecturer expects the next major advance to come from computer ___40___ of halls.",
+              "audio_timestamp": 312,
+              "evidence": "The next real advance will come from computer modelling, from being able to hear a hall accurately before a single brick of it is laid",
+              "answer": {
+                "accepted": [
+                  "modelling",
+                  "modeling"
+                ],
+                "explanation": "He contrasts intuition and scale models with computer modelling, which will let designers hear a hall before it is built."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

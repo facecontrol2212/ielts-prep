@@ -8,10 +8,12 @@ from sqlalchemy import (
     DateTime,
     Float,
     ForeignKey,
+    Index,
     Integer,
     String,
     Text,
     UniqueConstraint,
+    text,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -26,6 +28,20 @@ class Attempt(UUIDMixin, TimestampMixin, Base):
     """One student sitting one test. The server owns the clock."""
 
     __tablename__ = "attempts"
+    __table_args__ = (
+        # One live sitting per (user, test). The service layer already checks and
+        # returns 409, but a check-then-insert races: two simultaneous POSTs can both
+        # pass the check. A partial unique index makes the second one fail at the
+        # database, which is the only place the race can actually be settled.
+        Index(
+            "uq_attempt_live",
+            "user_id",
+            "test_id",
+            unique=True,
+            postgresql_where=text("status = 'in_progress'"),
+            sqlite_where=text("status = 'in_progress'"),
+        ),
+    )
 
     user_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("users.id", ondelete="CASCADE"), index=True

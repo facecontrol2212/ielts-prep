@@ -177,6 +177,10 @@ def reading_test(db) -> Test:
     db.flush()
 
     keys = {
+        # Q1 deliberately lists a 4-word alternative under a 2-word limit. It is not a
+        # mistake: it is the real IELTS rule in fixture form -- an answer can be
+        # semantically right and still marked wrong for breaking the word limit, so the
+        # only winnable form here is "largest".
         1: (["largest coral reef system", "largest"], MatchMode.NORMALISED),
         2: (["TRUE"], MatchMode.OPTION),
         3: (["A"], MatchMode.OPTION),

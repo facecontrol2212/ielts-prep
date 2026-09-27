@@ -2,6 +2,7 @@
   "kind": "writing_prompts",
   "title": "Academic Writing prompt set 1",
   "variant": "academic",
+  "is_published": true,
   "prompts": [
     {
       "slug": "writing-t1-commuting-three-cities",
